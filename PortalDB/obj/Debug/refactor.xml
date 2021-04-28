@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0">
+  <Operation Name="Rename Refactor" Key="f7d21dfb-bfe4-4331-8414-6ff2f74630de" ChangeDateTime="04/14/2021 15:04:12" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalUser].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0ad87845-1408-40b6-a23a-b576aa6c9fb7" ChangeDateTime="04/14/2021 15:34:14" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalCommand].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalCommand]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalCommandId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="203a63b0-9cab-4d99-acfb-4fe4aa0f1d6d" ChangeDateTime="04/14/2021 15:34:59" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDevice].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDevice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalDeviceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a1616504-6e50-4a36-83c4-93d592111036" ChangeDateTime="04/14/2021 15:36:19" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDeviceAuth].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDeviceAuth]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalDeviceAuthId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4bb114e4-e88f-470e-a2e7-e985d6c97b82" ChangeDateTime="04/14/2021 15:37:12" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDeviceCommand].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDeviceCommand]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalDeviceCommandId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="22eab5d2-ae13-4d53-b3ba-94dd855d3194" ChangeDateTime="04/14/2021 15:38:11" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDeviceSchedule].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDeviceSchedule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalDeviceScheduleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5ab0d16d-c0c3-4e57-a4ad-744b843d99f9" ChangeDateTime="04/14/2021 15:39:10" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDeviceStatus].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDeviceStatus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalDeviceStatusId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4c84c2ac-17a3-4c89-b094-4334799bf574" ChangeDateTime="04/14/2021 15:39:21" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDeviceStatus].[        public string Name { get; set; }]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDeviceStatus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5586a218-a267-4954-b1d0-f7a0a3ab31c9" ChangeDateTime="04/14/2021 15:39:56" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalUserDevice].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalUserDevice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalUserDeviceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="89d2b362-405d-4608-9ab7-0ab07d58e6d0" ChangeDateTime="04/14/2021 16:24:11" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDeviceStats].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDeviceStats]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalDeviceStatsId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="eb640370-4e78-4b70-b43f-d64bc44256d6" ChangeDateTime="04/14/2021 16:31:12" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalDeviceType].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDeviceType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalDeviceTypeId" />
+  </Operation>
+</Operations>

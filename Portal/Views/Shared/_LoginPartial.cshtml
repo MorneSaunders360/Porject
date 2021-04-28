@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+
+    <ul class="nav navbar-nav navbar-right">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li>
+                <a class="nav-link text-dark" href="/Account/Manage">Hello @User.Identity.Name!</a>
+            </li>
+            <li>
+                <form method="post" asp-controller="Account" asp-action="Logout" asp-route-returnurl="/Home/Index" style=" margin: 0px; padding: 0px; width: auto; height: auto;">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a class="nav-link text-dark" href="/Account/Register">Register</a>
+            </li>
+            <li>
+                <a class="nav-link text-dark" onclick="OpenLogin()">Login</a>
+            </li>
+        }
+    </ul>

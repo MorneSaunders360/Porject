@@ -1,0 +1,26 @@
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/bin/Debug/netcoreapp3.1/Entities.deps.json
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/bin/Debug/netcoreapp3.1/Entities.dll
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/bin/Debug/netcoreapp3.1/Entities.pdb
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/obj/Debug/netcoreapp3.1/Entities.csprojAssemblyReference.cache
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/obj/Debug/netcoreapp3.1/Entities.AssemblyInfoInputs.cache
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/obj/Debug/netcoreapp3.1/Entities.AssemblyInfo.cs
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/obj/Debug/netcoreapp3.1/Entities.csproj.CoreCompileInputs.cache
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/obj/Debug/netcoreapp3.1/Entities.dll
+/Users/mornesaunders/Projects/Projects/Home Controls/Portal/Portal/Entities/obj/Debug/netcoreapp3.1/Entities.pdb
+/Users/mornesaunders/Projects/Projects/Entities/bin/Debug/netcoreapp3.1/Entities.deps.json
+/Users/mornesaunders/Projects/Projects/Entities/bin/Debug/netcoreapp3.1/Entities.dll
+/Users/mornesaunders/Projects/Projects/Entities/bin/Debug/netcoreapp3.1/Entities.pdb
+/Users/mornesaunders/Projects/Projects/Entities/obj/Debug/netcoreapp3.1/Entities.AssemblyInfoInputs.cache
+/Users/mornesaunders/Projects/Projects/Entities/obj/Debug/netcoreapp3.1/Entities.AssemblyInfo.cs
+/Users/mornesaunders/Projects/Projects/Entities/obj/Debug/netcoreapp3.1/Entities.csproj.CoreCompileInputs.cache
+/Users/mornesaunders/Projects/Projects/Entities/obj/Debug/netcoreapp3.1/Entities.dll
+/Users/mornesaunders/Projects/Projects/Entities/obj/Debug/netcoreapp3.1/Entities.pdb
+C:\Users\morne\source\repos\Projects\Entities\bin\Debug\netcoreapp3.1\Entities.deps.json
+C:\Users\morne\source\repos\Projects\Entities\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\morne\source\repos\Projects\Entities\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\morne\source\repos\Projects\Entities\obj\Debug\netcoreapp3.1\Entities.AssemblyInfoInputs.cache
+C:\Users\morne\source\repos\Projects\Entities\obj\Debug\netcoreapp3.1\Entities.AssemblyInfo.cs
+C:\Users\morne\source\repos\Projects\Entities\obj\Debug\netcoreapp3.1\Entities.csproj.CoreCompileInputs.cache
+C:\Users\morne\source\repos\Projects\Entities\obj\Debug\netcoreapp3.1\Entities.dll
+C:\Users\morne\source\repos\Projects\Entities\obj\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\morne\source\repos\Projects\Entities\obj\Debug\netcoreapp3.1\Entities.csprojAssemblyReference.cache

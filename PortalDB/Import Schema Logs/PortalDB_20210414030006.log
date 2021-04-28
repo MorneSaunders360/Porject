@@ -1,0 +1,84 @@
+4/14/2021 17:00:06	This log contains information about the import schema operation into project 'PortalDB' on computer 'LAPTOP-BMH9INJP' by user 'morne'.
+4/14/2021 17:00:06	Import of database schema has started.
+4/14/2021 17:00:09	Gathering database credentials
+4/14/2021 17:00:09	Gathering database options
+4/14/2021 17:00:09	Gathering users
+4/14/2021 17:00:09	Gathering roles
+4/14/2021 17:00:09	Gathering application roles
+4/14/2021 17:00:09	Gathering role memberships
+4/14/2021 17:00:09	Gathering filegroups
+4/14/2021 17:00:09	Gathering full-text catalogs
+4/14/2021 17:00:09	Gathering assemblies
+4/14/2021 17:00:09	Gathering certificates
+4/14/2021 17:00:09	Gathering asymmetric keys
+4/14/2021 17:00:09	Gathering symmetric keys
+4/14/2021 17:00:09	Gathering encrypted symmetric keys
+4/14/2021 17:00:09	Gathering schemas
+4/14/2021 17:00:09	Gathering XML schema collections
+4/14/2021 17:00:09	Gathering user-defined data types
+4/14/2021 17:00:09	Gathering user-defined types
+4/14/2021 17:00:09	Gathering table types
+4/14/2021 17:00:09	Gathering unique keys for table types
+4/14/2021 17:00:09	Gathering primary keys for table types
+4/14/2021 17:00:09	Gathering indexes for table types
+4/14/2021 17:00:09	Gathering check constraints for table types
+4/14/2021 17:00:09	Gathering default constraints for table types
+4/14/2021 17:00:09	Gathering partition functions
+4/14/2021 17:00:09	Gathering partition schemes
+4/14/2021 17:00:10	Gathering functions
+4/14/2021 17:00:10	Gathering encrypted functions
+4/14/2021 17:00:10	Gathering aggregates
+4/14/2021 17:00:10	Gathering procedures
+4/14/2021 17:00:10	Gathering encrypted procedures
+4/14/2021 17:00:10	Gathering tables
+4/14/2021 17:00:10	Gathering primary keys
+4/14/2021 17:00:10	Gathering unique constraints
+4/14/2021 17:00:10	Gathering foreign keys
+4/14/2021 17:00:10	Gathering default constraints
+4/14/2021 17:00:10	Gathering check constraints
+4/14/2021 17:00:10	Gathering views
+4/14/2021 17:00:10	Gathering encrypted views
+4/14/2021 17:00:10	Gathering indexes
+4/14/2021 17:00:10	Gathering statistics
+4/14/2021 17:00:10	Gathering full-text index stoplists
+4/14/2021 17:00:10	Gathering search property lists
+4/14/2021 17:00:10	Gathering search properties
+4/14/2021 17:00:10	Gathering full-text indexes
+4/14/2021 17:00:10	Gathering column store indexes
+4/14/2021 17:00:10	Gathering spatial indexes
+4/14/2021 17:00:10	Gathering XML indexes
+4/14/2021 17:00:10	Gathering Selective XML indexes
+4/14/2021 17:00:10	Gathering encrypted triggers
+4/14/2021 17:00:10	Gathering triggers
+4/14/2021 17:00:10	Gathering encrypted and clr ddl triggers
+4/14/2021 17:00:10	Gathering ddl triggers
+4/14/2021 17:00:10	Gathering synonyms
+4/14/2021 17:00:10	Gathering defaults
+4/14/2021 17:00:10	Gathering data constraint uddt bindings
+4/14/2021 17:00:10	Gathering rules
+4/14/2021 17:00:10	Gathering data constraint uddt bindings
+4/14/2021 17:00:10	Gathering message types
+4/14/2021 17:00:10	Gathering queues
+4/14/2021 17:00:10	Gathering contracts
+4/14/2021 17:00:10	Gathering services
+4/14/2021 17:00:10	Gathering event notifications
+4/14/2021 17:00:10	Gathering remote service bindings
+4/14/2021 17:00:10	Gathering broker priorities
+4/14/2021 17:00:10	Gathering signatures
+4/14/2021 17:00:10	Gathering data compression options
+4/14/2021 17:00:10	Gathering sequence types
+4/14/2021 17:00:10	Gathering security policies
+4/14/2021 17:00:10	Gather column encryption keys
+4/14/2021 17:00:10	Gathering column master keys
+4/14/2021 17:00:10	Gathering external data sources
+4/14/2021 17:00:10	Gathering external file formats
+4/14/2021 17:00:10	Gathering external tables
+4/14/2021 17:00:10	Gathering extended properties
+4/14/2021 17:00:10	Gathering credentials
+4/14/2021 17:00:10	Gathering logins
+4/14/2021 17:00:10	Gathering server audits
+4/14/2021 17:00:10	Scanning project for duplicate elements
+4/14/2021 17:00:10	Finished duplicate element processing
+4/14/2021 17:00:11	Finished importing database.
+4/14/2021 17:00:11	A summary of the import was saved to the following location: C:\Users\morne\source\repos\Projects\PortalDB\Import Schema Logs\PortalDB_20210414030006.log
+4/14/2021 17:00:11	Click Finish to continue...

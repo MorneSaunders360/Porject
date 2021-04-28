@@ -1,0 +1,9 @@
+C:\Users\morne\source\repos\Projects\PortalDB\bin\Debug\PortalDB.dacpac
+C:\Users\morne\source\repos\Projects\PortalDB\bin\Debug\PortalDB.dll
+C:\Users\morne\source\repos\Projects\PortalDB\bin\Debug\PortalDB.pdb
+C:\Users\morne\source\repos\Projects\PortalDB\obj\Debug\PortalDB.dll
+C:\Users\morne\source\repos\Projects\PortalDB\obj\Debug\PortalDB.pdb
+C:\Users\morne\source\repos\Projects\PortalDB\obj\Debug\Model.xml
+C:\Users\morne\source\repos\Projects\PortalDB\obj\Debug\refactor.xml
+C:\Users\morne\source\repos\Projects\PortalDB\obj\Debug\postdeploy.sql
+C:\Users\morne\source\repos\Projects\PortalDB\obj\Debug\predeploy.sql

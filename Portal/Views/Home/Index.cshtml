@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+    List<Entities.Models.PortalUserDevice> portalUserDeviceDashList = new List<Entities.Models.PortalUserDevice>();
+    if (User != null && User.Identity.Name != null)
+    {
+        var CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+        Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
+        portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.PortalUserId);
+    }
+
+}
+
+<div class="text-center">
+
+        <div id="timedate" >
+            <a id="mon">January</a>
+            <a id="d">1</a>,
+            <a id="y">0</a><br />
+            <a id="h">12</a> :
+            <a id="m">00</a>:
+            <a id="s">00</a>
+        </div>
+
+</div>
+<div class="row">
+ 
+</div>
+
+
+<script>
+
+    function UpdateDeviceStatus(PortalDeviceCommandId, status, PinOutput) {
+        if (status) {
+            status = 1;
+        }
+        else {
+            status = 0;
+        }
+            var ajaxType = "Get";
+        var ajaxUrl = "/PortalDeviceCommand/SetDeviceStatus?PortalDeviceCommandId=" + PortalDeviceCommandId + "&status=" + status + "&PinOutput=" + PinOutput;
+            var ajaxInputData = "";
+            callAjax(ajaxType, ajaxUrl, ajaxInputData,true);
+        }
+
+</script>

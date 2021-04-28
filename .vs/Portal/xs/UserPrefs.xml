@@ -1,0 +1,31 @@
+﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{E9164C1E-8DC8-401C-AD21-C8FA5719526B}|Portal">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Security/Security.ino">
+    <Files>
+      <File FileName="Portal/Views/Shared/_Layout.cshtml" Line="4" Column="27" />
+      <File FileName="Security/Security.ino" Line="5" Column="19" />
+      <File FileName="Security/New.ino" Line="6" Column="4" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Portal" expanded="True">
+            <Node name="DeviceCode" expanded="True">
+              <Node name="/Users/mornesaunders/Projects/Projects/Security/New.ino" selected="True" />
+            </Node>
+            <Node name="UI" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Portal PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.ItemProperties.UI.Portal PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mornesaunders/Projects/Projects/LogicLayer/Logic/PortalDeviceAuthLogic.cs" relfile="LogicLayer/Logic/PortalDeviceAuthLogic.cs" line="15" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

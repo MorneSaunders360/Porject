@@ -1,0 +1,36 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="row">
+    <section style="position: fixed;top: 0;bottom: 0;">
+        <div><div class="container">
+    <div class="col-md-4 col-xs-8"></div>
+    <div class="col-md-4 col-xs-12">
+        <button class="btn-command"  onclick="CloseLogin()" style="position: fixed;right: 0;">Close</button>
+        <div class="login-form">
+            <h1>Sign In</h1>
+            <form method="post" asp-controller="Account" asp-action="Login"
+                  asp-route-returnurl="@Model.ReturnUrl">
+                <input type="text" asp-for="Username" name="username" placeholder="username">
+                <span asp-validation-for="Username" class="text-danger"></span>
+                <input type="password" asp-for="Password" name="password" placeholder="password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <input type="submit" name="" value="Login">
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div></div>
+    </section>
+
+ 
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

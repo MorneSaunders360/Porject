@@ -1,0 +1,7 @@
+﻿@model List<Entities.Models.PortalDevice>
+    <breadcrumb></breadcrumb>
+@Html.Partial("IndexGrid", Model)
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/PortalDevice/PortalDeviceIndex.js?@Guid.NewGuid().ToString()"></script>
+}

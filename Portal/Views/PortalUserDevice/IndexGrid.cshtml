@@ -1,0 +1,32 @@
+﻿@model List<Entities.Models.PortalUserDevice>
+
+<div class="container-fluid" id="container">
+    <div class="panel panel-default-withline">
+        <div class="panel-body">
+
+            <table id="example" class="mdl-data-table responsive no-wrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Commands</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>DeviceId</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><a class="btn-command" onclick="EditPortalUserDevice(@item.PortalUserDeviceId)">Edit</a> </td>
+                            <td>@item.PortalDevice.Name</td>
+                            <td>@item.PortalDevice.Description</td>
+                            <td>@item.PortalDevice.DeviceGIUD</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

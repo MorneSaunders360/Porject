@@ -1,0 +1,105 @@
+﻿@model Entities.Models.PortalUserDevice
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Edit";
+    Portal.Controllers.Api.PortalUserController portalUserController = new Portal.Controllers.Api.PortalUserController();
+    var CurrentUser = portalUserController.GetItemByName(User.Identity.Name);
+
+}
+<breadcrumb></breadcrumb>
+<hr />
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="Device" aria-controls="Device" checked>
+    <label for="Device">Device</label>
+    @if (Model.PortalDeviceId > 0)
+    {
+        @*<input type="radio" name="tabset" id="Schedule" aria-controls="Schedule">
+            <label for="Schedule">Schedule</label>*@
+    }
+
+
+    <div class="tab-panels">
+        <div id="Device" class="tab-panel">
+
+
+            <div class="col-md-4 panel panel-default-withline">
+                <div class="panel-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @if (CurrentUser != null)
+                        {
+                            <input type="hidden" name="PortalUserId" value="@CurrentUser.PortalUserId" />
+                        }
+
+                        @Html.HiddenFor(x => x.PortalDeviceId)
+                        @Html.HiddenFor(x => x.PortalUserDeviceId)
+
+                        @Html.HiddenFor(x => x.PortalDevice.PortalDeviceId)
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(m => m.PortalDevice.Name, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.PortalDevice.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.PortalDevice.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+
+                            @Html.LabelFor(m => m.PortalDevice.Description, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.PortalDevice.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.PortalDevice.Description, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.PortalDevice.PortalDeviceStatusId, new { @class = "ccontrol-label" })
+                            @Html.DropDownListFor(model => model.PortalDevice.PortalDeviceStatusId, PortalDeviceStatusList.Select(x => new SelectListItem
+                                                                {
+                                                                    Text = x.Name,
+                                                                    Value = x.PortalDeviceStatusId.ToString(),
+                                                                    Selected = (x.PortalDeviceStatusId == Model.PortalDevice.PortalDeviceStatusId)
+                                                                }), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.PortalDevice.PortalDeviceStatusId, "", new { @class = "text-danger" })*@
+                        </div>
+
+                        @if (Model.PortalDeviceId > 0)
+                        {
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.PortalDevice.DeviceGIUD, new { @class = "ccontrol-label" })
+                                @Html.TextBoxFor(m => m.PortalDevice.DeviceGIUD, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.PortalDevice.DeviceGIUD, "", new { @class = "text-danger" })
+                                <button type="button" class="btn-command" onclick="copy('PortalDevice_DeviceGIUD')">Copy GIUD</button>
+                            </div>
+                        <div class="form-group">
+
+                                @Html.LabelFor(m => m.PortalDevice.Active, new { @class = "ccontrol-label" })
+                                @Html.CheckBoxFor(m => m.PortalDevice.Active, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.PortalDevice.Active, "", new { @class = "text-danger" })
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+  
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

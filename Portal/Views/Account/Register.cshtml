@@ -1,0 +1,38 @@
+﻿@model RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<div class="row">
+    <section style="position: fixed;top: 0;bottom: 0;">
+        <div>
+            <div class="container">
+                <div class="col-md-4 col-xs-8"></div>
+                <div class="col-md-4 col-xs-12">
+                    <a class="btn-command" href="/Home/Index" style="position: fixed;right: 0;">Close</a>
+                    <div class="login-form">
+                        <h1>Register</h1>
+                        <form method="post" asp-controller="Account" asp-action="Register">
+                            <input type="text" asp-for="Username" name="username" placeholder="Username">
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                            <input type="password" asp-for="Password" name="password" placeholder="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <input type="password" asp-for="ConfirmPassword" name="ConfirmPassword" placeholder="ConfirmPassword">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            <button type="submit" class="btn btn-primary" style="margin-left: 40%;">Register</button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
