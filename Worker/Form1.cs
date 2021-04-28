@@ -20,7 +20,7 @@ namespace Worker
         {
             InitializeComponent();
             timer = new System.Timers.Timer();
-            timer.Interval = 2500;
+            timer.Interval = 1500;
 
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
@@ -79,6 +79,7 @@ namespace Worker
             PortalUserDevice.PortalDevice = new Entities.Models.PortalDevice();
             PortalUserDevice.PortalDevice.Name = System.Environment.MachineName;
             PortalUserDevice.PortalDevice.Description = System.Environment.MachineName;
+            PortalUserDevice.PortalDevice.LastActiveTime = DateTime.Now;
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
             var jsonstring = JsonConvert.SerializeObject(PortalUserDevice);
             client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
@@ -89,6 +90,8 @@ namespace Worker
                 button2.Text = model.PortalDevice.Name+ "Registerd";
                 Properties.Settings.Default.DeviceGIUD = model.PortalDevice.DeviceGIUD;
                 Properties.Settings.Default.Save();
+                timer.Enabled = true;
+                timer.Start();
             }
         }
 
@@ -96,6 +99,12 @@ namespace Worker
         {
             timer.Enabled=true;
             timer.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+            timer.Stop();
         }
     }
 }

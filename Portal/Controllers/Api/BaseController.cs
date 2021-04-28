@@ -18,7 +18,7 @@ namespace Portal.Controllers.Api
         public BaseController()
         {
             timer = new System.Timers.Timer();
-            timer.Interval = 30000;
+            timer.Interval = 60000;
 
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;

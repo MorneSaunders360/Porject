@@ -34,3 +34,15 @@ C:\Users\morne\source\repos\Projects\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer
 C:\Users\morne\source\repos\Projects\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.csproj.CopyComplete
 C:\Users\morne\source\repos\Projects\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.dll
 C:\Users\morne\source\repos\Projects\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.pdb
+C:\Users\morne\Source\Repos\Porject\RepoLayer\bin\Debug\netcoreapp3.1\RepoLayer.deps.json
+C:\Users\morne\Source\Repos\Porject\RepoLayer\bin\Debug\netcoreapp3.1\RepoLayer.dll
+C:\Users\morne\Source\Repos\Porject\RepoLayer\bin\Debug\netcoreapp3.1\RepoLayer.pdb
+C:\Users\morne\Source\Repos\Porject\RepoLayer\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\morne\Source\Repos\Porject\RepoLayer\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\morne\Source\Repos\Porject\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.csprojAssemblyReference.cache
+C:\Users\morne\Source\Repos\Porject\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.AssemblyInfoInputs.cache
+C:\Users\morne\Source\Repos\Porject\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.AssemblyInfo.cs
+C:\Users\morne\Source\Repos\Porject\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.csproj.CoreCompileInputs.cache
+C:\Users\morne\Source\Repos\Porject\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.csproj.CopyComplete
+C:\Users\morne\Source\Repos\Porject\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.dll
+C:\Users\morne\Source\Repos\Porject\RepoLayer\obj\Debug\netcoreapp3.1\RepoLayer.pdb
