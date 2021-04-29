@@ -1219,3 +1219,4 @@ C:\Users\morne\Source\Repos\Porject\Portal\obj\Debug\netcoreapp3.1\Portal.csproj
 C:\Users\morne\Source\Repos\Porject\Portal\obj\Debug\netcoreapp3.1\Portal.dll
 C:\Users\morne\Source\Repos\Porject\Portal\obj\Debug\netcoreapp3.1\Portal.pdb
 C:\Users\morne\Source\Repos\Porject\Portal\obj\Debug\netcoreapp3.1\Portal.genruntimeconfig.cache
+C:\Users\morne\Source\Repos\Porject\Portal\obj\Debug\netcoreapp3.1\Razor\Views\Home\PortalDeviceListPartial.cshtml.g.cs

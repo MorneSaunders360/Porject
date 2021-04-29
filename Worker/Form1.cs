@@ -20,16 +20,20 @@ namespace Worker
         {
             InitializeComponent();
             timer = new System.Timers.Timer();
-            timer.Interval = 1500;
+            timer.Interval = 2500;
 
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
             timer.Enabled = false;
+            if ((string.IsNullOrEmpty(Properties.Settings.Default.DeviceGIUD))==false)
+            {
+                timer.Enabled = true;
+                timer.Start();
+            }
         }
         public async void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
-         
-            
+        
             HttpClient client = new HttpClient();
             Entities.Models.PortalDevice PortalDevice = new Entities.Models.PortalDevice();
             PortalDevice.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
@@ -41,7 +45,7 @@ namespace Worker
                 var response = await client.PostAsync("https://localhost:44363/Api/PortalDevice/SaveDeviceStatus/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
                 if (response.IsSuccessStatusCode)
                 {
-                    Invoke(new Action(() => { button3.Text = "Active"; }));
+                    Invoke(new Action(() => { button4.Text = "Active"; }));
                 }
             }
           
@@ -67,12 +71,12 @@ namespace Worker
                     Properties.Settings.Default.PortalUserId = modelUser.PortalUserId;
                     Properties.Settings.Default.Save();
                     button1.Text = "Logged in";
+                    RegisterDevice();
                 }
             }
 
         }
-
-        private async void button2_Click(object sender, EventArgs e)
+        public async void RegisterDevice() 
         {
             HttpClient client = new HttpClient();
             Entities.Models.PortalUserDevice PortalUserDevice = new Entities.Models.PortalUserDevice();
@@ -87,7 +91,6 @@ namespace Worker
             if (response.IsSuccessStatusCode)
             {
                 var model = JsonConvert.DeserializeObject<Entities.Models.PortalUserDevice>(response.Content.ReadAsStringAsync().Result);
-                button2.Text = model.PortalDevice.Name+ "Registerd";
                 Properties.Settings.Default.DeviceGIUD = model.PortalDevice.DeviceGIUD;
                 Properties.Settings.Default.Save();
                 timer.Enabled = true;
@@ -95,16 +98,14 @@ namespace Worker
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            timer.Enabled=true;
-            timer.Start();
-        }
+
+ 
 
         private void button4_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
             timer.Stop();
+            button4.Text = "In-Active";
         }
     }
 }

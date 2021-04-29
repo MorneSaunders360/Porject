@@ -3,24 +3,19 @@
 
 // Write your JavaScript code.
 
-function callAjax(ajaxType, ajaxUrl, ajaxInputData, async) {
-
+function callGenAjax(ajaxType, ajaxUrl, Async, ajaxInputData) {
     var outputData = "";
     $.ajax({
         type: ajaxType,
         url: ajaxUrl,
         data: ajaxInputData,
-        contentType: "application/json; charset=utf-8",
-        dataType: "text",
-        async: async,
+        async: Async,
         cache: false
     }).done(function (data) {
         outputData = data;
 
     }).fail(function (response) {
         if (response.status != 0) {
-
-
             return "";
         }
     });
@@ -32,7 +27,7 @@ function OpenLogin() {
     var ajaxType = "Get";
     var ajaxUrl = "/Account/Login";
     var ajaxInputData = "";
-    var result = callAjax(ajaxType, ajaxUrl, ajaxInputData, false);
+    var result = callGenAjax(ajaxType, ajaxUrl, ajaxInputData, false);
     $("#LogInDiv").html(result);
 
 }
@@ -65,7 +60,7 @@ function updateClock() {
 
 function initClock() {
     updateClock();
-    window.setInterval("updateClock()", 1);
+    window.setInterval("updateClock()", 1000);
 
 }
 

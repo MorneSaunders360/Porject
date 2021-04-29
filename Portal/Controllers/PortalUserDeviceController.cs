@@ -21,7 +21,16 @@ namespace Portal.Controllers
             var result = PortalUserDeviceController.GetItemList(CurrentUser.PortalUserId);
             return View("Index", result);
 
+        } 
+        
+        [HttpGet]
+        public PartialViewResult PortalDeviceListPartial()
+        {
+            return PartialView("~/Views/Home/PortalDeviceListPartial.cshtml");
+
         }
+
+
         [Breadcrumb("Edit", FromAction = "Index")]
         [HttpGet]
         public ActionResult Edit(int PortalUserDeviceId)

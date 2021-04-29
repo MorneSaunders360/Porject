@@ -1,41 +1,37 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @{
-    Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
-    List<Entities.Models.PortalUserDevice> portalUserDeviceDashList = new List<Entities.Models.PortalUserDevice>();
-    Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
-    if (User != null && User.Identity.Name != null)
-    {
-        CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
-        Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
-        portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.PortalUserId);
-    }
+ 
+    
 
 }
 
 <div class="text-center">
 
-        <div id="timedate" >
-            <a id="mon">January</a>
-            <a id="d">1</a>,
-            <a id="y">0</a><br />
-            <a id="h">12</a> :
-            <a id="m">00</a>:
-            <a id="s">00</a>
-        </div>
+    <div id="timedate">
+        <a id="mon">January</a>
+        <a id="d">1</a>,
+        <a id="y">0</a><br />
+        <a id="h">12</a> :
+        <a id="m">00</a>:
+        <a id="s">00</a>
+    </div>
 
 </div>
 <div class="row">
- 
+    @if (User != null && User.Identity.Name != null)
+    {
+        <div id="portalUserDeviceDashList"></div>
+    }
 </div>
 
 
 <script>
-
+ 
     function UpdateDeviceStatus() {
         var ajaxType = "Get";
-        var ajaxUrl = "/PortalUserDevice/GetItemList?PortalUserId=" + @CurrentUser.PortalUserId;
-        var result = callAjax(ajaxType, ajaxUrl);
-        console.log(result)
+        var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";
+        var result = callGenAjax(ajaxType, ajaxUrl, false);
+        $('#portalUserDeviceDashList').html(result);
         }
-
+    window.setInterval("UpdateDeviceStatus()", 2500);
 </script>

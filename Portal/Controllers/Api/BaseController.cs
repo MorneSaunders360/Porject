@@ -30,7 +30,7 @@ namespace Portal.Controllers.Api
             foreach (var item in LogicLayer.Logic.UOW.PortalDeviceLogic.GetItemList().Where(x => x.Active))
             {
                 TimeSpan ts = DateTime.Now - item.LastActiveTime;
-                if (ts.TotalMinutes > 1)
+                if (ts.TotalMinutes > 5)
                 {
                     item.Active = false;
                     LogicLayer.Logic.UOW.PortalDeviceLogic.SaveItem(item);

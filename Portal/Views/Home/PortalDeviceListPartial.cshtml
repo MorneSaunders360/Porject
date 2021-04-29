@@ -1,0 +1,13 @@
+﻿@{ 
+    Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+    List<Entities.Models.PortalUserDevice> portalUserDeviceDashList = new List<Entities.Models.PortalUserDevice>();
+    Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+    CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+    Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
+    portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.PortalUserId);
+
+}
+@foreach (var item in portalUserDeviceDashList.Where(x => x.PortalDevice.Active))
+{
+    <div>@item.PortalDevice.Name</div>
+}

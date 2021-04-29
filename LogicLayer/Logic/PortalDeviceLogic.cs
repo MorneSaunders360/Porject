@@ -43,8 +43,18 @@ namespace LogicLayer.Logic
         public Entities.Models.PortalDevice SaveDeviceStatus(Entities.Models.PortalDevice model)
         {
             var result = GetItemBydeviceGIUD(model.DeviceGIUD);
-            result.Active = true;
-            return base.PortalDeviceRepo.SaveItem(result);
+            if (result!=null)
+            {
+                result.Active = true;
+                result.LastActiveTime = model.LastActiveTime;
+                return base.PortalDeviceRepo.SaveItem(result);
+            }
+            else
+            {
+                return new Entities.Models.PortalDevice();
+            }
+            
+           
         }
     }
 }
