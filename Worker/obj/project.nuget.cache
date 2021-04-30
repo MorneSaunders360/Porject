@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7s3ZT50uxRvfYUTC5YoXcaQgRmCLXxQWCoUQfddx8ROhHfamDXNjeeFQ0+50YeUqgeMR3RfjPCVKi5KXOldcNg==",
+  "dgSpecHash": "h9ZvvRtwrQj8T+PBeiym7c4+ynJnrx5jzQlR1ikf4uNyQLisrj2iK0J5T97+AiBGvaSMxadPYfM0+KWIOH65Tg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\morne\\Source\\Repos\\Porject\\Worker\\Worker.csproj",
+  "projectFilePath": "C:\\Users\\morne\\source\\repos\\Porject\\Worker\\Worker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\morne\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\morne\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.7\\microsoft.aspnetcore.authentication.jwtbearer.3.1.7.nupkg.sha512",

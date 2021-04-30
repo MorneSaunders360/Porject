@@ -18,7 +18,7 @@ namespace Portal.Controllers.Api
         public BaseController()
         {
             timer = new System.Timers.Timer();
-            timer.Interval = 60000;
+            timer.Interval = 2500;
 
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
@@ -30,10 +30,10 @@ namespace Portal.Controllers.Api
             foreach (var item in LogicLayer.Logic.UOW.PortalDeviceLogic.GetItemList().Where(x => x.Active))
             {
                 TimeSpan ts = DateTime.Now - item.LastActiveTime;
-                if (ts.TotalMinutes > 5)
+                if (ts.TotalSeconds > 10)
                 {
                     item.Active = false;
-                    LogicLayer.Logic.UOW.PortalDeviceLogic.SaveItem(item);
+                    LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(item);
                 }
 
             }

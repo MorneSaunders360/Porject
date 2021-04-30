@@ -1,13 +1,40 @@
-﻿@{ 
+﻿@{
     Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
     List<Entities.Models.PortalUserDevice> portalUserDeviceDashList = new List<Entities.Models.PortalUserDevice>();
     Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
     CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
     Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
     portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.PortalUserId);
+    string PanelColor = "White";
 
 }
-@foreach (var item in portalUserDeviceDashList.Where(x => x.PortalDevice.Active))
+@foreach (var item in portalUserDeviceDashList)
 {
-    <div>@item.PortalDevice.Name</div>
+    if (item.PortalDevice.Active)
+    {
+        PanelColor = "Green";
+    }
+    else
+    {
+        PanelColor = "Red";
+    }
+<div style="margin:20px;background:rgba(255, 255, 255, 0.05);border-color:@PanelColor" class="col-md-4 panel panel-default-withline">
+
+    <div class="panel-body">
+        <div class="form-group" onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId=1'">
+            <div><label>@item.PortalDevice.Name</label></div>
+            @if (item.PortalDevice.Active)
+            {
+                <label>Online</label>
+            }
+            else
+            {
+                <label>Offline</label>
+            }
+
+        </div>
+    </div>
+</div>
+
+
 }

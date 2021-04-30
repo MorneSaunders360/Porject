@@ -33,19 +33,19 @@ namespace LogicLayer.Logic
         }
         public Entities.Models.PortalDevice SaveItem(Entities.Models.PortalDevice model)
         {
-            
-            if (model.DeviceGIUD == null || model.DeviceGIUD == "" || model.PortalDeviceId == 0)
+            var result = GetItemBydeviceGIUD(model.DeviceGIUD);
+            if (result==null)
             {
-                model.DeviceGIUD = Guid.NewGuid().ToString();
+                return base.PortalDeviceRepo.SaveItem(model);
             }
-            return base.PortalDeviceRepo.SaveItem(model);
+            return result;
         }   
         public Entities.Models.PortalDevice SaveDeviceStatus(Entities.Models.PortalDevice model)
         {
             var result = GetItemBydeviceGIUD(model.DeviceGIUD);
             if (result!=null)
             {
-                result.Active = true;
+                result.Active = model.Active;
                 result.LastActiveTime = model.LastActiveTime;
                 return base.PortalDeviceRepo.SaveItem(result);
             }

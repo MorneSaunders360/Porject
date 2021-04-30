@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace Worker
 
         public Form1()
         {
+            
             InitializeComponent();
             timer = new System.Timers.Timer();
             timer.Interval = 2500;
@@ -29,6 +31,7 @@ namespace Worker
             {
                 timer.Enabled = true;
                 timer.Start();
+                button1.Visible = false;
             }
         }
         public async void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
@@ -38,6 +41,7 @@ namespace Worker
             Entities.Models.PortalDevice PortalDevice = new Entities.Models.PortalDevice();
             PortalDevice.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
             PortalDevice.LastActiveTime = DateTime.Now;
+            PortalDevice.Active = true;
             if (string.IsNullOrEmpty(PortalDevice.DeviceGIUD)==false)
             {
                 var jsonstring = JsonConvert.SerializeObject(PortalDevice);
@@ -45,7 +49,7 @@ namespace Worker
                 var response = await client.PostAsync("https://localhost:44363/Api/PortalDevice/SaveDeviceStatus/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
                 if (response.IsSuccessStatusCode)
                 {
-                    Invoke(new Action(() => { button4.Text = "Active"; }));
+                    Invoke(new Action(() => { button4.Text = "Online"; }));
                 }
             }
           
@@ -70,7 +74,7 @@ namespace Worker
                     var modelUser = JsonConvert.DeserializeObject<Entities.Models.PortalUser>(responseUser.Content.ReadAsStringAsync().Result);
                     Properties.Settings.Default.PortalUserId = modelUser.PortalUserId;
                     Properties.Settings.Default.Save();
-                    button1.Text = "Logged in";
+                    button1.Text = "Registed";
                     RegisterDevice();
                 }
             }
@@ -78,9 +82,16 @@ namespace Worker
         }
         public async void RegisterDevice() 
         {
+            var macAddr =
+                            (
+                                from nic in NetworkInterface.GetAllNetworkInterfaces()
+                                where nic.OperationalStatus == OperationalStatus.Up
+                                select nic.GetPhysicalAddress().ToString()
+                            ).FirstOrDefault();
             HttpClient client = new HttpClient();
             Entities.Models.PortalUserDevice PortalUserDevice = new Entities.Models.PortalUserDevice();
             PortalUserDevice.PortalDevice = new Entities.Models.PortalDevice();
+            PortalUserDevice.PortalDevice.DeviceGIUD = macAddr;
             PortalUserDevice.PortalDevice.Name = System.Environment.MachineName;
             PortalUserDevice.PortalDevice.Description = System.Environment.MachineName;
             PortalUserDevice.PortalDevice.LastActiveTime = DateTime.Now;
@@ -103,9 +114,30 @@ namespace Worker
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (timer.Enabled)
+            {
+                timer.Enabled = false;
+                timer.Stop();
+                button4.Text = "Offline";
+            }
+            else
+            {
+                timer.Enabled = true;
+                timer.Start();
+                button4.Text = "Online";
+            }
+        
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
             timer.Enabled = false;
             timer.Stop();
-            button4.Text = "In-Active";
+            button1.Visible = true;
+            button4.Text = "Offline";
+            button4.Visible = false;
+            Properties.Settings.Default.Reset();
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -810,4 +810,3 @@ C:\Users\morne\Source\Repos\Porject\Worker\obj\Debug\net5.0-windows\Worker.dll
 C:\Users\morne\Source\Repos\Porject\Worker\obj\Debug\net5.0-windows\ref\Worker.dll
 C:\Users\morne\Source\Repos\Porject\Worker\obj\Debug\net5.0-windows\Worker.pdb
 C:\Users\morne\Source\Repos\Porject\Worker\obj\Debug\net5.0-windows\Worker.genruntimeconfig.cache
-C:\Users\morne\Source\Repos\Porject\Worker\bin\Debug\net5.0-windows\Portal.StaticWebAssets.xml

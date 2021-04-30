@@ -13,8 +13,11 @@
     <link href="~/css/DataTableGrids/responsive.dataTables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.css" type="text/css" />
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
-<body onLoad="initClock()">
+<body>
 
     <nav class="navbar navbar-navbar-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 
@@ -47,7 +50,7 @@
 
         </div>
     </nav>
-    </header>
+   
     <div id="LogInDiv"></div>
     <div class="container">
         <main role="main" class="pb-3">
@@ -60,11 +63,10 @@
         @{var date = DateTime.Now;}
         <div>@date</div>
         &copy; 2020 - Portal - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+ 
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.js"></script>
     @RenderSection("Scripts", required: false)
@@ -73,5 +75,8 @@
     <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.buttons.min.js?@Guid.NewGuid().ToString()"></script>
     <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.select.min.js?@Guid.NewGuid().ToString()"></script>
     <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.responsive.js?@Guid.NewGuid().ToString()"></script>
+
+
+
 </body>
 </html>

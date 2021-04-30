@@ -1,37 +1,43 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@{
- 
-    
-
-}
 
 <div class="text-center">
-
-    <div id="timedate">
-        <a id="mon">January</a>
-        <a id="d">1</a>,
-        <a id="y">0</a><br />
-        <a id="h">12</a> :
-        <a id="m">00</a>:
-        <a id="s">00</a>
+    <div class="box">
+        <div class="hour">
+            <div id="hour"></div>
+            <span id="hourVal">00</span>
+        </div>
+        <div class="minute">
+            <div id="minute"></div>
+            <span id="minuteVal">00</span>
+        </div>
+        <div class="second">
+            <div id="second"></div>
+            <span id="secondVal">00</span>
+        </div>
+        <div class="half">
+            <div id="half"></div>
+            <span id="halfVal">||</span>
+        </div>
     </div>
-
 </div>
 <div class="row">
     @if (User != null && User.Identity.Name != null)
-    {
-        <div id="portalUserDeviceDashList"></div>
+    {<div id="portalUserDeviceDashList"></div>
+
     }
 </div>
 
+<script type="text/javascript" src="~/js/Clock.js?@Guid.NewGuid().ToString()"></script>
+@if (User != null && User.Identity.Name != null)
+{
 
-<script>
- 
-    function UpdateDeviceStatus() {
-        var ajaxType = "Get";
-        var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";
-        var result = callGenAjax(ajaxType, ajaxUrl, false);
-        $('#portalUserDeviceDashList').html(result);
-        }
-    window.setInterval("UpdateDeviceStatus()", 2500);
-</script>
+    <script>
+        setInterval(() => {
+            var ajaxType = "Get";
+            var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";
+            var result = callGenAjax(ajaxType, ajaxUrl, false);
+            $('#portalUserDeviceDashList').html(result);
+        }, 1000);
+
+    </script>
+}

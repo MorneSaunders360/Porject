@@ -6453,11 +6453,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\morne\\Source\\Repos\\Porject\\Worker\\Worker.csproj",
+      "projectUniqueName": "C:\\Users\\morne\\source\\repos\\Porject\\Worker\\Worker.csproj",
       "projectName": "Worker",
-      "projectPath": "C:\\Users\\morne\\Source\\Repos\\Porject\\Worker\\Worker.csproj",
+      "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Worker\\Worker.csproj",
       "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\morne\\Source\\Repos\\Porject\\Worker\\obj\\",
+      "outputPath": "C:\\Users\\morne\\source\\repos\\Porject\\Worker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -6480,11 +6480,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\morne\\Source\\Repos\\Porject\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\morne\\Source\\Repos\\Porject\\Entities\\Entities.csproj"
+            "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
             },
-            "C:\\Users\\morne\\Source\\Repos\\Porject\\Portal\\Portal.csproj": {
-              "projectPath": "C:\\Users\\morne\\Source\\Repos\\Porject\\Portal\\Portal.csproj"
+            "C:\\Users\\morne\\source\\repos\\Porject\\Portal\\Portal.csproj": {
+              "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Portal\\Portal.csproj"
             }
           }
         }
