@@ -30,13 +30,13 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         @if (CurrentUser != null)
                         {
-                            <input type="hidden" name="PortalUserId" value="@CurrentUser.PortalUserId" />
+                            <input type="hidden" name="PortalUserId" value="@CurrentUser.Id" />
                         }
 
                         @Html.HiddenFor(x => x.PortalDeviceId)
-                        @Html.HiddenFor(x => x.PortalUserDeviceId)
+                        @Html.HiddenFor(x => x.Id)
 
-                        @Html.HiddenFor(x => x.PortalDevice.PortalDeviceId)
+                        @Html.HiddenFor(x => x.PortalDevice.Id)
 
                         <div class="form-group">
 
@@ -49,6 +49,13 @@
                             @Html.LabelFor(m => m.PortalDevice.Description, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.PortalDevice.Description, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.PortalDevice.Description, "", new { @class = "text-danger" })
+
+                        </div> 
+                        <div class="form-group">
+
+                            @Html.LabelFor(m => m.PortalDevice.DeviceGIUD, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.PortalDevice.DeviceGIUD, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.PortalDevice.DeviceGIUD, "", new { @class = "text-danger" })
 
                         </div>
                         <div class="form-group">

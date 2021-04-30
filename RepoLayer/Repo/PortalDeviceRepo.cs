@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RepoLayer.Repo
 {
-    public class PortalDeviceRepo<T> : BaseRepo<Entities.Models.PortalDevice>, IBaseRepo<Entities.Models.PortalDevice>
+    public class PortalDeviceRepo<T> : BaseRepo<Entities.Models.PortalDevice>
     {
     }
 }

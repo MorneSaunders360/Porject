@@ -77,4 +77,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="PortalDeviceTypeId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f0595eca-470c-4208-b2c5-bf50a1512f73" ChangeDateTime="04/30/2021 23:33:04">
+    <Property Name="ElementName" Value="[dbo].[PortalDevice].[PortalDeviceId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalDevice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c7d91ba3-4d8a-4bd2-b67c-7fbf332af700" ChangeDateTime="04/30/2021 23:34:08">
+    <Property Name="ElementName" Value="[dbo].[PortalUser].[PortalUserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="370e2a8a-aa75-492c-9acd-5a3107c2f268" ChangeDateTime="04/30/2021 23:34:16">
+    <Property Name="ElementName" Value="[dbo].[PortalUserDevice].[PortalUserDeviceId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalUserDevice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
 </Operations>

@@ -5,7 +5,7 @@ namespace Entities.Models
 {
     public class PortalUserDevice
     {
-        public int PortalUserDeviceId { get; set; }
+        public int Id { get; set; }
         //FK
         public int PortalDeviceId { get; set; }
         public PortalDevice PortalDevice { get; set; }

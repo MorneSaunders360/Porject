@@ -14,30 +14,35 @@ namespace Portal.Controllers.Api
     [ApiController]
     public class BaseController : Controller
     {
-        private System.Timers.Timer timer;
+
         public BaseController()
         {
-            timer = new System.Timers.Timer();
-            timer.Interval = 2500;
-
-            timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = true;
-            timer.Enabled = true;
-
+            Result();
         }
-        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+
+        public async void Result() 
         {
-            foreach (var item in LogicLayer.Logic.UOW.PortalDeviceLogic.GetItemList().Where(x => x.Active))
+            while (true)
             {
-                TimeSpan ts = DateTime.Now - item.LastActiveTime;
-                if (ts.TotalSeconds > 10)
+                await Task.Delay(2500);
+                var PortalDeviceList = LogicLayer.Logic.UOW.PortalDeviceLogic.GetItemList();
+                foreach (var item in PortalDeviceList.Where(x => x.Active))
                 {
-                    item.Active = false;
-                    LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(item);
+                    TimeSpan ts = DateTime.Now - item.LastActiveTime;
+                    if (ts.TotalSeconds > 10)
+                    {
+                        item.Active = false;
+                        item.ErrorMail = false;
+                        LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(item);
+                    }
+
                 }
+                
+            } 
+            
+           
+        }  
+ 
 
-            }
-
-        }
     }
 }

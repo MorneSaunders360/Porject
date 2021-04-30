@@ -11,7 +11,7 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @Html.HiddenFor(x => x.PortalDeviceId)
+            @Html.HiddenFor(x => x.Id)
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -22,7 +22,7 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            @if (Model.PortalDeviceId > 0)
+            @if (Model.Id > 0)
             {
                 <div class="form-group">
                     <label asp-for="DeviceGIUD" class="control-label"></label>

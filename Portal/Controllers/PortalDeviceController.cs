@@ -36,15 +36,15 @@ namespace Portal.Controllers
             Portal.Controllers.Api.PortalDeviceController portalDeviceController = new Api.PortalDeviceController();
 
             var result = portalDeviceController.SaveItem(model);
-            if (model.PortalDeviceId > 0)
+            if (model.Id > 0)
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                if (model.PortalDeviceId==0)
+                if (model.Id == 0)
                 {
-                    return RedirectToAction("Edit", "PortalDevice", new { PortalDeviceId = result.PortalDeviceId });
+                    return RedirectToAction("Edit", "PortalDevice", new { PortalDeviceId = result.Id });
                 }
                 else
                 {

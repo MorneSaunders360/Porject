@@ -17,7 +17,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td><a class="btn-command" onclick="EditPortalUserDevice(@item.PortalUserDeviceId)">Edit</a> </td>
+                            <td><a class="btn-command" onclick="EditPortalUserDevice(@item.Id)">Edit</a> </td>
                             <td>@item.PortalDevice.Name</td>
                             <td>@item.PortalDevice.Description</td>
                             <td>@item.PortalDevice.DeviceGIUD</td>

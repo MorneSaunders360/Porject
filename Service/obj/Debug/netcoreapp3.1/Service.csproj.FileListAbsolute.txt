@@ -1,0 +1,8 @@
+C:\Users\morne\source\repos\Porject\Service\bin\Debug\netcoreapp3.1\Service.deps.json
+C:\Users\morne\source\repos\Porject\Service\bin\Debug\netcoreapp3.1\Service.dll
+C:\Users\morne\source\repos\Porject\Service\bin\Debug\netcoreapp3.1\Service.pdb
+C:\Users\morne\source\repos\Porject\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+C:\Users\morne\source\repos\Porject\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfo.cs
+C:\Users\morne\source\repos\Porject\Service\obj\Debug\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache
+C:\Users\morne\source\repos\Porject\Service\obj\Debug\netcoreapp3.1\Service.dll
+C:\Users\morne\source\repos\Porject\Service\obj\Debug\netcoreapp3.1\Service.pdb

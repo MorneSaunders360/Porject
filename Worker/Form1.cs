@@ -33,6 +33,10 @@ namespace Worker
                 timer.Start();
                 button1.Visible = false;
             }
+            else
+            {
+                button4.Visible = false;
+            }
         }
         public async void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
@@ -72,9 +76,9 @@ namespace Worker
                 if (responseUser.IsSuccessStatusCode)
                 {
                     var modelUser = JsonConvert.DeserializeObject<Entities.Models.PortalUser>(responseUser.Content.ReadAsStringAsync().Result);
-                    Properties.Settings.Default.PortalUserId = modelUser.PortalUserId;
+                    Properties.Settings.Default.PortalUserId = modelUser.Id;
                     Properties.Settings.Default.Save();
-                    button1.Text = "Registed";
+                    button1.Visible = false;
                     RegisterDevice();
                 }
             }
@@ -105,6 +109,8 @@ namespace Worker
                 Properties.Settings.Default.DeviceGIUD = model.PortalDevice.DeviceGIUD;
                 Properties.Settings.Default.Save();
                 timer.Enabled = true;
+                button4.Visible=true;
+                button4.Text = "Online";
                 timer.Start();
             }
         }

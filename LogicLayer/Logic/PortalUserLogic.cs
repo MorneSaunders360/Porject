@@ -11,15 +11,15 @@ namespace LogicLayer.Logic
         }
         public List<Entities.Models.PortalUser> GetItemList()
         {
-            return base.PortalUserRepo.FindItems<Entities.Models.PortalUser>().ToList();
+            return base.PortalUserRepo.GetItems().ToList();
         } 
         public Entities.Models.PortalUser GetItemById(int PortalUserId)
         {
-            return base.PortalUserRepo.GetItemById<Entities.Models.PortalUser>(PortalUserId);
+            return base.PortalUserRepo.GetItemById(PortalUserId);
         } 
         public Entities.Models.PortalUser GetItemByName(string Email)
         {
-            return base.PortalUserRepo.FindItem<Entities.Models.PortalUser>(new {Email = Email });
+            return base.PortalUserRepo.FindItem(new {Email = Email });
         }
         public Entities.Models.PortalUser SaveItem(Entities.Models.PortalUser model)
         {

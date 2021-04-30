@@ -4,7 +4,7 @@
     Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
     CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
     Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
-    portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.PortalUserId);
+    portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id);
     string PanelColor = "White";
 
 }

@@ -12,7 +12,7 @@ namespace LogicLayer.Logic
         }
         public List<Entities.Models.PortalUserDevice> GetItemList(int PortalUserId)
         {
-            var result = base.PortalUserDeviceRepo.FindItems<Entities.Models.PortalUserDevice>(new { PortalUserId = PortalUserId }).ToList();
+            var result = base.PortalUserDeviceRepo.GetItemFiltered(new { PortalUserId = PortalUserId }).ToList();
             if (result!=null)
             {
                 foreach (var item in result)
@@ -25,7 +25,7 @@ namespace LogicLayer.Logic
         }
         public Entities.Models.PortalUserDevice GetItemById(int PortalUserDeviceId)
         {
-            var result = base.PortalUserDeviceRepo.GetItemById<Entities.Models.PortalUserDevice>(PortalUserDeviceId);
+            var result = base.PortalUserDeviceRepo.GetItemById(PortalUserDeviceId);
             if (result == null)
             {
                 result = new Entities.Models.PortalUserDevice();
@@ -36,13 +36,27 @@ namespace LogicLayer.Logic
                 result.PortalDevice = LogicLayer.Logic.UOW.PortalDeviceLogic.GetItemById(result.PortalDeviceId);
             }
             return result;
+        } 
+        public Entities.Models.PortalUserDevice GetItemByPortalDeviceId(int PortalDeviceId)
+        {
+            var result = base.PortalUserDeviceRepo.FindItem(new { PortalDeviceId = PortalDeviceId });
+            return result;
         }
         public Entities.Models.PortalUserDevice SaveItem(Entities.Models.PortalUserDevice model)
         {
+            Entities.Models.PortalUserDevice result = new Entities.Models.PortalUserDevice();
             var Device = LogicLayer.Logic.UOW.PortalDeviceLogic.SaveItem(model.PortalDevice);
-            model.PortalDeviceId = Device.PortalDeviceId;
-            var result = base.PortalUserDeviceRepo.SaveItem(model);
+            model.PortalDeviceId = Device.Id;
+            if (GetItemByPortalDeviceId(model.PortalDeviceId)==null)
+            {
+                result = base.PortalUserDeviceRepo.SaveItem(model);
+            }
+            else
+            {
+                result = GetItemByPortalDeviceId(model.PortalDeviceId);
+            }
             result.PortalDevice = Device;
+
             return result;
         }
 

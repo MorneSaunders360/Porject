@@ -31,9 +31,7 @@ function OpenLogin() {
     $("#LogInDiv").html(result);
 
 }
-function CloseLogin() {
-    $("#LogInDiv").hide();;
-}
+
 
 // START CLOCK SCRIPT
 

@@ -5,7 +5,8 @@ namespace Portal.Models
 {
     public class RegisterViewModel
     {
-        [Required, MaxLength(256)]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Username { get; set; }
 
         [Required, DataType(DataType.Password)]

@@ -18,7 +18,7 @@ namespace Portal.Controllers
             Portal.Controllers.Api.PortalUserController PortalUserController = new Api.PortalUserController();
             var CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
             Portal.Controllers.Api.PortalUserDeviceController PortalUserDeviceController = new Api.PortalUserDeviceController();
-            var result = PortalUserDeviceController.GetItemList(CurrentUser.PortalUserId);
+            var result = PortalUserDeviceController.GetItemList(CurrentUser.Id);
             return View("Index", result);
 
         } 
@@ -44,15 +44,15 @@ namespace Portal.Controllers
         {
             Portal.Controllers.Api.PortalUserDeviceController PortalUserDeviceController = new Api.PortalUserDeviceController();
             var result = PortalUserDeviceController.SaveItem(model);
-            if (model.PortalUserDeviceId > 0)
+            if (model.Id > 0)
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                if (model.PortalUserDeviceId == 0)
+                if (model.Id == 0)
                 {
-                    return RedirectToAction("Edit", "PortalUserDevice", new { PortalUserDeviceId = result.PortalUserDeviceId });
+                    return RedirectToAction("Edit", "PortalUserDevice", new { Id = result.Id });
                 }
                 else
                 {

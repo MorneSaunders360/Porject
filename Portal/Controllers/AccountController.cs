@@ -25,7 +25,7 @@ namespace Portal.Controllers
         // GET: /<controller>/
         private SignInManager<IdentityUser> _signManager;
         private UserManager<IdentityUser> _userManager;
-      
+
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signManager)
         {
             _userManager = userManager;
@@ -47,16 +47,17 @@ namespace Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.Username,EmailConfirmed=true, Email = model.Username };
+                var user = new IdentityUser { UserName = model.Username, EmailConfirmed = true, Email = model.Username };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 Portal.Controllers.Api.PortalUserController PortalUserController = new Api.PortalUserController();
 
-             
+
                 if (result.Succeeded)
                 {
-                   var AspNetId = await _userManager.GetUserIdAsync(user);
+                    var AspNetId = await _userManager.GetUserIdAsync(user);
+                    user.Id = AspNetId;
                     PortalUserController.SaveItem(new Entities.Models.PortalUser { Email = model.Username, Name = model.Username, AspNetId = AspNetId });
-
+                    await _signManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -76,7 +77,7 @@ namespace Portal.Controllers
             return View(model);
         }
 
-      
+
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -132,6 +133,6 @@ namespace Portal.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-      
+
     }
 }

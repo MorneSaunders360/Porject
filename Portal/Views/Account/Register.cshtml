@@ -11,6 +11,7 @@
                     <a class="btn-command" href="/Home/Index" style="position: fixed;right: 0;">Close</a>
                     <div class="login-form">
                         <h1>Register</h1>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <form method="post" asp-controller="Account" asp-action="Register">
                             <input type="text" asp-for="Username" name="username" placeholder="Username">
                             <span asp-validation-for="Username" class="text-danger"></span>
@@ -33,6 +34,3 @@
 
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

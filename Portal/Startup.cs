@@ -46,24 +46,16 @@ namespace Portal
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.ConfigureApplicationCookie(options =>
-            {
-                // Cookie settings  
-                options.Cookie.HttpOnly = false;
-                options.ExpireTimeSpan = TimeSpan.FromDays(1);
-                options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Account/AccessDenied";
-                options.SlidingExpiration = true;
-            });
+     
             services.AddAuthentication()
                     .AddCookie(options =>
                     {
                         // Cookie settings  
                         options.Cookie.HttpOnly = false;
-                        options.ExpireTimeSpan = TimeSpan.FromDays(1);
+                        options.ExpireTimeSpan = TimeSpan.FromDays(10);
                         options.LoginPath = "/Account/Login";
                         options.AccessDeniedPath = "/Account/AccessDenied";
-                        options.SlidingExpiration = true;
+                        options.SlidingExpiration = false;
                     })
                     .AddJwtBearer(options =>
                     {

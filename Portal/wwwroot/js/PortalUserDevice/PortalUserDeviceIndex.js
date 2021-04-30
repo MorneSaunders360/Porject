@@ -1,5 +1,5 @@
 ﻿var _gridClassName = "mdl-data-table__cell--non-numeric";
-var ToolBarHTML = '<button type="button" onclick="EditPortalUserDevice(0)" class="btn-command">Add</button>';
+var ToolBarHTML = '';
 function InitializePortalDeviceTable(tableDiv, gridClassName, ToolBarHTML) {
     $(tableDiv).removeClass('table-child-types');
     var table = $(tableDiv).DataTable({
