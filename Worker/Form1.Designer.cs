@@ -70,6 +70,9 @@ namespace Worker
             this.bunifuCards1.ShadowDepth = 20;
             this.bunifuCards1.Size = new System.Drawing.Size(800, 450);
             this.bunifuCards1.TabIndex = 0;
+            this.bunifuCards1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuForm_MouseDown);
+            this.bunifuCards1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.bunifuCards1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             // 
             // ButtonStatus
             // 

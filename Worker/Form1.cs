@@ -20,6 +20,8 @@ namespace Worker
 {
     public partial class Worker : Form
     {
+        string BaseUrl = "https://portaldevice.azurewebsites.net";
+        //string BaseUrl = "https://localhost:44363";
         static RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         public System.Timers.Timer timer;
         CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
@@ -35,7 +37,7 @@ namespace Worker
         private void Form1_Load(object sender, EventArgs e)
         {
             timer = new System.Timers.Timer();
-            timer.Interval = 1500;
+            timer.Interval = 2500;
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
             timer.Enabled = false;
@@ -57,39 +59,72 @@ namespace Worker
         }
         public async void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
-        
+
             HttpClient client = new HttpClient();
+            Models.PortalUserDevice PortalUserDevice = new Models.PortalUserDevice();
             Models.PortalDevice PortalDevice = new Models.PortalDevice();
             PortalDevice.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
             PortalDevice.LastActiveTime = DateTime.Now;
             PortalDevice.Active = true;
+            PortalUserDevice.PortalDevice = PortalDevice;
             if (string.IsNullOrEmpty(PortalDevice.DeviceGIUD) == false)
             {
                 try
                 {
-                    var jsonstring = JsonConvert.SerializeObject(PortalDevice);
+                    var jsonstring = JsonConvert.SerializeObject(PortalUserDevice);
                     client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
-                    var response = await client.PostAsync("https://portaldevice.azurewebsites.net/Api/PortalDevice/SaveDeviceStatus/", new StringContent(jsonstring, Encoding.UTF8, "application/json"), CancellationTokenSource.Token);
+                    var response = await client.PostAsync($"{BaseUrl}/Api/PortalUserDevice/SaveDeviceStatus/", new StringContent(jsonstring, Encoding.UTF8, "application/json"), CancellationTokenSource.Token);
                     if (response.IsSuccessStatusCode)
                     {
                         Invoke(new Action(() =>
                         {
-                            ButtonStatus.Visible = true;
-                            ButtonStatus.Text = "Online";
-                            ButtonStatus.BackColor = Color.SeaGreen;
-                            ButtonStatus.OnHovercolor = Color.SeaGreen;
-                            ButtonStatus.Normalcolor = Color.SeaGreen;
-                            ButtonStatus.Activecolor = Color.SeaGreen;
+                            var Result = response.Content.ReadAsStringAsync().Result;
+                            var model = JsonConvert.DeserializeObject<Models.PortalUserDevice>(Result);
+                            if (model==null)
+                            {
+                                CancellationTokenSource.Cancel();
+                                timer.Stop();
+                                panelLogIn.Visible = true;
+                                CancellationTokenSource = new CancellationTokenSource();
+                            }
+                            else
+                            {
+                                if (model.SoftDelete)
+                                {
+                                    CancellationTokenSource.Cancel();
+                                    timer.Stop();
+                                    //ButtonStatus.Text = "Stopping";
+                                    ButtonStatus.Visible = true;
+                                    ButtonStatus.Text = "Offline";
+                                    ButtonStatus.BackColor = Color.Red;
+                                    ButtonStatus.OnHovercolor = Color.Red;
+                                    ButtonStatus.Normalcolor = Color.Red;
+                                    ButtonStatus.Activecolor = Color.DarkRed;
+                                    panelLogIn.Visible = true;
+                                    CancellationTokenSource = new CancellationTokenSource();
+                                }
+                                else
+                                {
+                                    ButtonStatus.Visible = true;
+                                    ButtonStatus.Text = "Online";
+                                    ButtonStatus.BackColor = Color.SeaGreen;
+                                    ButtonStatus.OnHovercolor = Color.SeaGreen;
+                                    ButtonStatus.Normalcolor = Color.SeaGreen;
+                                    ButtonStatus.Activecolor = Color.SeaGreen;
+                                }
+                            }
+                            
+                         
                         }));
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }
 
             }
-            
+
 
 
         }
@@ -102,7 +137,7 @@ namespace Worker
                 loginViewModel.Username = TextboxEmail.Text;
                 loginViewModel.Password = TextboxPassword.Text;
                 var jsonstring = JsonConvert.SerializeObject(loginViewModel);
-                var response = await client.PostAsync("https://portaldevice.azurewebsites.net/Api/Account/LoginApi/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync($"{BaseUrl}/Api/Account/LoginApi/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
                 if (response.IsSuccessStatusCode)
                 {
                     var model = JsonConvert.DeserializeObject<Models.PortalToken>(response.Content.ReadAsStringAsync().Result);
@@ -163,6 +198,7 @@ namespace Worker
             HttpClient client = new HttpClient();
             Models.PortalUserDevice PortalUserDevice = new Models.PortalUserDevice();
             PortalUserDevice.PortalDevice = new Models.PortalDevice();
+            PortalUserDevice.SoftDelete = false;
             PortalUserDevice.PortalDevice.DeviceGIUD = macAddr;
             PortalUserDevice.PortalDevice.Name = System.Environment.MachineName;
             PortalUserDevice.PortalDevice.Description = System.Environment.MachineName;
@@ -170,7 +206,7 @@ namespace Worker
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
             var jsonstring = JsonConvert.SerializeObject(PortalUserDevice);
             client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
-            var response = await client.PostAsync("https://portaldevice.azurewebsites.net/Api/PortalUserDevice/SaveItem/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
+            var response = await client.PostAsync($"{BaseUrl}/Api/PortalUserDevice/SaveItem/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
             {
                 var model = JsonConvert.DeserializeObject<Models.PortalUserDevice>(response.Content.ReadAsStringAsync().Result);
@@ -180,7 +216,30 @@ namespace Worker
             }
         }
 
+        #region MouseMove
+        private bool mouseDown;
+        private Point lastLocation;
+        private void bunifuForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
 
+                this.Update();
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+        #endregion
         private void ButtonExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);

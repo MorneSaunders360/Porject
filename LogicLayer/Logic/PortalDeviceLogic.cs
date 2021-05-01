@@ -54,29 +54,29 @@ namespace LogicLayer.Logic
                 result.Active = model.Active;
                 result.ErrorMail = model.ErrorMail;
                 result.LastActiveTime = model.LastActiveTime;
-                result = base.PortalDeviceRepo.SaveItem(result);
+                base.PortalDeviceRepo.SaveItem(result);
                 return result;
             }
             else
             {
-                return new Entities.Models.PortalDevice();
+                return null;
             }
 
 
         }
         public async Task SendEmailsForOfflineDevices()
         {
-            Console.WriteLine("Started");
-            foreach (var model in GetItemListInActive())
+
+            foreach (var model in LogicLayer.Logic.UOW.PortalUserDeviceLogic.GetItemListInActive())
             {
-                Console.WriteLine(model.Name);
-                if (model.Active == false && model.ErrorMail == false)
+
+                if (model.PortalDevice.Active == false && model.PortalDevice.ErrorMail == false)
                 {
                     try
                     {
-                        var email = base.PortalUserRepo.GetItemById(base.PortalUserDeviceRepo.FindItem(new { PortalDeviceId = model.Id }).PortalUserId).Email;
-                        await EmailService.SendEmail($"{model.Name } - Offline", $"{model.Name } - Offline", email);
-                        model.ErrorMail = true;
+                        var User = base.PortalUserRepo.GetItemById(model.PortalUserId);
+                        await EmailService.SendEmail($"{model.PortalDevice.Name } - Offline", $"{model.PortalDevice.Name } - Offline", User.Email);
+                        model.PortalDevice.ErrorMail = true;
                     }
                     catch (Exception ex)
                     {
@@ -84,7 +84,7 @@ namespace LogicLayer.Logic
                     }
 
                 }
-                base.PortalDeviceRepo.SaveItem(model);
+                base.PortalDeviceRepo.SaveItem(model.PortalDevice);
             }
             
         }

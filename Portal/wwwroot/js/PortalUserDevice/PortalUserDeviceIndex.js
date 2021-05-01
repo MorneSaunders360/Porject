@@ -31,3 +31,6 @@ $(document).ready(function () {
 function EditPortalUserDevice(PortalUserDeviceId) {
     window.location.href = "/PortalUserDevice/Edit?PortalUserDeviceId=" + PortalUserDeviceId
 }
+function DeletePortalUserDevice(PortalUserDeviceId) {
+    /*window.location.href = "/PortalUserDevice/Edit?PortalUserDeviceId=" + PortalUserDeviceId*/
+}

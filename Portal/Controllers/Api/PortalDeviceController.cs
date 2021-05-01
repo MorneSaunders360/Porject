@@ -14,11 +14,7 @@ namespace Portal.Controllers.Api
         {
             return LogicLayer.Logic.UOW.PortalDeviceLogic.SaveItem(model);
         }
-        [HttpPost("SaveDeviceStatus/")]
-        public Entities.Models.PortalDevice SaveDeviceStatus([FromBody] Entities.Models.PortalDevice model)
-        {
-            return LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(model);
-        }
+     
         [HttpGet("GetItemById/{PortalDeviceId:int}")]
         public Entities.Models.PortalDevice GetItemById(int PortalDeviceId)
         {

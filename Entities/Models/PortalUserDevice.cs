@@ -11,6 +11,6 @@ namespace Entities.Models
         public PortalDevice PortalDevice { get; set; }
         public int PortalUserId { get; set; }
 
-
+        public bool SoftDelete { get; set; }
     }
 }

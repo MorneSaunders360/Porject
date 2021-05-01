@@ -17,6 +17,7 @@ namespace Entities.Models
         public string DeviceGIUD { get; set; }
         public bool Active { get; set; }
         public bool ErrorMail { get; set; }
+
         public DateTime LastActiveTime { get; set; }
         //FK
     }

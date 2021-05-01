@@ -13,5 +13,6 @@ namespace Worker.Models
         public int PortalDeviceId { get; set; }
         public PortalDevice PortalDevice { get; set; }
         public int PortalUserId { get; set; }
+        public bool SoftDelete { get; set; }
     }
 }
