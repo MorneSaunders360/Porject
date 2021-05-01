@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "Dapper/2.0.35": {
         "type": "package",
         "dependencies": {
@@ -2496,7 +2496,7 @@
       },
       "Entities/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Entities.dll": {}
         },
@@ -2506,7 +2506,7 @@
       },
       "RepoLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.SimpleCRUD.NetCore": "1.0.0",
@@ -2525,7 +2525,7 @@
       },
       "Service/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Service.dll": {}
         },
@@ -8149,7 +8149,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0": [
       "Entities >= 1.0.0",
       "Microsoft.IdentityModel.Tokens >= 6.7.1",
       "RepoLayer >= 1.0.0",
@@ -8182,15 +8182,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "projectReferences": {
             "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
               "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
@@ -8211,8 +8211,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",

@@ -3158,7 +3158,7 @@
       },
       "Entities/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Entities.dll": {}
         },
@@ -3168,7 +3168,7 @@
       },
       "LogicLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Entities": "1.0.0",
           "Microsoft.IdentityModel.Tokens": "6.7.1",
@@ -3185,7 +3185,7 @@
       },
       "Portal/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Entities": "1.0.0",
           "LogicLayer": "1.0.0",
@@ -3210,7 +3210,7 @@
       },
       "RepoLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.SimpleCRUD.NetCore": "1.0.0",
@@ -3229,7 +3229,7 @@
       },
       "Service/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Service.dll": {}
         },

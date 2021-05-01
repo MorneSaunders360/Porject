@@ -22,7 +22,7 @@ namespace Worker
             
             InitializeComponent();
             timer = new System.Timers.Timer();
-            timer.Interval = 2500;
+            timer.Interval = 1500;
 
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
@@ -50,7 +50,7 @@ namespace Worker
             {
                 var jsonstring = JsonConvert.SerializeObject(PortalDevice);
                 client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
-                var response = await client.PostAsync("https://localhost:44363/Api/PortalDevice/SaveDeviceStatus/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync("https://portaldevice.azurewebsites.net/Api/PortalDevice/SaveDeviceStatus/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
                 if (response.IsSuccessStatusCode)
                 {
                     Invoke(new Action(() => { button4.Text = "Online"; }));
@@ -65,14 +65,14 @@ namespace Worker
             loginViewModel.Username = "mornesaunders32@gmail.com";
             loginViewModel.Password = "Pass@word123";
             var jsonstring = JsonConvert.SerializeObject(loginViewModel);
-            var response = await client.PostAsync("https://localhost:44363/Api/Account/LoginApi/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
+            var response = await client.PostAsync("https://portaldevice.azurewebsites.net/Api/Account/LoginApi/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
             {
                 var model = JsonConvert.DeserializeObject<Entities.Models.PortalToken>(response.Content.ReadAsStringAsync().Result);
                 Properties.Settings.Default.Token = "bearer " + model.token;
                 Properties.Settings.Default.Save();
                 client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
-                var responseUser = await client.GetAsync("https://localhost:44363/Api/PortalUser/GetItemByName/" + loginViewModel.Username);
+                var responseUser = await client.GetAsync("https://portaldevice.azurewebsites.net/Api/PortalUser/GetItemByName/" + loginViewModel.Username);
                 if (responseUser.IsSuccessStatusCode)
                 {
                     var modelUser = JsonConvert.DeserializeObject<Entities.Models.PortalUser>(responseUser.Content.ReadAsStringAsync().Result);
@@ -102,7 +102,7 @@ namespace Worker
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
             var jsonstring = JsonConvert.SerializeObject(PortalUserDevice);
             client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
-            var response = await client.PostAsync("https://localhost:44363/Api/PortalUserDevice/SaveItem/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
+            var response = await client.PostAsync("https://portaldevice.azurewebsites.net/Api/PortalUserDevice/SaveItem/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
             {
                 var model = JsonConvert.DeserializeObject<Entities.Models.PortalUserDevice>(response.Content.ReadAsStringAsync().Result);

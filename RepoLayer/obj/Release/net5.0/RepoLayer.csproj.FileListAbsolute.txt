@@ -1,0 +1,15 @@
+C:\Users\morne\source\repos\Porject\RepoLayer\bin\Release\net5.0\RepoLayer.deps.json
+C:\Users\morne\source\repos\Porject\RepoLayer\bin\Release\net5.0\RepoLayer.dll
+C:\Users\morne\source\repos\Porject\RepoLayer\bin\Release\net5.0\ref\RepoLayer.dll
+C:\Users\morne\source\repos\Porject\RepoLayer\bin\Release\net5.0\RepoLayer.pdb
+C:\Users\morne\source\repos\Porject\RepoLayer\bin\Release\net5.0\Entities.dll
+C:\Users\morne\source\repos\Porject\RepoLayer\bin\Release\net5.0\Entities.pdb
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.csprojAssemblyReference.cache
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.AssemblyInfoInputs.cache
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.AssemblyInfo.cs
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.csproj.CoreCompileInputs.cache
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.csproj.CopyComplete
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.dll
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\ref\RepoLayer.dll
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Release\net5.0\RepoLayer.pdb

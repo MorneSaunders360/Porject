@@ -18,13 +18,14 @@ namespace Portal.Controllers.Api
         public BaseController()
         {
             Result();
+      
         }
 
         public async void Result() 
         {
             while (true)
             {
-                await Task.Delay(2500);
+                await Task.Delay(5000);
                 var PortalDeviceList = LogicLayer.Logic.UOW.PortalDeviceLogic.GetItemList();
                 foreach (var item in PortalDeviceList.Where(x => x.Active))
                 {
@@ -41,8 +42,8 @@ namespace Portal.Controllers.Api
             } 
             
            
-        }  
- 
+        }
 
+      
     }
 }
