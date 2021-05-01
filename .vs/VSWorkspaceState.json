@@ -1,18 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Entities",
-    "\\Entities\\Models",
     "\\Portal",
-    "\\Portal\\wwwroot",
-    "\\Portal\\wwwroot\\js",
-    "\\Portal\\wwwroot\\js\\PortalUserDevice",
-    "\\Portal\\wwwroot\\lib",
-    "\\Portal\\wwwroot\\lib\\jquery",
-    "\\Portal\\wwwroot\\lib\\jquery\\dist",
-    "\\RepoLayer",
-    "\\RepoLayer\\Repo"
+    "\\PortalDB",
+    "\\PortalDB\\dbo",
+    "\\PortalDB\\dbo\\Tables",
+    "\\Portal\\Views",
+    "\\Portal\\Views\\Home",
+    "\\Portal\\Views\\PortalDevice",
+    "\\Portal\\Views\\PortalUserDevice",
+    "\\Worker"
   ],
-  "SelectedNode": "\\Portal\\Controllers\\Api\\BaseController.cs",
+  "SelectedNode": "\\Worker\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

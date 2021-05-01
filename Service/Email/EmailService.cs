@@ -10,10 +10,10 @@ namespace Service.Email
 {
     public static class EmailService
     {
-        public async static Task SendEmail(string subject,string body)
+        public async static Task SendEmail(string subject,string body,string email)
         {
             var fromAddress = new MailAddress("firsttimers007@gmail.com", subject);
-            var toAddress = new MailAddress("mornesaunders32@gmail.com", "Admin");
+            var toAddress = new MailAddress(email, "Admin");
             var smtp = new SmtpClient
             {
                 Host = "smtp.gmail.com",
@@ -21,7 +21,7 @@ namespace Service.Email
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, "MorneEnLize360")
+                Credentials = new NetworkCredential(fromAddress.Address, "knnstjchijkzgpve")
             };
             using (var message = new MailMessage(fromAddress, toAddress)
             {

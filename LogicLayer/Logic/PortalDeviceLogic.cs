@@ -64,19 +64,23 @@ namespace LogicLayer.Logic
 
 
         }
-        public async Task SendEmailsForOfflineDevices() 
+        public async Task SendEmailsForOfflineDevices()
         {
+            Console.WriteLine("Started");
             foreach (var model in GetItemListInActive())
             {
+                Console.WriteLine(model.Name);
                 if (model.Active == false && model.ErrorMail == false)
                 {
                     try
                     {
-                        await EmailService.SendEmail($"{model.Name } - Offline", $"{model.Name } - Offline");
+                        var email = base.PortalUserRepo.GetItemById(base.PortalUserDeviceRepo.FindItem(new { PortalDeviceId = model.Id }).PortalUserId).Email;
+                        await EmailService.SendEmail($"{model.Name } - Offline", $"{model.Name } - Offline", email);
                         model.ErrorMail = true;
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
                     }
 
                 }

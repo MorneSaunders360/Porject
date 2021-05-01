@@ -1,5 +1,5 @@
 {
-
+  "schedule": "0 */5 * * * *"
   //    Examples:
 
   //    Runs every minute
