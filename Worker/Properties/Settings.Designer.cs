@@ -58,5 +58,17 @@ namespace Worker.Properties {
                 this["PortalUserId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RunOnStartUp {
+            get {
+                return ((bool)(this["RunOnStartUp"]));
+            }
+            set {
+                this["RunOnStartUp"] = value;
+            }
+        }
     }
 }

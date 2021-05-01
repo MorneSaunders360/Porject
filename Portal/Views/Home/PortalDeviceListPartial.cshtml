@@ -25,13 +25,12 @@
             <div><label>@item.PortalDevice.Name</label></div>
             @if (item.PortalDevice.Active)
             {
-                <label>Online</label>
+                <label>Online </label><label>- @item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
             }
             else
             {
-                <label>Offline</label>
+                <label>Offline </label><label>- @item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
             }
-
         </div>
     </div>
 </div>
