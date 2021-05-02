@@ -32,5 +32,9 @@ function EditPortalUserDevice(PortalUserDeviceId) {
     window.location.href = "/PortalUserDevice/Edit?PortalUserDeviceId=" + PortalUserDeviceId
 }
 function DeletePortalUserDevice(PortalUserDeviceId) {
-    /*window.location.href = "/PortalUserDevice/Edit?PortalUserDeviceId=" + PortalUserDeviceId*/
+    var ajaxType = "Get";
+    var ajaxUrl = "/PortalUserDevice/DeletePortalUserDevice?PortalUserDeviceId=" + PortalUserDeviceId;
+    var result = callGenAjax(ajaxType, ajaxUrl, false);
+    $('#PortalUserDeviceIndexGrid').html(result);
+    InitializePortalDeviceTable($("#example"), _gridClassName, ToolBarHTML);
 }

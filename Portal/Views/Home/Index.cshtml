@@ -32,12 +32,20 @@
 {
 
     <script>
+        $(document).ready(function () {
+            var ajaxType = "Get";
+            var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";
+            var result = callGenAjax(ajaxType, ajaxUrl, false);
+            $('#portalUserDeviceDashList').html(result);
+
+        });
+
         setInterval(() => {
             var ajaxType = "Get";
             var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";
             var result = callGenAjax(ajaxType, ajaxUrl, false);
             $('#portalUserDeviceDashList').html(result);
-        }, 2500);
+        }, 5000);
 
     </script>
 }

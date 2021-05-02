@@ -21,7 +21,7 @@
 <div style="margin:20px;background:rgba(255, 255, 255, 0.05);border-color:@PanelColor" class="col-md-4 panel panel-default-withline">
 
     <div class="panel-body">
-        <div class="form-group" onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId=1'">
+        <div class="form-group" onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId='+@item.Id">
             <div><label>@item.PortalDevice.Name</label></div>
             @if (item.PortalDevice.Active)
             {

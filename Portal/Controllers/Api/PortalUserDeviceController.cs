@@ -19,6 +19,11 @@ namespace Portal.Controllers.Api
         {
             return LogicLayer.Logic.UOW.PortalUserDeviceLogic.SaveItem(model);
         }
+        [HttpPost("DeletePortalUserDevice/")]
+        public void DeletePortalUserDevice(int PortalUserDeviceId)
+        {
+             LogicLayer.Logic.UOW.PortalUserDeviceLogic.DeletePortalUserDevice(PortalUserDeviceId);
+        }
         [HttpPost("SaveDeviceStatus/")]
         public Entities.Models.PortalUserDevice SaveDeviceStatus([FromBody] Entities.Models.PortalUserDevice model)
         {

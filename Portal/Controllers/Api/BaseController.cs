@@ -17,32 +17,10 @@ namespace Portal.Controllers.Api
 
         public BaseController()
         {
-            Result();
-      
+ 
         }
 
-        public async void Result() 
-        {
-            while (true)
-            {
-                await Task.Delay(5000);
-                var PortalDeviceList = LogicLayer.Logic.UOW.PortalUserDeviceLogic.GetItemListInActive();
-                foreach (var item in PortalDeviceList.Where(x => x.PortalDevice.Active))
-                {
-                    TimeSpan ts = DateTime.Now - item.PortalDevice.LastActiveTime;
-                    if (ts.TotalSeconds > 10)
-                    {
-                        item.PortalDevice.Active = false;
-                        item.PortalDevice.ErrorMail = false;
-                        LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(item.PortalDevice);
-                    }
 
-                }
-                
-            } 
-            
-           
-        }
 
       
     }

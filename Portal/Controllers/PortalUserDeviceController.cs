@@ -15,11 +15,7 @@ namespace Portal.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            Portal.Controllers.Api.PortalUserController PortalUserController = new Api.PortalUserController();
-            var CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
-            Portal.Controllers.Api.PortalUserDeviceController PortalUserDeviceController = new Api.PortalUserDeviceController();
-            var result = PortalUserDeviceController.GetItemList(CurrentUser.Id);
-            return View("Index", result);
+            return View("Index");
 
         } 
         
@@ -27,6 +23,20 @@ namespace Portal.Controllers
         public PartialViewResult PortalDeviceListPartial()
         {
             return PartialView("~/Views/Home/PortalDeviceListPartial.cshtml");
+
+        } 
+        [HttpGet]
+        public PartialViewResult IndexGrid()
+        {
+            return PartialView("~/Views/PortalUserDevice/IndexGrid.cshtml");
+
+        }  
+        [HttpGet]
+        public PartialViewResult DeletePortalUserDevice(int PortalUserDeviceId)
+        {
+            Portal.Controllers.Api.PortalUserDeviceController PortalUserDeviceController = new Api.PortalUserDeviceController();
+            PortalUserDeviceController.DeletePortalUserDevice(PortalUserDeviceId);
+            return PartialView("~/Views/PortalUserDevice/IndexGrid.cshtml");
 
         }
 

@@ -43,21 +43,25 @@ namespace LogicLayer.Logic
 
         public Entities.Models.PortalUserDevice SaveDeviceStatus(Entities.Models.PortalUserDevice model)
         {
-            Entities.Models.PortalUserDevice portalUserDevice = new Entities.Models.PortalUserDevice();
+
             var device = LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(model.PortalDevice);
             if (device != null)
             {
                 var result = base.PortalUserDeviceRepo.FindItem(new { PortalDeviceId = device.Id });
                 if (result!=null)
                 {
-                    var r = base.PortalUserDeviceRepo.SaveItem(result);
+                    base.PortalUserDeviceRepo.SaveItem(result);
 
-                    portalUserDevice = result;
+                 
                 }
-             
+                return result;
+            }
+            else
+            {
+                return null;
             }
 
-            return portalUserDevice;
+            
 
         }
 
@@ -79,6 +83,16 @@ namespace LogicLayer.Logic
         {
             var result = base.PortalUserDeviceRepo.FindItem(new { PortalDeviceId = PortalDeviceId });
             return result;
+        }
+        public void DeletePortalUserDevice(int PortalUserDeviceId) 
+        {
+            var PortalUserDevice = base.PortalUserDeviceRepo.GetItemById(PortalUserDeviceId);
+            if (PortalUserDevice!=null)
+            {
+                PortalUserDevice.SoftDelete = true;
+                base.PortalUserDeviceRepo.SaveItem(PortalUserDevice);
+            }
+     
         }
         public Entities.Models.PortalUserDevice SaveItem(Entities.Models.PortalUserDevice model)
         {
