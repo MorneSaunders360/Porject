@@ -50,9 +50,12 @@ namespace Worker
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerIndecator = new System.Windows.Forms.Timer(this.components);
+            this.panelNotify = new System.Windows.Forms.Panel();
+            this.LabelNotify = new ns1.BunifuCustomLabel();
             this.bunifuCards1.SuspendLayout();
             this.panelLogIn.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panelNotify.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuCards1
@@ -61,6 +64,7 @@ namespace Worker
             this.bunifuCards1.BorderRadius = 5;
             this.bunifuCards1.BottomSahddow = true;
             this.bunifuCards1.color = System.Drawing.Color.Navy;
+            this.bunifuCards1.Controls.Add(this.panelNotify);
             this.bunifuCards1.Controls.Add(this.ProgressbarIndicator);
             this.bunifuCards1.Controls.Add(this.ButtonStatus);
             this.bunifuCards1.Controls.Add(this.ButtonExit);
@@ -341,6 +345,28 @@ namespace Worker
             // 
             this.timerIndecator.Tick += new System.EventHandler(this.timerIndecator_Tick);
             // 
+            // panelNotify
+            // 
+            this.panelNotify.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelNotify.Controls.Add(this.LabelNotify);
+            this.panelNotify.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelNotify.Location = new System.Drawing.Point(0, 399);
+            this.panelNotify.Name = "panelNotify";
+            this.panelNotify.Size = new System.Drawing.Size(798, 48);
+            this.panelNotify.TabIndex = 9;
+            this.panelNotify.Visible = false;
+            // 
+            // LabelNotify
+            // 
+            this.LabelNotify.AutoSize = true;
+            this.LabelNotify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNotify.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LabelNotify.Location = new System.Drawing.Point(360, 13);
+            this.LabelNotify.Name = "LabelNotify";
+            this.LabelNotify.Size = new System.Drawing.Size(91, 20);
+            this.LabelNotify.TabIndex = 7;
+            this.LabelNotify.Text = "Username";
+            // 
             // Worker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,6 +384,8 @@ namespace Worker
             this.panelLogIn.ResumeLayout(false);
             this.panelLogIn.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panelNotify.ResumeLayout(false);
+            this.panelNotify.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -383,6 +411,8 @@ namespace Worker
         private System.Windows.Forms.Timer timer1;
         private ns1.BunifuCircleProgressbar ProgressbarIndicator;
         private System.Windows.Forms.Timer timerIndecator;
+        private System.Windows.Forms.Panel panelNotify;
+        private ns1.BunifuCustomLabel LabelNotify;
     }
 }
 

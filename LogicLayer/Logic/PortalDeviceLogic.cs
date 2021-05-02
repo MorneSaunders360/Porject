@@ -16,10 +16,10 @@ namespace LogicLayer.Logic
         public List<Entities.Models.PortalDevice> GetItemList()
         {
             return base.PortalDeviceRepo.GetItems().ToList();
-        } 
+        }
         public List<Entities.Models.PortalDevice> GetItemListInActive()
         {
-            return base.PortalDeviceRepo.GetItemFiltered(new { Active=false }).ToList();
+            return base.PortalDeviceRepo.GetItemFiltered(new { Active = false }).ToList();
         }
         public Entities.Models.PortalDevice GetItemById(int PortalDeviceId)
         {
@@ -41,12 +41,20 @@ namespace LogicLayer.Logic
             var result = GetItemBydeviceGIUD(model.DeviceGIUD);
             if (result == null)
             {
+                if (string.IsNullOrEmpty(model.Name))
+                {
+                    model.Name = Guid.NewGuid().ToString();
+                }
                 return base.PortalDeviceRepo.SaveItem(model);
             }
             else
             {
-                result.Name = model.Name;
-                return base.PortalDeviceRepo.SaveItem(model);
+                if (string.IsNullOrEmpty(model.Name)==false)
+                {
+                    result.Name = model.Name;
+                }
+
+                return base.PortalDeviceRepo.SaveItem(result);
             }
 
         }
@@ -91,7 +99,7 @@ namespace LogicLayer.Logic
                 }
                 base.PortalDeviceRepo.SaveItem(model.PortalDevice);
             }
-            
+
         }
     }
 }

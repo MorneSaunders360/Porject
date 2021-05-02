@@ -70,17 +70,5 @@ namespace Worker.Properties {
                 this["RunOnStartUp"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DeviceName {
-            get {
-                return ((string)(this["DeviceName"]));
-            }
-            set {
-                this["DeviceName"] = value;
-            }
-        }
     }
 }

@@ -75,7 +75,7 @@
                             <div class="form-group">
 
                                 @Html.LabelFor(m => m.PortalDevice.Active, new { @class = "ccontrol-label" })
-                                @Html.CheckBoxFor(m => m.PortalDevice.Active, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.CheckBoxFor(m => m.PortalDevice.Active, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.PortalDevice.Active, "", new { @class = "text-danger" })
                             </div>
                         }

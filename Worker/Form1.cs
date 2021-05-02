@@ -69,7 +69,6 @@ namespace Worker
             Models.PortalUserDevice PortalUserDevice = new Models.PortalUserDevice();
             Models.PortalDevice PortalDevice = new Models.PortalDevice();
             PortalDevice.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
-            PortalDevice.Name = Properties.Settings.Default.DeviceName;
             PortalDevice.LastActiveTime = DateTime.Now;
             PortalDevice.Active = true;
             PortalUserDevice.PortalDevice = PortalDevice;
@@ -161,10 +160,35 @@ namespace Worker
                         Properties.Settings.Default.PortalUserId = modelUser.Id;
                         Properties.Settings.Default.Save();
                         panelLogIn.Visible = false;
+                        Message("Successfully logged in", 0);
                         RegisterDevice();
                     }
                 }
+                else
+                {
+                    Message("Invalid log in attempt",1);
+
+                }
             }
+
+        }
+        public async void Message(string message,int type=0)
+        {
+            if (type==1)
+            {
+                panelNotify.BackColor = Color.Red;
+                LabelNotify.ForeColor = Color.White;
+            }
+            panelNotify.Visible = true;
+            panelNotify.BackColor = Color.SeaGreen;
+            LabelNotify.ForeColor = Color.White;
+            LabelNotify.Text = message;
+            LabelNotify.Left = (panelNotify.ClientSize.Width - LabelNotify.Width) / 2;
+            LabelNotify.Top = (panelNotify.ClientSize.Height - LabelNotify.Height) / 2;
+            await Task.Delay(2500);
+            panelNotify.Visible = false;
+            timerIndecator.Stop();
+            ProgressbarIndicator.Visible = false;
 
         }
         public static bool CheckForInternetConnection()
@@ -210,16 +234,6 @@ namespace Worker
             PortalUserDevice.PortalDevice = new Models.PortalDevice();
             PortalUserDevice.SoftDelete = false;
             PortalUserDevice.PortalDevice.DeviceGIUD = macAddr;
-            if (string.IsNullOrEmpty(Properties.Settings.Default.DeviceName))
-            {
-                PortalUserDevice.PortalDevice.Name = System.Environment.MachineName;
-            }
-            else
-            {
-                PortalUserDevice.PortalDevice.Name = Properties.Settings.Default.DeviceName;
-            }
-        
-            PortalUserDevice.PortalDevice.Description = System.Environment.MachineName;
             PortalUserDevice.PortalDevice.LastActiveTime = DateTime.Now;
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
             var jsonstring = JsonConvert.SerializeObject(PortalUserDevice);
@@ -229,11 +243,15 @@ namespace Worker
             {
                 var model = JsonConvert.DeserializeObject<Models.PortalUserDevice>(response.Content.ReadAsStringAsync().Result);
                 Properties.Settings.Default.DeviceGIUD = model.PortalDevice.DeviceGIUD;
-                Properties.Settings.Default.DeviceName = model.PortalDevice.Name;
                 Properties.Settings.Default.Save();
                 timer.Start();
                 timerIndecator.Stop();
                 ProgressbarIndicator.Visible = false;
+                Message("Successfully logged in", 0);
+            }
+            else
+            {
+                Message("Device failed to register", 1);
             }
         }
 
