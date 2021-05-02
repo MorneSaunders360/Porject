@@ -1,10 +1,10 @@
-﻿@{ 
+﻿@{
     Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
     List<Entities.Models.PortalUserDevice> portalUserDeviceDashList = new List<Entities.Models.PortalUserDevice>();
     Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
     CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
     Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
-    portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id).Where(x=>x.SoftDelete==false).ToList();
+    portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id).Where(x => x.SoftDelete == false).ToList();
 
 }
 
@@ -18,7 +18,7 @@
                         <th>Commands</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>DeviceId</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,13 +26,20 @@
                     {
                         <tr>
                             <td>
-                               
+
                                 <div style="width:35px;height:35px" class="btn-command" onclick="EditPortalUserDevice(@item.Id)"><a class="fas fa-edit"></a></div>
                                 <div style="width:35px;height:35px" class="btn-command" onclick=" DisplayMessage('Are you sure you want to delete : @item.PortalDevice.Name','Delete',1,'DeletePortalUserDevice(@item.Id)')"><a class="fas fa-trash-alt"></a></div>
                             </td>
                             <td>@item.PortalDevice.Name</td>
                             <td>@item.PortalDevice.Description</td>
-                            <td>@item.PortalDevice.DeviceGIUD</td>
+                            @if (item.PortalDevice.Active)
+                            {
+                                <td>Online</td>
+                            }
+                            else
+                            {
+                                <td>Offline</td>
+                            }
                         </tr>
                     }
 

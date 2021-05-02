@@ -19,6 +19,16 @@ namespace Portal.Controllers.Api
         public Entities.Models.PortalDevice GetItemById(int PortalDeviceId)
         {
             return LogicLayer.Logic.UOW.PortalDeviceLogic.GetItemById(PortalDeviceId);
+        }  
+        [HttpGet("RestartPortalDevice/{PortalDeviceId:int}")]
+        public void RestartPortalDevice(int PortalDeviceId)
+        {
+            LogicLayer.Logic.UOW.PortalDeviceLogic.RestartPortalDevice(PortalDeviceId);
+        } 
+        [HttpGet("ShutdownPortalDevice/{PortalDeviceId:int}")]
+        public void ShutdownPortalDevice(int PortalDeviceId)
+        {
+            LogicLayer.Logic.UOW.PortalDeviceLogic.ShutdownPortalDevice(PortalDeviceId);
         } 
         [HttpGet("GetItemById/{deviceGIUD}")]
         public Entities.Models.PortalDevice GetItemBydeviceGIUD(string deviceGIUD)

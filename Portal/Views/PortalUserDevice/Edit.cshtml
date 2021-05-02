@@ -30,7 +30,7 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         @if (CurrentUser != null)
                         {
-                            <input type="hidden" name="PortalUserId" value="@CurrentUser.Id" />
+                        <input type="hidden" name="PortalUserId" value="@CurrentUser.Id" />
                         }
 
                         @Html.HiddenFor(x => x.PortalDeviceId)
@@ -51,7 +51,7 @@
                             @Html.TextBoxFor(m => m.PortalDevice.Description, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.PortalDevice.Description, "", new { @class = "text-danger" })
 
-                        </div> 
+                        </div>
                         <div class="form-group">
 
                             @Html.LabelFor(m => m.PortalDevice.DeviceGIUD, new { @class = "control-label" })
@@ -61,25 +61,41 @@
                         </div>
                         <div class="form-group">
                             @*@Html.LabelFor(m => m.PortalDevice.PortalDeviceStatusId, new { @class = "ccontrol-label" })
-                            @Html.DropDownListFor(model => model.PortalDevice.PortalDeviceStatusId, PortalDeviceStatusList.Select(x => new SelectListItem
-                                                                {
-                                                                    Text = x.Name,
-                                                                    Value = x.PortalDeviceStatusId.ToString(),
-                                                                    Selected = (x.PortalDeviceStatusId == Model.PortalDevice.PortalDeviceStatusId)
-                                                                }), htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.PortalDevice.PortalDeviceStatusId, "", new { @class = "text-danger" })*@
+            @Html.DropDownListFor(model => model.PortalDevice.PortalDeviceStatusId, PortalDeviceStatusList.Select(x => new SelectListItem
+                                                {
+                                                    Text = x.Name,
+                                                    Value = x.PortalDeviceStatusId.ToString(),
+                                                    Selected = (x.PortalDeviceStatusId == Model.PortalDevice.PortalDeviceStatusId)
+                                                }), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PortalDevice.PortalDeviceStatusId, "", new { @class = "text-danger" })*@
                         </div>
 
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PortalDevice.EmailNotification, new { @class = "col-md-6 control-label" })
+                            <div class="col-md-6">
+                                @Html.CheckBoxFor(m => m.PortalDevice.EmailNotification, new { @class = "option-input checkbox" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.PortalDevice.EmailNotification, "", new { @class = "text-danger" })
+                        </div>
                         @if (Model.PortalDeviceId > 0)
                         {
-                            <div class="form-group">
-
-                                @Html.LabelFor(m => m.PortalDevice.Active, new { @class = "ccontrol-label" })
-                                @Html.CheckBoxFor(m => m.PortalDevice.Active, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.PortalDevice.Active, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PortalDevice.Shutdown, new { @class = "col-md-6 control-label" })
+                            <div class="col-md-6">
+                                @Html.CheckBoxFor(m => m.PortalDevice.Shutdown, new { @class = "option-input checkbox" })
                             </div>
-                        }
+                            @Html.ValidationMessageFor(m => m.PortalDevice.Shutdown, "", new { @class = "text-danger" })
+                        </div>
 
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PortalDevice.Restart, new { @class = "col-md-6 control-label" })
+                            <div class="col-md-6">
+                                @Html.CheckBoxFor(m => m.PortalDevice.Restart, new { @class = "option-input checkbox" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.PortalDevice.Restart, "", new { @class = "text-danger" })
+                        </div>
+
+                        }
                         <div class="form-group">
                             <input type="submit" value="Save" class="btn btn-primary" />
                         </div>

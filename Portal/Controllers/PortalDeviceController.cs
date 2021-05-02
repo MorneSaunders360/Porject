@@ -29,6 +29,20 @@ namespace Portal.Controllers
             Portal.Controllers.Api.PortalDeviceController portalDeviceController = new Api.PortalDeviceController();
             var result = portalDeviceController.GetItemById(PortalDeviceId);
             return View("Edit", result);
+        } 
+        [HttpGet]
+        public JsonResult ShutdownPortalDevice(int PortalDeviceId = 0)
+        {
+            Portal.Controllers.Api.PortalDeviceController portalDeviceController = new Api.PortalDeviceController();
+             portalDeviceController.ShutdownPortalDevice(PortalDeviceId);
+            return Json("");
+        }
+        [HttpGet]
+        public JsonResult RestartPortalDevice(int PortalDeviceId = 0)
+        {
+            Portal.Controllers.Api.PortalDeviceController portalDeviceController = new Api.PortalDeviceController();
+            portalDeviceController.RestartPortalDevice(PortalDeviceId);
+            return Json("");
         }
         [HttpPost]
         public ActionResult Edit(Entities.Models.PortalDevice model)

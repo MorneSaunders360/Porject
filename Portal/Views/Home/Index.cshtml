@@ -43,6 +43,20 @@
             LoadPortalUserDevice();
 
         }
+        function RestartPortalDevice(PortalDeviceId) {
+            var ajaxType = "Get";
+            var ajaxUrl = "/PortalDevice/RestartPortalDevice?PortalDeviceId=" + PortalDeviceId;
+             callGenAjax(ajaxType, ajaxUrl, false);
+            LoadPortalUserDevice();
+
+        }
+        function ShutdownPortalDevice(PortalDeviceId) {
+            var ajaxType = "Get";
+            var ajaxUrl = "/PortalDevice/ShutdownPortalDevice?PortalDeviceId=" + PortalDeviceId;
+             callGenAjax(ajaxType, ajaxUrl, false);
+            LoadPortalUserDevice();
+
+        }
         function LoadPortalUserDevice() {
             var ajaxType = "Get";
             var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";

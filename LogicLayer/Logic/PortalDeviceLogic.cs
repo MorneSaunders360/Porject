@@ -20,6 +20,10 @@ namespace LogicLayer.Logic
         public List<Entities.Models.PortalDevice> GetItemListInActive()
         {
             return base.PortalDeviceRepo.GetItemFiltered(new { Active = false }).ToList();
+        }     
+        public List<Entities.Models.PortalDevice> GetItemListByParentId(int ParentPortalDeviceId)
+        {
+            return base.PortalDeviceRepo.GetItemFiltered(new { ParentPortalDeviceId = ParentPortalDeviceId }).ToList();
         }
         public Entities.Models.PortalDevice GetItemById(int PortalDeviceId)
         {
@@ -29,12 +33,28 @@ namespace LogicLayer.Logic
                 portalDevice = new Entities.Models.PortalDevice();
 
             }
+            else
+            {
+                portalDevice.PortalDeviceChildern = GetItemListByParentId(portalDevice.Id);
+            }
             return portalDevice;
         }
         public Entities.Models.PortalDevice GetItemBydeviceGIUD(string deviceGIUD)
         {
             Entities.Models.PortalDevice portalDevice = base.PortalDeviceRepo.GetItemFiltered(new { DeviceGIUD = deviceGIUD }).FirstOrDefault();
             return portalDevice;
+        }
+        public void RestartPortalDevice(int PortalDeviceId)
+        {
+            var model = GetItemById(PortalDeviceId);
+            model.Restart = true;
+            base.PortalDeviceRepo.SaveItem(model);
+        } 
+        public void ShutdownPortalDevice(int PortalDeviceId)
+        {
+            var model = GetItemById(PortalDeviceId);
+            model.Shutdown = true;
+            base.PortalDeviceRepo.SaveItem(model);
         }
         public Entities.Models.PortalDevice SaveItem(Entities.Models.PortalDevice model)
         {
@@ -45,15 +65,39 @@ namespace LogicLayer.Logic
                 {
                     model.Name = Guid.NewGuid().ToString();
                 }
+                var saveResult=  base.PortalDeviceRepo.SaveItem(model);
+                if (model.PortalDeviceChildern.Count>0)
+                {
+                    foreach (var item in model.PortalDeviceChildern)
+                    {
+                        item.ParentPortalDeviceId = saveResult.Id;
+                        SaveItem(item);
+                    }
+                }
+                return saveResult;
+            }
+            else if (model.Id==0 && string.IsNullOrEmpty(model.DeviceGIUD)==false)
+            {
+                model.Active=true;
                 return base.PortalDeviceRepo.SaveItem(model);
             }
             else
             {
-                if (string.IsNullOrEmpty(model.Name)==false)
+                if (string.IsNullOrEmpty(model.Name) == false)
                 {
                     result.Name = model.Name;
                 }
-
+                if (string.IsNullOrEmpty(model.Description) == false)
+                {
+                    result.Description = model.Description;
+                }
+                else
+                {
+                    result.Description = string.Empty;
+                }
+                result.EmailNotification = model.EmailNotification;
+                result.Shutdown = model.Shutdown;
+                result.Restart = model.Restart;
                 return base.PortalDeviceRepo.SaveItem(result);
             }
 
@@ -83,7 +127,7 @@ namespace LogicLayer.Logic
             foreach (var model in LogicLayer.Logic.UOW.PortalUserDeviceLogic.GetItemListInActive())
             {
 
-                if (model.PortalDevice.Active == false && model.PortalDevice.ErrorMail == false)
+                if (model.PortalDevice.Active == false && model.PortalDevice.ErrorMail == false && model.PortalDevice.EmailNotification)
                 {
                     try
                     {

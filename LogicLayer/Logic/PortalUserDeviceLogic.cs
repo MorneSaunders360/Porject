@@ -54,6 +54,7 @@ namespace LogicLayer.Logic
 
                  
                 }
+                result.PortalDevice = device;
                 return result;
             }
             else
@@ -94,6 +95,7 @@ namespace LogicLayer.Logic
             }
      
         }
+ 
         public Entities.Models.PortalUserDevice SaveItem(Entities.Models.PortalUserDevice model)
         {
             Entities.Models.PortalUserDevice result = new Entities.Models.PortalUserDevice();

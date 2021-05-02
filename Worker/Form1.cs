@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Reflection;
@@ -82,7 +83,7 @@ namespace Worker
                     if (response.IsSuccessStatusCode)
                     {
 
-                        Invoke(new Action(() =>
+                        Invoke(new Action(async () =>
                         {
                         
                             var Result = response.Content.ReadAsStringAsync().Result;
@@ -112,6 +113,19 @@ namespace Worker
                                 }
                                 else
                                 {
+                                    if (model.PortalDevice.Shutdown)
+                                    {
+                                        model.PortalDevice.Shutdown = false;
+                                        await client.PostAsync($"{BaseUrl}/Api/PortalDevice/SaveItem/", new StringContent(JsonConvert.SerializeObject(model.PortalDevice), Encoding.UTF8, "application/json"));
+                                        Environment.Exit(0);
+                                    }
+                                    else if (model.PortalDevice.Restart)
+                                    {
+                                        model.PortalDevice.Restart = false;
+                                        await client.PostAsync($"{BaseUrl}/Api/PortalDevice/SaveItem/", new StringContent(JsonConvert.SerializeObject(model.PortalDevice), Encoding.UTF8, "application/json"));
+                                        Application.Restart();
+                                        Environment.Exit(0);
+                                    }
                                     ButtonStatus.Visible = true;
                                     ButtonStatus.Text = "Online";
                                     ButtonStatus.BackColor = Color.SeaGreen;
@@ -236,6 +250,15 @@ namespace Worker
             PortalUserDevice.PortalDevice.DeviceGIUD = macAddr;
             PortalUserDevice.PortalDevice.LastActiveTime = DateTime.Now;
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
+            PortalUserDevice.PortalDevice.PortalDeviceChildern = new List<Models.PortalDevice>();
+            foreach (var item in graphicsCardList())
+            {
+                Models.PortalDevice PortalDevice = new Models.PortalDevice();
+                PortalDevice.DeviceGIUD = macAddr;
+                PortalDevice.Name = item;
+                PortalDevice.LastActiveTime = DateTime.Now;
+                PortalUserDevice.PortalDevice.PortalDeviceChildern.Add(PortalDevice);
+            }
             var jsonstring = JsonConvert.SerializeObject(PortalUserDevice);
             client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
             var response = await client.PostAsync($"{BaseUrl}/Api/PortalUserDevice/SaveItem/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
@@ -253,6 +276,24 @@ namespace Worker
             {
                 Message("Device failed to register", 1);
             }
+        }
+        public List<string> graphicsCardList() 
+        {
+            ManagementObjectSearcher searcher
+                        = new ManagementObjectSearcher("SELECT * FROM Win32_DisplayControllerConfiguration");
+
+            List<string> graphicsCardList = new List<string>();
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                foreach (PropertyData property in mo.Properties)
+                {
+                    if (property.Name == "Description")
+                    {
+                        graphicsCardList.Add(property.Value.ToString());
+                    }
+                }
+            }
+            return graphicsCardList;
         }
 
         #region MouseMove
