@@ -277,20 +277,22 @@ namespace Worker
                 Message("Device failed to register", 1);
             }
         }
-        public List<string> graphicsCardList() 
+        public List<string> graphicsCardList()
         {
-            ManagementObjectSearcher searcher
-                        = new ManagementObjectSearcher("SELECT * FROM Win32_DisplayControllerConfiguration");
-
             List<string> graphicsCardList = new List<string>();
+            ManagementObjectSearcher searcher =
+                new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
             foreach (ManagementObject mo in searcher.Get())
             {
-                foreach (PropertyData property in mo.Properties)
+                PropertyData description = mo.Properties["Description"];
+                if ( description != null)
                 {
-                    if (property.Name == "Description")
+                    if (description.Value.ToString().Contains("Microsoft")==false)
                     {
-                        graphicsCardList.Add(property.Value.ToString());
+                        graphicsCardList.Add(description.Value.ToString());
                     }
+             
+
                 }
             }
             return graphicsCardList;
