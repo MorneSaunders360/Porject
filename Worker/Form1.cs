@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using LibreHardwareMonitor.Hardware;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -33,8 +34,39 @@ namespace Worker
             {
                 InitializeComponent();
             }
+           
         }
-
+        public class UpdateVisitor : IVisitor
+        {
+            public void VisitComputer(IComputer computer)
+            {
+                computer.Traverse(this);
+            }
+            public void VisitHardware(IHardware hardware)
+            {
+                hardware.Update();
+                foreach (IHardware subHardware in hardware.SubHardware) subHardware.Accept(this);
+            }
+            public void VisitSensor(ISensor sensor) { }
+            public void VisitParameter(IParameter parameter) { }
+        }
+        static void GetSystemInfo()
+        {
+            UpdateVisitor updateVisitor = new UpdateVisitor();
+            Computer computer = new Computer();
+            computer.Open();
+            computer.IsGpuEnabled = true;
+            computer.Accept(updateVisitor);
+            foreach (IHardware hardware in computer.Hardware) 
+            {
+                if (hardware.HardwareType==HardwareType.GpuNvidia)
+                {
+                    Console.WriteLine("Hardware: {0}", hardware.Name);
+                }
+              
+            }
+            computer.Close();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             timer = new System.Timers.Timer();
@@ -280,21 +312,20 @@ namespace Worker
         public List<string> graphicsCardList()
         {
             List<string> graphicsCardList = new List<string>();
-            ManagementObjectSearcher searcher =
-                new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
-            foreach (ManagementObject mo in searcher.Get())
+            UpdateVisitor updateVisitor = new UpdateVisitor();
+            Computer computer = new Computer();
+            computer.Open();
+            computer.IsGpuEnabled = true;
+            computer.Accept(updateVisitor);
+            foreach (IHardware hardware in computer.Hardware)
             {
-                PropertyData description = mo.Properties["Description"];
-                if ( description != null)
+                if (hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAmd)
                 {
-                    if (description.Value.ToString().Contains("Microsoft")==false)
-                    {
-                        graphicsCardList.Add(description.Value.ToString());
-                    }
-             
-
+                    graphicsCardList.Add(hardware.Name);
                 }
+
             }
+            computer.Close();
             return graphicsCardList;
         }
 

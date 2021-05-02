@@ -17,3 +17,7 @@ C:\Users\morne\source\repos\Porject\Worker\bin\Debug\Worker.application
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.TrustInfo.xml
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.exe.manifest
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.application
+C:\Users\morne\source\repos\Porject\Worker\bin\Debug\HidSharp.dll
+C:\Users\morne\source\repos\Porject\Worker\bin\Debug\LibreHardwareMonitorLib.dll
+C:\Users\morne\source\repos\Porject\Worker\bin\Debug\HidSharp.pdb
+C:\Users\morne\source\repos\Porject\Worker\bin\Debug\HidSharp.xml
