@@ -33,18 +33,24 @@
 
     <script>
         $(document).ready(function () {
-            var ajaxType = "Get";
-            var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";
-            var result = callGenAjax(ajaxType, ajaxUrl, false);
-            $('#portalUserDeviceDashList').html(result);
-
+           
+            LoadPortalUserDevice();
         });
+        function DeletePortalUserDevice(PortalUserDeviceId) {
+            var ajaxType = "Get";
+            var ajaxUrl = "/PortalUserDevice/DeletePortalUserDevice?PortalUserDeviceId=" + PortalUserDeviceId;
+             callGenAjax(ajaxType, ajaxUrl, false);
+            LoadPortalUserDevice();
 
-        setInterval(() => {
+        }
+        function LoadPortalUserDevice() {
             var ajaxType = "Get";
             var ajaxUrl = "/PortalUserDevice/PortalDeviceListPartial/";
             var result = callGenAjax(ajaxType, ajaxUrl, false);
             $('#portalUserDeviceDashList').html(result);
+        }
+        setInterval(() => {
+            LoadPortalUserDevice();
         }, 5000);
 
     </script>

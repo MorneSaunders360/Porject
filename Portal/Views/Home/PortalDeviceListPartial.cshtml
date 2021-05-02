@@ -8,7 +8,7 @@
     string PanelColor = "White";
 
 }
-@foreach (var item in portalUserDeviceDashList)
+@foreach (var item in portalUserDeviceDashList.OrderBy(x=>x.PortalDevice.Name))
 {
     if (item.PortalDevice.Active)
     {
@@ -21,16 +21,17 @@
 <div style="margin:20px;background:rgba(255, 255, 255, 0.05);border-color:@PanelColor" class="col-md-4 panel panel-default-withline">
 
     <div class="panel-body">
-        <div class="form-group" onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId='+@item.Id">
-            <div><label>@item.PortalDevice.Name</label></div>
+        <div class="form-group">
+            <div onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId='+@item.Id"><label>@item.PortalDevice.Name</label></div>
             @if (item.PortalDevice.Active)
             {
-                <label>Online </label><label>- @item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
+            <label>Online </label><label>- @item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
             }
             else
             {
-                <label>Offline </label><label>- @item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
+            <label>Offline </label><label>- @item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
             }
+            <a class="btn-command" onclick="DeletePortalUserDevice(@item.Id)">Delete</a>
         </div>
     </div>
 </div>

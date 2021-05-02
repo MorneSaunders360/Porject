@@ -4,11 +4,11 @@ C:\Users\morne\source\repos\Porject\Worker\bin\Debug\Worker.pdb
 C:\Users\morne\source\repos\Porject\Worker\bin\Debug\Bunifu_UI_v1.52.dll
 C:\Users\morne\source\repos\Porject\Worker\bin\Debug\Newtonsoft.Json.dll
 C:\Users\morne\source\repos\Porject\Worker\bin\Debug\Newtonsoft.Json.xml
-C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csprojAssemblyReference.cache
+C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.Worker.resources
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.Properties.Resources.resources
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csproj.GenerateResource.cache
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csproj.CoreCompileInputs.cache
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csproj.CopyComplete
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.exe
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.pdb
-C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.Worker.resources
+C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csprojAssemblyReference.cache

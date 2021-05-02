@@ -14,7 +14,7 @@ function InitializePortalDeviceTable(tableDiv, gridClassName, ToolBarHTML) {
             style: 'os',
             selector: 'td:first-child'
         },
-        //order: [[1, 'asc']],
+        order: [[1, 'asc']],
         "dom": '<"toolbar">frtip'
     });
     $('.toolbar', $(tableDiv).parent()).html(ToolBarHTML);

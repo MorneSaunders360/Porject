@@ -32,6 +32,7 @@ namespace Worker
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Worker));
             this.bunifuCards1 = new ns1.BunifuCards();
+            this.ProgressbarIndicator = new ns1.BunifuCircleProgressbar();
             this.ButtonStatus = new ns1.BunifuFlatButton();
             this.ButtonExit = new ns1.BunifuFlatButton();
             this.panelLogIn = new System.Windows.Forms.Panel();
@@ -48,6 +49,7 @@ namespace Worker
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerIndecator = new System.Windows.Forms.Timer(this.components);
             this.bunifuCards1.SuspendLayout();
             this.panelLogIn.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -59,6 +61,7 @@ namespace Worker
             this.bunifuCards1.BorderRadius = 5;
             this.bunifuCards1.BottomSahddow = true;
             this.bunifuCards1.color = System.Drawing.Color.Navy;
+            this.bunifuCards1.Controls.Add(this.ProgressbarIndicator);
             this.bunifuCards1.Controls.Add(this.ButtonStatus);
             this.bunifuCards1.Controls.Add(this.ButtonExit);
             this.bunifuCards1.Controls.Add(this.panelLogIn);
@@ -73,6 +76,29 @@ namespace Worker
             this.bunifuCards1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuForm_MouseDown);
             this.bunifuCards1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.bunifuCards1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            // 
+            // ProgressbarIndicator
+            // 
+            this.ProgressbarIndicator.animated = true;
+            this.ProgressbarIndicator.animationIterval = 5;
+            this.ProgressbarIndicator.animationSpeed = 300;
+            this.ProgressbarIndicator.BackColor = System.Drawing.Color.White;
+            this.ProgressbarIndicator.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ProgressbarIndicator.BackgroundImage")));
+            this.ProgressbarIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ProgressbarIndicator.ForeColor = System.Drawing.Color.White;
+            this.ProgressbarIndicator.LabelVisible = false;
+            this.ProgressbarIndicator.LineProgressThickness = 8;
+            this.ProgressbarIndicator.LineThickness = 5;
+            this.ProgressbarIndicator.Location = new System.Drawing.Point(686, 95);
+            this.ProgressbarIndicator.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.ProgressbarIndicator.MaxValue = 100;
+            this.ProgressbarIndicator.Name = "ProgressbarIndicator";
+            this.ProgressbarIndicator.ProgressBackColor = System.Drawing.Color.Gainsboro;
+            this.ProgressbarIndicator.ProgressColor = System.Drawing.Color.SeaGreen;
+            this.ProgressbarIndicator.Size = new System.Drawing.Size(70, 70);
+            this.ProgressbarIndicator.TabIndex = 8;
+            this.ProgressbarIndicator.Value = 0;
+            this.ProgressbarIndicator.Visible = false;
             // 
             // ButtonStatus
             // 
@@ -196,6 +222,7 @@ namespace Worker
             this.TextboxPassword.Size = new System.Drawing.Size(370, 44);
             this.TextboxPassword.TabIndex = 3;
             this.TextboxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextboxPassword.OnValueChanged += new System.EventHandler(this.TextboxPassword_OnValueChanged);
             // 
             // ButtonLogIn
             // 
@@ -310,6 +337,10 @@ namespace Worker
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timerIndecator
+            // 
+            this.timerIndecator.Tick += new System.EventHandler(this.timerIndecator_Tick);
+            // 
             // Worker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +381,8 @@ namespace Worker
         private System.Windows.Forms.ToolStripMenuItem runOnStartUpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private ns1.BunifuCircleProgressbar ProgressbarIndicator;
+        private System.Windows.Forms.Timer timerIndecator;
     }
 }
 

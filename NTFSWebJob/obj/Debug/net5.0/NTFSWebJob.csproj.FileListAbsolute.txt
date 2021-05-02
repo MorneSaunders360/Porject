@@ -1,6 +1,7 @@
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\appsettings.json
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\NTFSWebJob.exe
+C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\Settings.job
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\NTFSWebJob.deps.json
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\NTFSWebJob.runtimeconfig.json
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\NTFSWebJob.runtimeconfig.dev.json
@@ -57,5 +58,4 @@ C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.dll
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\ref\NTFSWebJob.dll
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.pdb
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.genruntimeconfig.cache
-C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\Settings.job
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.csprojAssemblyReference.cache

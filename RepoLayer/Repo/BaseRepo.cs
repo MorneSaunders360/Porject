@@ -101,7 +101,8 @@ namespace RepoLayer.Repo
             }
             else
             {
-                Id = Worker.Update(item);
+                Worker.Update(item);
+                Id = int.Parse(GetPropValue(item, "Id").ToString());
             }
             var result = Worker.Get<T>(Id);
             Worker.Close();

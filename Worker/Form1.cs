@@ -41,10 +41,15 @@ namespace Worker
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
             timer.Enabled = false;
+
+            ProgressbarIndicator.Left = (this.ClientSize.Width - ProgressbarIndicator.Width) / 2;
+            ProgressbarIndicator.Top = (this.ClientSize.Height - ProgressbarIndicator.Height) / 2;
+      
             if ((string.IsNullOrEmpty(Properties.Settings.Default.DeviceGIUD)) == false)
             {
                 timer.Enabled = true;
                 timer.Start();
+                timerIndecator.Start();
                 panelLogIn.Visible = false;
             }
             if (Properties.Settings.Default.RunOnStartUp)
@@ -64,6 +69,7 @@ namespace Worker
             Models.PortalUserDevice PortalUserDevice = new Models.PortalUserDevice();
             Models.PortalDevice PortalDevice = new Models.PortalDevice();
             PortalDevice.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
+            PortalDevice.Name = Properties.Settings.Default.DeviceName;
             PortalDevice.LastActiveTime = DateTime.Now;
             PortalDevice.Active = true;
             PortalUserDevice.PortalDevice = PortalDevice;
@@ -76,11 +82,13 @@ namespace Worker
                     var response = await client.PostAsync($"{BaseUrl}/Api/PortalUserDevice/SaveDeviceStatus/", new StringContent(jsonstring, Encoding.UTF8, "application/json"), CancellationTokenSource.Token);
                     if (response.IsSuccessStatusCode)
                     {
+
                         Invoke(new Action(() =>
                         {
+                        
                             var Result = response.Content.ReadAsStringAsync().Result;
                             var model = JsonConvert.DeserializeObject<Models.PortalUserDevice>(Result);
-                            if (model==null)
+                            if (model == null)
                             {
                                 CancellationTokenSource.Cancel();
                                 timer.Stop();
@@ -93,7 +101,7 @@ namespace Worker
                                 {
                                     CancellationTokenSource.Cancel();
                                     timer.Stop();
-                                    //ButtonStatus.Text = "Stopping";
+              
                                     ButtonStatus.Visible = true;
                                     ButtonStatus.Text = "Offline";
                                     ButtonStatus.BackColor = Color.Red;
@@ -113,8 +121,9 @@ namespace Worker
                                     ButtonStatus.Activecolor = Color.SeaGreen;
                                 }
                             }
-                            
-                         
+                            ProgressbarIndicator.Visible = false;
+                            timerIndecator.Stop();
+
                         }));
                     }
                 }
@@ -130,6 +139,7 @@ namespace Worker
         }
         private async void button1_Click(object sender, EventArgs e)
         {
+            timerIndecator.Start();
             if (CheckForInternetConnection())
             {
                 HttpClient client = new HttpClient();
@@ -200,7 +210,15 @@ namespace Worker
             PortalUserDevice.PortalDevice = new Models.PortalDevice();
             PortalUserDevice.SoftDelete = false;
             PortalUserDevice.PortalDevice.DeviceGIUD = macAddr;
-            PortalUserDevice.PortalDevice.Name = System.Environment.MachineName;
+            if (string.IsNullOrEmpty(Properties.Settings.Default.DeviceName))
+            {
+                PortalUserDevice.PortalDevice.Name = System.Environment.MachineName;
+            }
+            else
+            {
+                PortalUserDevice.PortalDevice.Name = Properties.Settings.Default.DeviceName;
+            }
+        
             PortalUserDevice.PortalDevice.Description = System.Environment.MachineName;
             PortalUserDevice.PortalDevice.LastActiveTime = DateTime.Now;
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
@@ -211,8 +229,11 @@ namespace Worker
             {
                 var model = JsonConvert.DeserializeObject<Models.PortalUserDevice>(response.Content.ReadAsStringAsync().Result);
                 Properties.Settings.Default.DeviceGIUD = model.PortalDevice.DeviceGIUD;
+                Properties.Settings.Default.DeviceName = model.PortalDevice.Name;
                 Properties.Settings.Default.Save();
                 timer.Start();
+                timerIndecator.Stop();
+                ProgressbarIndicator.Visible = false;
             }
         }
 
@@ -247,10 +268,12 @@ namespace Worker
 
         private void ButtonStatus_Click(object sender, EventArgs e)
         {
+
             if (ButtonStatus.Text.Contains("Offline"))
             {
                 ButtonStatus.Text = "Connecting...";
                 timer.Start();
+                timerIndecator.Start();
             }
             else if (ButtonStatus.Text.Contains("Online"))
             {
@@ -315,6 +338,26 @@ namespace Worker
                     Process.Start("shutdown", "/r /t 0");
                 }
             }
+        }
+        int ProgressbarIndicatorCounter = 0;
+        private void timerIndecator_Tick(object sender, EventArgs e)
+        {
+            if (ProgressbarIndicator.Visible == false)
+            {
+                ProgressbarIndicatorCounter = 0;
+            }
+            ProgressbarIndicator.Visible = true;
+            ProgressbarIndicatorCounter++;
+            if (ProgressbarIndicatorCounter == 100)
+            {
+                ProgressbarIndicatorCounter = 0;
+            }
+            ProgressbarIndicator.Value = ProgressbarIndicatorCounter;
+        }
+
+        private void TextboxPassword_OnValueChanged(object sender, EventArgs e)
+        {
+            TextboxPassword.isPassword = true;
         }
     }
 }

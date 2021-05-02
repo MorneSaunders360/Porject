@@ -12,4 +12,3 @@ C:\Users\morne\source\repos\Porject\PortalDB\bin\Debug\PortalDB.dll
 C:\Users\morne\source\repos\Porject\PortalDB\bin\Debug\PortalDB.pdb
 C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\PortalDB.dll
 C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\PortalDB.pdb
-C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\PortalDB.sqlprojAssemblyReference.cache

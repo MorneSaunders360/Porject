@@ -43,7 +43,12 @@ namespace LogicLayer.Logic
             {
                 return base.PortalDeviceRepo.SaveItem(model);
             }
-            return result;
+            else
+            {
+                result.Name = model.Name;
+                return base.PortalDeviceRepo.SaveItem(model);
+            }
+
         }
         public Entities.Models.PortalDevice SaveDeviceStatus(Entities.Models.PortalDevice model)
         {
