@@ -111,7 +111,17 @@ namespace LogicLayer.Logic
                 result.Active = model.Active;
                 result.ErrorMail = model.ErrorMail;
                 result.LastActiveTime = model.LastActiveTime;
+                result.Temp = model.Temp;
                 base.PortalDeviceRepo.SaveItem(result);
+                if (model.PortalDeviceChildern.Count>0)
+                {
+                    foreach (var item in model.PortalDeviceChildern)
+                    {
+                       var Device = base.PortalDeviceRepo.GetItemFiltered(new { DeviceGIUD=model.DeviceGIUD, Name= item.Name }).FirstOrDefault();
+                       Device.Temp = item.Temp;
+                       base.PortalDeviceRepo.SaveItem(Device);
+                    }
+                }
                 return result;
             }
             else
@@ -132,7 +142,12 @@ namespace LogicLayer.Logic
                     try
                     {
                         var User = base.PortalUserRepo.GetItemById(model.PortalUserId);
-                        await EmailService.SendEmail($"{model.PortalDevice.Name } - Offline", $"{model.PortalDevice.Name } - Offline", User.Email);
+                        var body = $"{model.PortalDevice.Name}-Offline"+Environment.NewLine;
+                        foreach (var item in GetItemListByParentId(model.PortalDeviceId))
+                        {
+                            body += item.Name + Environment.NewLine;
+                        }
+                        await EmailService.SendEmail($"{model.PortalDevice.Name } - Offline", body,  User.Email);
                         model.PortalDevice.ErrorMail = true;
                     }
                     catch (Exception ex)

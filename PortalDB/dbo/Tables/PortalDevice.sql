@@ -11,5 +11,6 @@
     [Restart] BIT NULL, 
     [Shutdown] BIT NULL, 
     [LastActiveTime] DATETIME NULL, 
+    [Temp] VARCHAR(50) NULL, 
    
 )

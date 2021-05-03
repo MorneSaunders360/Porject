@@ -36,37 +36,6 @@ namespace Worker
             }
            
         }
-        public class UpdateVisitor : IVisitor
-        {
-            public void VisitComputer(IComputer computer)
-            {
-                computer.Traverse(this);
-            }
-            public void VisitHardware(IHardware hardware)
-            {
-                hardware.Update();
-                foreach (IHardware subHardware in hardware.SubHardware) subHardware.Accept(this);
-            }
-            public void VisitSensor(ISensor sensor) { }
-            public void VisitParameter(IParameter parameter) { }
-        }
-        static void GetSystemInfo()
-        {
-            UpdateVisitor updateVisitor = new UpdateVisitor();
-            Computer computer = new Computer();
-            computer.Open();
-            computer.IsGpuEnabled = true;
-            computer.Accept(updateVisitor);
-            foreach (IHardware hardware in computer.Hardware) 
-            {
-                if (hardware.HardwareType==HardwareType.GpuNvidia)
-                {
-                    Console.WriteLine("Hardware: {0}", hardware.Name);
-                }
-              
-            }
-            computer.Close();
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
             timer = new System.Timers.Timer();
@@ -101,10 +70,22 @@ namespace Worker
             HttpClient client = new HttpClient();
             Models.PortalUserDevice PortalUserDevice = new Models.PortalUserDevice();
             Models.PortalDevice PortalDevice = new Models.PortalDevice();
+            //PortalDevice.PortalDeviceChildern = new List<Models.PortalDevice>();
+
             PortalDevice.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
             PortalDevice.LastActiveTime = DateTime.Now;
             PortalDevice.Active = true;
             PortalUserDevice.PortalDevice = PortalDevice;
+            PortalUserDevice.PortalDevice.PortalDeviceChildern = new List<Models.PortalDevice>();
+            foreach (var item in graphicsCardList())
+            {
+                Models.PortalDevice PortalDeviceGPU = new Models.PortalDevice();
+                PortalDeviceGPU.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
+                PortalDeviceGPU.Name = item.Name;
+                PortalDeviceGPU.Temp = item.Temp;
+                PortalDeviceGPU.LastActiveTime = DateTime.Now;
+                PortalUserDevice.PortalDevice.PortalDeviceChildern.Add(PortalDeviceGPU);
+            }
             if (string.IsNullOrEmpty(PortalDevice.DeviceGIUD) == false)
             {
                 try
@@ -287,7 +268,8 @@ namespace Worker
             {
                 Models.PortalDevice PortalDevice = new Models.PortalDevice();
                 PortalDevice.DeviceGIUD = macAddr;
-                PortalDevice.Name = item;
+                PortalDevice.Name = item.Name;
+                PortalDevice.Temp = item.Temp;
                 PortalDevice.LastActiveTime = DateTime.Now;
                 PortalUserDevice.PortalDevice.PortalDeviceChildern.Add(PortalDevice);
             }
@@ -309,23 +291,42 @@ namespace Worker
                 Message("Device failed to register", 1);
             }
         }
-        public List<string> graphicsCardList()
+        public List<Models.PortalDevice> graphicsCardList()
         {
-            List<string> graphicsCardList = new List<string>();
-            UpdateVisitor updateVisitor = new UpdateVisitor();
-            Computer computer = new Computer();
-            computer.Open();
-            computer.IsGpuEnabled = true;
-            computer.Accept(updateVisitor);
-            foreach (IHardware hardware in computer.Hardware)
+            List<Models.PortalDevice> graphicsCardList = new List<Models.PortalDevice>();
+            try
             {
-                if (hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAmd)
+                UpdateVisitor updateVisitor = new UpdateVisitor();
+                Computer computer = new Computer();
+                computer.Open();
+                computer.IsGpuEnabled = true;
+                computer.Accept(updateVisitor);
+                foreach (IHardware hardware in computer.Hardware)
                 {
-                    graphicsCardList.Add(hardware.Name);
+                    Models.PortalDevice portalDevice = new Models.PortalDevice();
+
+                    if (hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAmd)
+                    {
+                        portalDevice.Name = hardware.Name;
+
+                    }
+                    foreach (ISensor sensor in hardware.Sensors)
+                    {
+                        if (sensor.SensorType == SensorType.Temperature)
+                        {
+                            portalDevice.Temp = sensor.Value.ToString();
+                        }
+
+                    }
+                    graphicsCardList.Add(portalDevice);
                 }
+                computer.Close();
+            }
+            catch (Exception)
+            {
 
             }
-            computer.Close();
+           
             return graphicsCardList;
         }
 

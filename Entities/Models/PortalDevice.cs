@@ -20,6 +20,7 @@ namespace Entities.Models
         public bool EmailNotification { get; set; }
         public bool Restart { get; set; }
         public bool Shutdown { get; set; }
+        public string Temp { get; set; }
         public List<PortalDevice> PortalDeviceChildern { get; set; }
 
 

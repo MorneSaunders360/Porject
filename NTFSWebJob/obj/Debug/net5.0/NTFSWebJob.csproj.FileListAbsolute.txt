@@ -49,6 +49,7 @@ C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\LogicLayer.pdb
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\Entities.pdb
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\RepoLayer.pdb
 C:\Users\morne\source\repos\Porject\NTFSWebJob\bin\Debug\net5.0\Service.pdb
+C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.csprojAssemblyReference.cache
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.AssemblyInfoInputs.cache
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.AssemblyInfo.cs
@@ -58,4 +59,3 @@ C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.dll
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\ref\NTFSWebJob.dll
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.pdb
 C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.genruntimeconfig.cache
-C:\Users\morne\source\repos\Porject\NTFSWebJob\obj\Debug\net5.0\NTFSWebJob.csprojAssemblyReference.cache
