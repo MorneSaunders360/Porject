@@ -13,7 +13,7 @@ using Portal.Models;
 
 namespace Portal.Controllers.Api
 {
-  
+
     public class AccountController : BaseController
     {
         private SignInManager<IdentityUser> _signManager;
@@ -31,12 +31,27 @@ namespace Portal.Controllers.Api
         public async Task<IActionResult> LoginApi([FromBody] LoginViewModel model)
         {
             IActionResult response = Unauthorized();
-            var result = await _signManager.PasswordSignInAsync(model.Username,
-                 model.Password, model.RememberMe, false);
-            if (result.Succeeded)
+            if (string.IsNullOrEmpty(model.Organization))
             {
-                var tokenString = GenerateJSONWebToken(model);
-                response = Ok(new { token = tokenString });
+
+                var result = await _signManager.PasswordSignInAsync(model.Username,
+                     model.Password, model.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    var tokenString = GenerateJSONWebToken(model);
+                    response = Ok(new { token = tokenString });
+                }
+
+            }
+            else
+            {
+                var Organization = LogicLayer.Logic.UOW.PortalUserOrganizationLogic.GetItemByOrganizationName(model.Organization);
+                if (Organization != null)
+                {
+                    var tokenString = GenerateJSONWebToken(model);
+                    response = Ok(new { token = tokenString });
+                }
+
             }
             return response;
         }

@@ -23,7 +23,9 @@ namespace LogicLayer.Logic
         }
         public Entities.Models.PortalUser SaveItem(Entities.Models.PortalUser model)
         {
-            return base.PortalUserRepo.SaveItem(model);
+            var portalUser = base.PortalUserRepo.SaveItem(model);
+            Logic.UOW.PortalUserOrganizationLogic.SaveItem(new Entities.Models.PortalUserOrganization { PortalUserId = portalUser.Id });
+            return portalUser;
         }  
     
     }

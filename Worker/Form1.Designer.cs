@@ -32,6 +32,8 @@ namespace Worker
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Worker));
             this.bunifuCards1 = new ns1.BunifuCards();
+            this.panelNotify = new System.Windows.Forms.Panel();
+            this.LabelNotify = new ns1.BunifuCustomLabel();
             this.ProgressbarIndicator = new ns1.BunifuCircleProgressbar();
             this.ButtonStatus = new ns1.BunifuFlatButton();
             this.ButtonExit = new ns1.BunifuFlatButton();
@@ -50,12 +52,12 @@ namespace Worker
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerIndecator = new System.Windows.Forms.Timer(this.components);
-            this.panelNotify = new System.Windows.Forms.Panel();
-            this.LabelNotify = new ns1.BunifuCustomLabel();
+            this.TextboxOrganization = new ns1.BunifuMaterialTextbox();
+            this.bunifuCustomLabel3 = new ns1.BunifuCustomLabel();
             this.bunifuCards1.SuspendLayout();
+            this.panelNotify.SuspendLayout();
             this.panelLogIn.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.panelNotify.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuCards1
@@ -80,6 +82,28 @@ namespace Worker
             this.bunifuCards1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuForm_MouseDown);
             this.bunifuCards1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.bunifuCards1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            // 
+            // panelNotify
+            // 
+            this.panelNotify.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelNotify.Controls.Add(this.LabelNotify);
+            this.panelNotify.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelNotify.Location = new System.Drawing.Point(0, 402);
+            this.panelNotify.Name = "panelNotify";
+            this.panelNotify.Size = new System.Drawing.Size(800, 48);
+            this.panelNotify.TabIndex = 9;
+            this.panelNotify.Visible = false;
+            // 
+            // LabelNotify
+            // 
+            this.LabelNotify.AutoSize = true;
+            this.LabelNotify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNotify.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LabelNotify.Location = new System.Drawing.Point(360, 13);
+            this.LabelNotify.Name = "LabelNotify";
+            this.LabelNotify.Size = new System.Drawing.Size(91, 20);
+            this.LabelNotify.TabIndex = 7;
+            this.LabelNotify.Text = "Username";
             // 
             // ProgressbarIndicator
             // 
@@ -177,6 +201,8 @@ namespace Worker
             // 
             // panelLogIn
             // 
+            this.panelLogIn.Controls.Add(this.bunifuCustomLabel3);
+            this.panelLogIn.Controls.Add(this.TextboxOrganization);
             this.panelLogIn.Controls.Add(this.TextboxEmail);
             this.panelLogIn.Controls.Add(this.TextboxPassword);
             this.panelLogIn.Controls.Add(this.ButtonLogIn);
@@ -249,7 +275,7 @@ namespace Worker
             this.ButtonLogIn.IconVisible = true;
             this.ButtonLogIn.IconZoom = 90D;
             this.ButtonLogIn.IsTab = false;
-            this.ButtonLogIn.Location = new System.Drawing.Point(80, 199);
+            this.ButtonLogIn.Location = new System.Drawing.Point(80, 260);
             this.ButtonLogIn.Name = "ButtonLogIn";
             this.ButtonLogIn.Normalcolor = System.Drawing.Color.Navy;
             this.ButtonLogIn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -345,27 +371,36 @@ namespace Worker
             // 
             this.timerIndecator.Tick += new System.EventHandler(this.timerIndecator_Tick);
             // 
-            // panelNotify
+            // TextboxOrganization
             // 
-            this.panelNotify.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelNotify.Controls.Add(this.LabelNotify);
-            this.panelNotify.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelNotify.Location = new System.Drawing.Point(0, 399);
-            this.panelNotify.Name = "panelNotify";
-            this.panelNotify.Size = new System.Drawing.Size(798, 48);
-            this.panelNotify.TabIndex = 9;
-            this.panelNotify.Visible = false;
+            this.TextboxOrganization.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TextboxOrganization.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextboxOrganization.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TextboxOrganization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextboxOrganization.HintForeColor = System.Drawing.Color.Empty;
+            this.TextboxOrganization.HintText = "";
+            this.TextboxOrganization.isPassword = true;
+            this.TextboxOrganization.LineFocusedColor = System.Drawing.Color.Blue;
+            this.TextboxOrganization.LineIdleColor = System.Drawing.Color.Gray;
+            this.TextboxOrganization.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.TextboxOrganization.LineThickness = 3;
+            this.TextboxOrganization.Location = new System.Drawing.Point(14, 205);
+            this.TextboxOrganization.Margin = new System.Windows.Forms.Padding(4);
+            this.TextboxOrganization.Name = "TextboxOrganization";
+            this.TextboxOrganization.Size = new System.Drawing.Size(370, 44);
+            this.TextboxOrganization.TabIndex = 7;
+            this.TextboxOrganization.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // LabelNotify
+            // bunifuCustomLabel3
             // 
-            this.LabelNotify.AutoSize = true;
-            this.LabelNotify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelNotify.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LabelNotify.Location = new System.Drawing.Point(360, 13);
-            this.LabelNotify.Name = "LabelNotify";
-            this.LabelNotify.Size = new System.Drawing.Size(91, 20);
-            this.LabelNotify.TabIndex = 7;
-            this.LabelNotify.Text = "Username";
+            this.bunifuCustomLabel3.AutoSize = true;
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(13, 179);
+            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(111, 20);
+            this.bunifuCustomLabel3.TabIndex = 8;
+            this.bunifuCustomLabel3.Text = "Organization";
             // 
             // Worker
             // 
@@ -381,11 +416,11 @@ namespace Worker
             this.Text = "Worker";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.bunifuCards1.ResumeLayout(false);
+            this.panelNotify.ResumeLayout(false);
+            this.panelNotify.PerformLayout();
             this.panelLogIn.ResumeLayout(false);
             this.panelLogIn.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panelNotify.ResumeLayout(false);
-            this.panelNotify.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -413,6 +448,8 @@ namespace Worker
         private System.Windows.Forms.Timer timerIndecator;
         private System.Windows.Forms.Panel panelNotify;
         private ns1.BunifuCustomLabel LabelNotify;
+        private ns1.BunifuCustomLabel bunifuCustomLabel3;
+        private ns1.BunifuMaterialTextbox TextboxOrganization;
     }
 }
 

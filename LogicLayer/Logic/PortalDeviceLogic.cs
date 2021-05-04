@@ -20,7 +20,7 @@ namespace LogicLayer.Logic
         public List<Entities.Models.PortalDevice> GetItemListInActive()
         {
             return base.PortalDeviceRepo.GetItemFiltered(new { Active = false }).ToList();
-        }     
+        }
         public List<Entities.Models.PortalDevice> GetItemListByParentId(int ParentPortalDeviceId)
         {
             return base.PortalDeviceRepo.GetItemFiltered(new { ParentPortalDeviceId = ParentPortalDeviceId }).ToList();
@@ -49,7 +49,7 @@ namespace LogicLayer.Logic
             var model = GetItemById(PortalDeviceId);
             model.Restart = true;
             base.PortalDeviceRepo.SaveItem(model);
-        } 
+        }
         public void ShutdownPortalDevice(int PortalDeviceId)
         {
             var model = GetItemById(PortalDeviceId);
@@ -65,8 +65,8 @@ namespace LogicLayer.Logic
                 {
                     model.Name = Guid.NewGuid().ToString();
                 }
-                var saveResult=  base.PortalDeviceRepo.SaveItem(model);
-                if (model.PortalDeviceChildern.Count>0)
+                var saveResult = base.PortalDeviceRepo.SaveItem(model);
+                if (model.PortalDeviceChildern.Count > 0)
                 {
                     foreach (var item in model.PortalDeviceChildern)
                     {
@@ -76,9 +76,9 @@ namespace LogicLayer.Logic
                 }
                 return saveResult;
             }
-            else if (model.Id==0 && string.IsNullOrEmpty(model.DeviceGIUD)==false)
+            else if (model.ParentPortalDeviceId != 0 && string.IsNullOrEmpty(model.DeviceGIUD) == false)
             {
-                model.Active=true;
+                model.Active = true;
                 return base.PortalDeviceRepo.SaveItem(model);
             }
             else
@@ -113,13 +113,17 @@ namespace LogicLayer.Logic
                 result.LastActiveTime = model.LastActiveTime;
                 result.Temp = model.Temp;
                 base.PortalDeviceRepo.SaveItem(result);
-                if (model.PortalDeviceChildern.Count>0)
+                if (model.PortalDeviceChildern.Count > 0)
                 {
                     foreach (var item in model.PortalDeviceChildern)
                     {
-                       var Device = base.PortalDeviceRepo.GetItemFiltered(new { DeviceGIUD=model.DeviceGIUD, Name= item.Name }).FirstOrDefault();
-                       Device.Temp = item.Temp;
-                       base.PortalDeviceRepo.SaveItem(Device);
+                        var Device = base.PortalDeviceRepo.GetItemFiltered(new { DeviceGIUD = model.DeviceGIUD, Name = item.Name }).FirstOrDefault();
+                        if (Device != null)
+                        {
+                            Device.Temp = item.Temp;
+                            base.PortalDeviceRepo.SaveItem(Device);
+                        }
+
                     }
                 }
                 return result;
@@ -142,12 +146,12 @@ namespace LogicLayer.Logic
                     try
                     {
                         var User = base.PortalUserRepo.GetItemById(model.PortalUserId);
-                        var body = $"{model.PortalDevice.Name}-Offline"+Environment.NewLine;
+                        var body = $"{model.PortalDevice.Name}-Offline" + Environment.NewLine;
                         foreach (var item in GetItemListByParentId(model.PortalDeviceId))
                         {
                             body += item.Name + Environment.NewLine;
                         }
-                        await EmailService.SendEmail($"{model.PortalDevice.Name } - Offline", body,  User.Email);
+                        await EmailService.SendEmail($"{model.PortalDevice.Name } - Offline", body, User.Email);
                         model.PortalDevice.ErrorMail = true;
                     }
                     catch (Exception ex)

@@ -13,6 +13,7 @@ namespace Portal.Models
         [Display(Name = "Remember Me")]
         public bool RememberMe { get; set; }
         public string ReturnUrl { get; set; }
+        public string Organization { get; set; }
 
     }
 }

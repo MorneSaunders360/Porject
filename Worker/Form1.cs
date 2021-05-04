@@ -136,8 +136,10 @@ namespace Worker
                                     {
                                         model.PortalDevice.Restart = false;
                                         await client.PostAsync($"{BaseUrl}/Api/PortalDevice/SaveItem/", new StringContent(JsonConvert.SerializeObject(model.PortalDevice), Encoding.UTF8, "application/json"));
-                                        Application.Restart();
-                                        Environment.Exit(0);
+                                        //Application.Restart();
+                                        //Environment.Exit(0);
+
+                                        Process.Start("shutdown", "/r /t 0");
                                     }
                                     ButtonStatus.Visible = true;
                                     ButtonStatus.Text = "Online";
@@ -172,6 +174,7 @@ namespace Worker
                 Models.LoginViewModel loginViewModel = new Models.LoginViewModel();
                 loginViewModel.Username = TextboxEmail.Text;
                 loginViewModel.Password = TextboxPassword.Text;
+                loginViewModel.Organization = TextboxOrganization.Text;
                 var jsonstring = JsonConvert.SerializeObject(loginViewModel);
                 var response = await client.PostAsync($"{BaseUrl}/Api/Account/LoginApi/", new StringContent(jsonstring, Encoding.UTF8, "application/json"));
                 if (response.IsSuccessStatusCode)
@@ -250,24 +253,18 @@ namespace Worker
         }
         public async void RegisterDevice()
         {
-            var macAddr =
-                            (
-                                from nic in NetworkInterface.GetAllNetworkInterfaces()
-                                where nic.OperationalStatus == OperationalStatus.Up
-                                select nic.GetPhysicalAddress().ToString()
-                            ).FirstOrDefault();
             HttpClient client = new HttpClient();
             Models.PortalUserDevice PortalUserDevice = new Models.PortalUserDevice();
             PortalUserDevice.PortalDevice = new Models.PortalDevice();
             PortalUserDevice.SoftDelete = false;
-            PortalUserDevice.PortalDevice.DeviceGIUD = macAddr;
+            PortalUserDevice.PortalDevice.DeviceGIUD = DeviceId();
             PortalUserDevice.PortalDevice.LastActiveTime = DateTime.Now;
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
             PortalUserDevice.PortalDevice.PortalDeviceChildern = new List<Models.PortalDevice>();
             foreach (var item in graphicsCardList())
             {
                 Models.PortalDevice PortalDevice = new Models.PortalDevice();
-                PortalDevice.DeviceGIUD = macAddr;
+                PortalDevice.DeviceGIUD = DeviceId();
                 PortalDevice.Name = item.Name;
                 PortalDevice.Temp = item.Temp;
                 PortalDevice.LastActiveTime = DateTime.Now;
@@ -290,6 +287,19 @@ namespace Worker
             {
                 Message("Device failed to register", 1);
             }
+        }
+        public string DeviceId() 
+        {
+            var DeviceIdentifier = "";
+            ManagementObjectCollection mbsList = null;
+            ManagementObjectSearcher mbs = new ManagementObjectSearcher("Select * From Win32_processor");
+            mbsList = mbs.Get();
+            foreach (ManagementObject mo in mbsList)
+            {
+                DeviceIdentifier = mo["ProcessorID"].ToString();
+            }
+            return DeviceIdentifier;
+           
         }
         public List<Models.PortalDevice> graphicsCardList()
         {
