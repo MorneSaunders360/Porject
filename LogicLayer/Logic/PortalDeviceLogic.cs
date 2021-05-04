@@ -111,7 +111,7 @@ namespace LogicLayer.Logic
                 result.LastActiveTime = model.LastActiveTime;
                 result.Temp = model.Temp;
                 base.PortalDeviceRepo.SaveItem(result);
-              
+
                 if (model.PortalDeviceChildern.Count > 0)
                 {
                     foreach (var item in model.PortalDeviceChildern)
@@ -139,10 +139,20 @@ namespace LogicLayer.Logic
                         {
                             Logic.UOW.PortalNotificationLogic.SaveItem(new Entities.Models.PortalNotification { PortalUserId = CurrentUser.PortalUserId, Name = model.Name, Description = "NTFS", NotificationTypeId = 1, PortalDeviceId = CurrentUser.PortalDeviceId });
                             Logic.UOW.PortalNotificationLogic.SaveItem(new Entities.Models.PortalNotification { PortalUserId = CurrentUser.PortalUserId, Name = model.Name, Description = body, NotificationTypeId = 2, PortalDeviceId = CurrentUser.PortalDeviceId });
-                        }
-                    
-                    }
 
+                        }
+
+                    }
+                
+                }
+                else
+                {
+                    var CurrentUser = Logic.UOW.PortalUserDeviceLogic.GetItemByPortalDeviceId(result.Id);
+                    foreach (var item in Logic.UOW.PortalNotificationLogic.GetItemList(CurrentUser.PortalUserId, CurrentUser.PortalDeviceId).Where(x=>x.NotificationTypeId==1))
+                    {
+                        item.SoftDelete = false;
+                        Logic.UOW.PortalNotificationLogic.SaveItem(item);
+                    }
                 }
                 return result;
             }
@@ -153,6 +163,6 @@ namespace LogicLayer.Logic
 
 
         }
-       
+
     }
 }

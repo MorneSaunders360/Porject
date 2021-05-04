@@ -23,7 +23,7 @@ namespace DeviceStatusCheckWebJob
             foreach (var item in PortalDeviceList)
             {
                 TimeSpan ts = DateTime.Now - item.PortalDevice.LastActiveTime;
-                if (ts.TotalSeconds > 10)
+                if (ts.TotalMilliseconds > 10)
                 {
                     item.PortalDevice.Active = false;
                     LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(item.PortalDevice);

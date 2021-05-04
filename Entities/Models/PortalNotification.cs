@@ -15,5 +15,6 @@ namespace Entities.Models
         public bool SoftDelete { get; set; }
         public int NotificationTypeId { get; set; }
         public int PortalDeviceId { get; set; }
+
     }
 }
