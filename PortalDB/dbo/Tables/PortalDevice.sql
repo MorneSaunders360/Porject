@@ -8,6 +8,7 @@
     [Active] BIT NULL, 
     [ErrorMail] BIT NULL, 
     [EmailNotification] BIT NULL, 
+    [PortalNotification] BIT NULL, 
     [Restart] BIT NULL, 
     [Shutdown] BIT NULL, 
     [LastActiveTime] DATETIME NULL, 

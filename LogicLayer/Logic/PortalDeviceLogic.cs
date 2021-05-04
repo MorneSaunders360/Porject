@@ -110,6 +110,7 @@ namespace LogicLayer.Logic
 
                 result.Active = model.Active;
                 result.ErrorMail = model.ErrorMail;
+                result.PortalNotification = model.PortalNotification;
                 result.LastActiveTime = model.LastActiveTime;
                 result.Temp = model.Temp;
                 base.PortalDeviceRepo.SaveItem(result);

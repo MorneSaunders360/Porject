@@ -9,6 +9,10 @@
     {
       "library": "jquery-confirm@3.3.4",
       "destination": "wwwroot/jquery-confirm/"
+    },
+    {
+      "library": "alertify.js@0.3.11",
+      "destination": "wwwroot/alertify.js/"
     }
   ]
 }

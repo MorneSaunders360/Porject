@@ -8,7 +8,7 @@
     string PanelColor = "White";
 
 }
-@foreach (var item in portalUserDeviceDashList.OrderBy(x=>x.PortalDevice.Name))
+@foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
 {
     if (item.PortalDevice.Active)
     {
@@ -18,32 +18,44 @@
     {
         PanelColor = "Red";
     }
-<div style="margin:20px;background:rgba(255, 255, 255, 0.05);border-color:@PanelColor" class="col-md-4 panel panel-default-withline">
+    <div style="margin:20px;background:rgba(255, 255, 255, 0.05);border-color:@PanelColor" class="col-md-4 panel panel-default-withline">
 
-    <div class="panel-body">
-        <div class="form-group">
-            <div><label>@item.PortalDevice.Name</label></div>
-            @if (item.PortalDevice.Active)
-            {
-                <label>Online&nbsp;</label><label>-&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
-            }
-            else
-            {
-                <label>Offline&nbsp;</label><label>-&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
-            }
+        <div class="panel-body">
+            <div class="form-group">
+                <div><label>@item.PortalDevice.Name</label></div>
+                @if (item.PortalDevice.Active)
+                {
+                    <label>Online&nbsp;</label><label>-&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
+                }
+                else
+                {
 
-            @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
-            {
-                <div><label>@ChildDevice.Name&nbsp;</label><label>&nbsp;@ChildDevice.Temp<span>&#8451;</span></label></div>
-            }
-            <div style="width:35px;height:35px;position:absolute;top:10px;right:25px" class="btn-command" onclick="DisplayMessage('Are you sure you want to delete : @item.PortalDevice.Name','Delete',1,'DeletePortalUserDevice(@item.Id)')"><a class="fas fa-trash-alt"></a></div>
-            <div style="width:35px;height:35px;position:absolute;top:50px;right:25px" class="btn-command" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')"><a class="fas fa-undo"></a></div>
-            <div style="width:35px;height:35px;position:absolute;top:50px;right:65px" class="btn-command" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')"><a class="fas fa-power-off"></a></div>
-            <div style="width:35px;height:35px;position:absolute;top:10px;right:65px" class="btn-command" onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId='+@item.Id"><a class="fas fa-edit"></a></div>
+                    @if (item.PortalDevice.PortalNotification == false)
+                    {
+                        <script>
+                            alertify.error('@item.PortalDevice.Name Offline');
+                            @{
+                             item.PortalDevice.PortalNotification=true;
+                             portalUserDeviceController.SaveDeviceStatus(item);
+                            }
 
+                        </script>
+                    }
+                    <label>Offline&nbsp;</label><label>-&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
+                }
+
+                @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
+                {
+                    <div><label>@ChildDevice.Name&nbsp;</label><label>&nbsp;@ChildDevice.Temp<span>&#8451;</span></label></div>
+                }
+                <div style="width:35px;height:35px;position:absolute;top:10px;right:25px" class="btn-command" onclick="DisplayMessage('Are you sure you want to delete : @item.PortalDevice.Name','Delete',1,'DeletePortalUserDevice(@item.Id)')"><a class="fas fa-trash-alt"></a></div>
+                <div style="width:35px;height:35px;position:absolute;top:50px;right:25px" class="btn-command" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')"><a class="fas fa-undo"></a></div>
+                <div style="width:35px;height:35px;position:absolute;top:50px;right:65px" class="btn-command" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')"><a class="fas fa-power-off"></a></div>
+                <div style="width:35px;height:35px;position:absolute;top:10px;right:65px" class="btn-command" onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId='+@item.Id"><a class="fas fa-edit"></a></div>
+
+            </div>
         </div>
     </div>
-</div>
 
 
 }

@@ -13,6 +13,7 @@
     <link href="~/css/DataTableGrids/responsive.dataTables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.css" type="text/css" />
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -20,9 +21,11 @@
     <script src="~/jquery-confirm/jquery-confirm.min.js"></script>
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
     <script src="~/js/DisplayMessage.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css" />
 </head>
 <body>
-
     <nav class="navbar navbar-navbar-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 
         <div class="container-fluid">
@@ -45,7 +48,7 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li><a class="nav-link text-dark" href="/PortalUserDevice/Index">Devices</a></li>
+                        <li><a class="nav-link text-dark" href="/PortalUserDevice/Index">Devices</a></li>
 
 
                         }
@@ -60,7 +63,7 @@
                         var portalUserOrganization = portalUserOrganizationController.GetItemByPortalUserId(CurrentUser.Id);
 
 
-                        <a class="nav-link text-dark">Organization : @portalUserOrganization.Name</a>
+                    <div class="nav-link text-dark"><a>Organization :</a><input onclick="copy()" id="OrganizationCopy" class="btn-command" value="@portalUserOrganization.Name"></div>
 
 
                     }
@@ -89,7 +92,15 @@
     </footer>
 
 
+    <script>
+        function copy() {
+            var copyText = document.getElementById("OrganizationCopy");
+            copyText.select();
+            document.execCommand("copy");
 
+            alertify.success('Organization copied : ' + copyText.value);
+        }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.js"></script>
     @RenderSection("Scripts", required: false)
     <script type="text/javascript" src="~/js/DataTablesGrids/jquery.dataTables.min.js?@Guid.NewGuid().ToString()"></script>
@@ -97,7 +108,7 @@
     <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.buttons.min.js?@Guid.NewGuid().ToString()"></script>
     <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.select.min.js?@Guid.NewGuid().ToString()"></script>
     <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.responsive.js?@Guid.NewGuid().ToString()"></script>
-   
+
 
 
 </body>
