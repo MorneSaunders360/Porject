@@ -53,6 +53,7 @@ namespace Worker
                 timer.Start();
                 timerIndecator.Start();
                 panelLogIn.Visible = false;
+                panelOrganization.Visible = false;
             }
             if (Properties.Settings.Default.RunOnStartUp)
             {
@@ -62,7 +63,11 @@ namespace Worker
             {
                 runOnStartUpToolStripMenuItem1.Text = "Run on start up - Not Running";
             }
+            panelOrganization.Left = (this.ClientSize.Width - panelOrganization.Width) / 2;
+            panelOrganization.Top = (this.ClientSize.Height - panelOrganization.Height) / 2;
 
+            panelLogIn.Left = (this.ClientSize.Width - panelLogIn.Width) / 2;
+            panelLogIn.Top = (this.ClientSize.Height - panelLogIn.Height) / 2;
         }
         public async void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
@@ -105,7 +110,7 @@ namespace Worker
                             {
                                 CancellationTokenSource.Cancel();
                                 timer.Stop();
-                                panelLogIn.Visible = true;
+                                panelOrganization.Visible = true;
                                 CancellationTokenSource = new CancellationTokenSource();
                             }
                             else
@@ -121,7 +126,7 @@ namespace Worker
                                     ButtonStatus.OnHovercolor = Color.Red;
                                     ButtonStatus.Normalcolor = Color.Red;
                                     ButtonStatus.Activecolor = Color.DarkRed;
-                                    panelLogIn.Visible = true;
+                                    panelOrganization.Visible = true;
                                     CancellationTokenSource = new CancellationTokenSource();
                                 }
                                 else
@@ -183,16 +188,36 @@ namespace Worker
                     Properties.Settings.Default.Token = "bearer " + model.token;
                     Properties.Settings.Default.Save();
                     client.DefaultRequestHeaders.Add("Authorization", Properties.Settings.Default.Token);
-                    var responseUser = await client.GetAsync("https://portaldevice.azurewebsites.net/Api/PortalUser/GetItemByName/" + loginViewModel.Username);
-                    if (responseUser.IsSuccessStatusCode)
+                    if (string.IsNullOrEmpty(loginViewModel.Organization)==false)
                     {
-                        var modelUser = JsonConvert.DeserializeObject<Models.PortalUser>(responseUser.Content.ReadAsStringAsync().Result);
-                        Properties.Settings.Default.PortalUserId = modelUser.Id;
-                        Properties.Settings.Default.Save();
-                        panelLogIn.Visible = false;
-                        Message("Successfully logged in", 0);
-                        RegisterDevice();
+                        var responseUser = await client.GetAsync($"{BaseUrl}/Api/PortalUserOrganization/GetItemByOrganizationName/" + loginViewModel.Organization);
+                        if (responseUser.IsSuccessStatusCode)
+                        {
+                            var PortalUserOrganization = JsonConvert.DeserializeObject<Models.PortalUserOrganization>(responseUser.Content.ReadAsStringAsync().Result);
+                            Properties.Settings.Default.PortalUserId = PortalUserOrganization.PortalUserId;
+                            Properties.Settings.Default.Save();
+                            panelLogIn.Visible = false;
+                            panelOrganization.Visible = false;
+                            Message("Successfully logged in", 0);
+                            RegisterDevice();
+                     
+                        }
                     }
+                    else
+                    {
+                        var responseUser = await client.GetAsync($"{BaseUrl}/Api/PortalUser/GetItemByName/" + loginViewModel.Username);
+                        if (responseUser.IsSuccessStatusCode)
+                        {
+                            var modelUser = JsonConvert.DeserializeObject<Models.PortalUser>(responseUser.Content.ReadAsStringAsync().Result);
+                            Properties.Settings.Default.PortalUserId = modelUser.Id;
+                            Properties.Settings.Default.Save();
+                            panelLogIn.Visible = false;
+                            panelOrganization.Visible = false;
+                            Message("Successfully logged in", 0);
+                            RegisterDevice();
+                        }
+                    }
+                   
                 }
                 else
                 {
@@ -415,7 +440,7 @@ namespace Worker
         {
             timer.Enabled = false;
             timer.Stop();
-            panelLogIn.Visible = true;
+            panelOrganization.Visible = true;
             ButtonStatus.Visible = false;
             Properties.Settings.Default.Reset();
             Properties.Settings.Default.Save();
@@ -461,6 +486,18 @@ namespace Worker
         private void TextboxPassword_OnValueChanged(object sender, EventArgs e)
         {
             TextboxPassword.isPassword = true;
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            panelLogIn.Visible = true;
+            panelOrganization.Visible = false;
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            panelLogIn.Visible = false;
+            panelOrganization.Visible = true;
         }
     }
 }

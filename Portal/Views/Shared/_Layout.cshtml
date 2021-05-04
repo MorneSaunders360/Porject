@@ -40,15 +40,31 @@
                     <partial name="_LoginPartial" />
 
                     <ul class="nav navbar-nav navbar-left" style="margin-right: 35%;">
-      
+
                         <li><a class="nav-link text-dark" href="/">Portal</a></li>
 
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li><a class="nav-link text-dark" href="/PortalUserDevice/Index">Devices</a></li>
+
+
                         }
 
                     </ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+                        Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+                        CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+                        Portal.Controllers.Api.PortalUserOrganizationController portalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
+                        var portalUserOrganization = portalUserOrganizationController.GetItemByPortalUserId(CurrentUser.Id);
+
+
+                        <a class="nav-link text-dark">Organization : @portalUserOrganization.Name</a>
+
+
+                    }
+
 
                 </div>
 

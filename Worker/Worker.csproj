@@ -107,6 +107,7 @@
     <Compile Include="Models\PortalToken.cs" />
     <Compile Include="Models\PortalUser.cs" />
     <Compile Include="Models\PortalUserDevice.cs" />
+    <Compile Include="Models\PortalUserOrganization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpdateVisitor.cs" />

@@ -91,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Worker.exe" size="852448">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Worker.exe" size="856032">
       <assemblyIdentity name="Worker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oecn3SM74vx4DPzGqEaycNRsC2lHcunU243erYr88Rg=</dsig:DigestValue>
+        <dsig:DigestValue>bS8d8UQDifu5btZHCj5KljvAWZWtWBjpGRrYaw4cVPo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
