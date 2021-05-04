@@ -25,6 +25,7 @@ namespace Portal.Models
 
     public class ApplicationDbContext : IdentityDbContext
     {
+
         //string connectionName = System.Configuration.ConfigurationManager.AppSettings["DatabaseConnectionName"];
         //string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
 
@@ -35,6 +36,7 @@ namespace Portal.Models
         public DbSet<IdentityUser> IdentityUser { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
 
         }

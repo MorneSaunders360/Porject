@@ -8,7 +8,7 @@ namespace NTFSWebJob
        
         static void Main(string[] args)
         {
-            LogicLayer.Logic.UOW.PortalDeviceLogic.SendEmailsForOfflineDevices().Wait();
+            LogicLayer.Logic.UOW.PortalNotificationLogic.SendEmailsForOfflineDevices().Wait();
         }
 
 

@@ -8,6 +8,7 @@ namespace Entities.Models
         public string Email { get; set; }
         //FK
         public string AspNetId { get; set; }
+        public bool AllowNotifications { get; set; }
         public PortalUserOrganization PortalUserOrganization { get; set; }
     }
 }

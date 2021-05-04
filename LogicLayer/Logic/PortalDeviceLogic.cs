@@ -95,7 +95,6 @@ namespace LogicLayer.Logic
                 {
                     result.Description = string.Empty;
                 }
-                result.EmailNotification = model.EmailNotification;
                 result.Shutdown = model.Shutdown;
                 result.Restart = model.Restart;
                 return base.PortalDeviceRepo.SaveItem(result);
@@ -109,11 +108,10 @@ namespace LogicLayer.Logic
             {
 
                 result.Active = model.Active;
-                result.ErrorMail = model.ErrorMail;
-                result.PortalNotification = model.PortalNotification;
                 result.LastActiveTime = model.LastActiveTime;
                 result.Temp = model.Temp;
                 base.PortalDeviceRepo.SaveItem(result);
+              
                 if (model.PortalDeviceChildern.Count > 0)
                 {
                     foreach (var item in model.PortalDeviceChildern)
@@ -127,6 +125,25 @@ namespace LogicLayer.Logic
 
                     }
                 }
+                if (result.Active == false)
+                {
+                    var CurrentUser = Logic.UOW.PortalUserDeviceLogic.GetItemByPortalDeviceId(result.Id);
+                    if (Logic.UOW.PortalNotificationLogic.GetItemList(CurrentUser.PortalUserId, CurrentUser.PortalDeviceId).Count == 0)
+                    {
+                        var body = $"{model.Name}-Offline" + Environment.NewLine;
+                        foreach (var item in GetItemListByParentId(CurrentUser.PortalDeviceId))
+                        {
+                            body += item.Name + Environment.NewLine;
+                        }
+                        if (Logic.UOW.PortalUserLogic.GetItemById(CurrentUser.PortalUserId).AllowNotifications)
+                        {
+                            Logic.UOW.PortalNotificationLogic.SaveItem(new Entities.Models.PortalNotification { PortalUserId = CurrentUser.PortalUserId, Name = model.Name, Description = "NTFS", NotificationTypeId = 1, PortalDeviceId = CurrentUser.PortalDeviceId });
+                            Logic.UOW.PortalNotificationLogic.SaveItem(new Entities.Models.PortalNotification { PortalUserId = CurrentUser.PortalUserId, Name = model.Name, Description = body, NotificationTypeId = 2, PortalDeviceId = CurrentUser.PortalDeviceId });
+                        }
+                    
+                    }
+
+                }
                 return result;
             }
             else
@@ -136,34 +153,6 @@ namespace LogicLayer.Logic
 
 
         }
-        public async Task SendEmailsForOfflineDevices()
-        {
-
-            foreach (var model in LogicLayer.Logic.UOW.PortalUserDeviceLogic.GetItemListInActive())
-            {
-
-                if (model.PortalDevice.Active == false && model.PortalDevice.ErrorMail == false && model.PortalDevice.EmailNotification)
-                {
-                    try
-                    {
-                        var User = base.PortalUserRepo.GetItemById(model.PortalUserId);
-                        var body = $"{model.PortalDevice.Name}-Offline" + Environment.NewLine;
-                        foreach (var item in GetItemListByParentId(model.PortalDeviceId))
-                        {
-                            body += item.Name + Environment.NewLine;
-                        }
-                        await EmailService.SendEmail($"{model.PortalDevice.Name } - Offline", body, User.Email);
-                        model.PortalDevice.ErrorMail = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
-
-                }
-                base.PortalDeviceRepo.SaveItem(model.PortalDevice);
-            }
-
-        }
+       
     }
 }

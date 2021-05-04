@@ -70,13 +70,6 @@
             @Html.ValidationMessageFor(model => model.PortalDevice.PortalDeviceStatusId, "", new { @class = "text-danger" })*@
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.PortalDevice.EmailNotification, new { @class = "col-md-6 control-label" })
-                            <div class="col-md-6">
-                                @Html.CheckBoxFor(m => m.PortalDevice.EmailNotification, new { @class = "option-input checkbox" })
-                            </div>
-                            @Html.ValidationMessageFor(m => m.PortalDevice.EmailNotification, "", new { @class = "text-danger" })
-                        </div>
                         @if (Model.PortalDeviceId > 0)
                         {
                         <div class="form-group">

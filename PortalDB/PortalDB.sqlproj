@@ -74,6 +74,7 @@
     <Build Include="dbo\Tables\PortalDevice.sql" />
     <Build Include="dbo\Tables\PortalUserDevice.sql" />
     <Build Include="dbo\Tables\PortalUserOrganization.sql" />
+    <Build Include="dbo\Tables\PortalNotification.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PortalDB.refactorlog" />

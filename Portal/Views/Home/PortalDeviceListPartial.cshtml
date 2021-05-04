@@ -4,8 +4,21 @@
     Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
     CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
     Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
+    Portal.Controllers.Api.PortalNotificationController PortalNotificationController = new Portal.Controllers.Api.PortalNotificationController();
     portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id);
     string PanelColor = "White";
+
+}
+@foreach (var item in PortalNotificationController.GetItemListActivePortal())
+{
+    @if (CurrentUser.AllowNotifications)
+    {
+        <script>
+          alertify.error('@item.Name Offline');
+        </script>
+        item.SoftDelete = true;
+        PortalNotificationController.SaveItem(item);
+    }
 
 }
 @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
@@ -30,17 +43,10 @@
                 else
                 {
 
-                    @if (item.PortalDevice.PortalNotification == false)
-                    {
-                        <script>
-                            alertify.error('@item.PortalDevice.Name Offline');
-                            @{
-                             item.PortalDevice.PortalNotification=true;
-                             portalUserDeviceController.SaveDeviceStatus(item);
-                            }
+                    @*@if (item.PortalDevice.ErrorPortalNotification == false && item.PortalDevice.PortalNotification == true)
+                        {
 
-                        </script>
-                    }
+                        }*@
                     <label>Offline&nbsp;</label><label>-&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</label>
                 }
 

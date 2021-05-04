@@ -30,11 +30,8 @@ namespace Worker
         int connectionTimeout = 0;
         public Worker()
         {
-            if (IsAlreadyRunning() == false)
-            {
-                InitializeComponent();
-            }
-           
+            
+            InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -263,19 +260,7 @@ namespace Worker
                 return false;
             }
         }
-        private static bool IsAlreadyRunning()
-        {
-            string strLoc = Assembly.GetExecutingAssembly().Location;
-            FileSystemInfo fileInfo = new FileInfo(strLoc);
-            string sExeName = fileInfo.Name;
-            bool bCreatedNew;
-
-            Mutex mutex = new Mutex(true, "Global\\" + sExeName, out bCreatedNew);
-            if (bCreatedNew)
-                mutex.ReleaseMutex();
-
-            return !bCreatedNew;
-        }
+      
         public async void RegisterDevice()
         {
             HttpClient client = new HttpClient();

@@ -23,6 +23,7 @@ namespace Portal.Controllers.Api
         [HttpPost]
         public Entities.Models.PortalUser SaveItem(Entities.Models.PortalUser model)
         {
+            model.AllowNotifications = true;
             return LogicLayer.Logic.UOW.PortalUserLogic.SaveItem(model);
         }
     }
