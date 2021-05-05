@@ -31,14 +31,14 @@
                 buttons: {
                     Yes: {
                         text: 'Yes',
-                        btnClass: 'btn-command',
+                        btnClass: 'btn-primary ',
                         action: function () {
                             eval(functionName)
                         }
                     },
                     close: {
                         text: 'Close',
-                        btnClass: 'btn-command',
+                        btnClass: 'btn-primary ',
                         action: function () {
 
                         }
@@ -58,7 +58,7 @@
                 buttons: {
                     text: 'Okay',
                     Okay: {
-                        btnClass: 'btn-command',
+                        btnClass: 'btn-primary ',
                         action: function () {
                             eval(functionName)
                         }}
@@ -76,7 +76,7 @@
                 buttons: {
                     text: 'Okay',
                     Okay: {
-                        btnClass: 'btn-command',
+                        btnClass: 'btn-primary ',
                         action: function () {
                             eval(functionName)
                         }

@@ -11,18 +11,18 @@
 }
 @foreach (var item in PortalNotificationController.GetItemListActivePortal())
 {
-    @if (CurrentUser.AllowNotifications)
+@if (CurrentUser.AllowNotifications)
     {
-        <script>
+<script>
             $.notify({
                 // options
                 message: '@item.Name - Offline'
             }, {
                 // settings
-                type: 'info'
+                type: 'warning'
             });
 
-        </script>
+</script>
         item.SoftDelete = true;
         PortalNotificationController.SaveItem(item);
     }
@@ -39,58 +39,58 @@
         {
             PanelColor = "card-header card-header-danger card-header-icon";
         }
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="@PanelColor">
-                    <div class="card-icon" onclick="location.href='/PortalUserDevice/Edit?PortalUserDeviceId=@item.Id'">
-                        <i class="material-icons">cloud</i>
-                    </div>
-                    @if (item.PortalDevice.Active)
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+
+            <div class="@PanelColor">
+                <div class="card-icon" onclick="location.href='/PortalUserDevice/Edit?PortalUserDeviceId=@item.Id'">
+                    <i class="material-icons">cloud</i>
+                </div>
+
+                @if (item.PortalDevice.Active)
                     {
-                        <p class="card-category">Online&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
+                <p class="card-category">Online&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
                     }
                     else
                     {
-                        <p class="card-category">Offline&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
+                <p class="card-category">Offline&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
 
                     }
 
-                    <h3 class="card-title">
-                        @item.PortalDevice.Name
-                    </h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
+                <h3 class="card-title">
+                    @item.PortalDevice.Name
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
                         {
-                            <div><label>@ChildDevice.Name&nbsp;</label><label></label></div>
-                            <a class="warning-link">&nbsp;@ChildDevice.Temp<span>&#8451;</span></a>
+                    <div><label>@ChildDevice.Name&nbsp;</label><label></label></div>
+                            if (int.Parse(ChildDevice.Temp) >80)
+                            {
+                                <a style="font-size:medium" class="danger-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            }
+                            else if (int.Parse(ChildDevice.Temp)>60)
+                            {
+                                <a style="font-size:medium" class="warning-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            }
+                            else
+                            {
+                                <a style="font-size:medium;" class="success-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            }
+
                         }
 
 
-                    </div>
                 </div>
+
+
+                <div style="position: absolute;top: 10px;right: 138px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-undo pointer"></label></div>
+                <div style="position: absolute;top: 10px;right: 165px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-power-off pointer"></label></div>
             </div>
+
         </div>
-
-
-
-        <div class="panel-body">
-            <div class="form-group">
-                <div><label></label></div>
-
-
-               
-                @*<div style="width:35px;height:35px;position:absolute;top:10px;right:25px" class="btn-command" onclick="DisplayMessage('Are you sure you want to delete : @item.PortalDevice.Name','Delete',1,'DeletePortalUserDevice(@item.Id)')"><a class="fas fa-trash-alt"></a></div>
-                    <div style="width:35px;height:35px;position:absolute;top:50px;right:25px" class="btn-command" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')"><a class="fas fa-undo"></a></div>
-                    <div style="width:35px;height:35px;position:absolute;top:50px;right:65px" class="btn-command" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')"><a class="fas fa-power-off"></a></div>
-                    <div style="width:35px;height:35px;position:absolute;top:10px;right:65px" class="btn-command" onclick="window.location.href='/PortalUserDevice/Edit?PortalUserDeviceId='+@item.Id"><a class="fas fa-edit"></a></div>*@
-
-            </div>
-        </div>
-
-
-
+    </div>
     }
 
 </div>

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Portal",
+    "\\Portal\\Views",
+    "\\Portal\\Views\\Home",
+    "\\Portal\\Views\\PortalUserDevice",
+    "\\Portal\\Views\\Shared",
+    "\\Portal\\wwwroot",
+    "\\Portal\\wwwroot\\css",
+    "\\Portal\\wwwroot\\js",
+    "\\Portal\\wwwroot\\js\\jquery-confirm"
+  ],
+  "SelectedNode": "\\Portal\\Views\\Shared\\_Layout.cshtml",
+  "PreviewInSolutionExplorer": false
+}

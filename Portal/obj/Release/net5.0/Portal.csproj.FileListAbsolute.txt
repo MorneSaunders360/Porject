@@ -410,7 +410,6 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Portal
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUserDevice\IndexGrid.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
-C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
@@ -423,3 +422,4 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\ref\Portal.dll
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Portal.pdb
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Portal.genruntimeconfig.cache
 C:\Users\morne\source\repos\Porject\Portal\bin\Release\net5.0\libman.json
+C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUser\Edit.cshtml.g.cs

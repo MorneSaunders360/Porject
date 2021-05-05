@@ -49,10 +49,10 @@
                     <div class="col-md-5">
                         <div class="form-group">
 
-           
+
 
                             <div class="form-check">
-                              
+
                                 <label class="form-check-label">
                                     @Html.LabelFor(m => m.PortalDevice.Restart, new { @class = "control-label" })
                                     @Html.CheckBoxFor(m => m.PortalDevice.Restart, new { @class = "form-check-input" })
@@ -63,6 +63,27 @@
 
                             </div>
                             @Html.ValidationMessageFor(m => m.PortalDevice.Restart, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+
+
+                            <div class="form-check">
+
+                                <label class="form-check-label">
+                                    @Html.LabelFor(m => m.PortalDevice.Shutdown, new { @class = "control-label" })
+                                    @Html.CheckBoxFor(m => m.PortalDevice.Shutdown, new { @class = "form-check-input" })
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+
+                            </div>
+                            @Html.ValidationMessageFor(m => m.PortalDevice.Shutdown, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
