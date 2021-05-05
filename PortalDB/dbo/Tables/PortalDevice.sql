@@ -6,6 +6,7 @@
     [Description] VARCHAR(50) NULL, 
     [DeviceGIUD] VARCHAR(MAX) NULL, 
     [Active] BIT NULL, 
+    [PortalNotificationSent] BIT NULL, 
     [Restart] BIT NULL, 
     [Shutdown] BIT NULL, 
     [LastActiveTime] DATETIME NULL, 

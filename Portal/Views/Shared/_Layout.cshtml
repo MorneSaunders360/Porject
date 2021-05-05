@@ -1,61 +1,42 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Portal</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link href="~/css/DataTableGrids/material.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/DataTableGrids/dataTables.material.min.css" rel="stylesheet" />
-    <link href="~/css/DataTableGrids/buttons.dataTables.min.css" rel="stylesheet" />
-    <link href="~/css/DataTableGrids/select.dataTables.min.css" rel="stylesheet" />
-    <link href="~/css/DataTableGrids/responsive.dataTables.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.css" type="text/css" />
-
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- Material Kit CSS -->
+    <link href="~/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <link href="~/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" />
-    <script src="~/jquery-confirm/jquery-confirm.min.js"></script>
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
-    <script src="~/js/DisplayMessage.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css" />
+    <script src="~/lib/Bootstrap/jquery.min.js"></script>
 </head>
-<body>
-    <nav class="navbar navbar-navbar-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body class="dark-edition">
+    <div id="LogInDiv"></div>
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="black" data-image="./sidebar-2.jpg">
 
-        <div class="container-fluid">
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">
+                            <i class="material-icons">dashboard</i>
+                            <p>Home</p>
+                        </a>
+                    </li>
 
-            <div class="navbar-header">
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span style="background-color: black;" class="icon-bar"></span>
-                    <span style="background-color: black;" class="icon-bar"></span>
-                    <span style="background-color: black;" class="icon-bar"></span>
-
-                </button>
-
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <partial name="_LoginPartial" />
-
-                    <ul class="nav navbar-nav navbar-left" style="margin-right: 35%;">
-
-                        <li><a class="nav-link text-dark" href="/">Portal</a></li>
-
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                        <li><a class="nav-link text-dark" href="/PortalUserDevice/Index">Devices</a></li>
-
-
-                        }
-
-                    </ul>
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/PortalUserDevice/Index">
+                                <i class="material-icons">dashboard</i>
+                                <p>Device</p>
+                            </a>
+                        </li>
+
                         Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
                         Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
                         CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
@@ -63,53 +44,90 @@
                         var portalUserOrganization = portalUserOrganizationController.GetItemByPortalUserId(CurrentUser.Id);
 
 
-                    <div class="nav-link text-dark"><a>Organization :</a><input onclick="copy()" id="OrganizationCopy" class="btn-command" value="@portalUserOrganization.Name"></div>
+                        @*<div class="nav-link text-dark"><a>Organization :</a></div>*@
 
 
                     }
+                    <!-- your sidebar here -->
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="javascript:void(0)">Portal</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+                                Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+                                CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+                                Portal.Controllers.Api.PortalUserOrganizationController portalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
+                                <li>
+                                    <a class="nav-link" href="/PortalUser/Edit?PortalUserId=@CurrentUser.Id">Hello @User.Identity.Name!</a>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Account" asp-action="Logout" asp-route-returnurl="/Home/Index" style=" margin: 0px; padding: 0px; width: auto; height: auto;">
+                                        <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="nav-link" href="javascript:void(0)" onclick="OpenLogin()">Login</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/Account/Register">Register</a>
+                                </li>
+                            }
 
 
+                            <!-- your navbar here -->
+                        </ul>
+                    </div>
                 </div>
-
+            </nav>
+            <div id="LogInDiv"></div>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
             </div>
 
         </div>
-    </nav>
-
-    <div id="LogInDiv"></div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
     </div>
+    <!--   Core JS Files   -->
 
-    <footer class="border-top footer text-muted">
-
-        @{var date = DateTime.Now;}
-        <div>@date</div>
-        &copy; 2020 - Portal - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-
-    </footer>
-
-
-    <script>
-        function copy() {
-            var copyText = document.getElementById("OrganizationCopy");
-            copyText.select();
-            document.execCommand("copy");
-
-            alertify.success('Organization copied : ' + copyText.value);
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.js"></script>
+    <script src="~/lib/Bootstrap/popper.min.js"></script>
+    <script src="~/lib/Bootstrap/bootstrap-material-design.min.js"></script>
+    <script src="https://unpkg.com/default-passive-events"></script>
+    <script src="~/lib/Bootstrap/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Chartist JS -->
+    <script src="~/lib/Bootstrap/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="~/lib/Bootstrap/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/lib/Bootstrap/material-dashboard.js?v=2.1.0"></script>
     @RenderSection("Scripts", required: false)
-    <script type="text/javascript" src="~/js/DataTablesGrids/jquery.dataTables.min.js?@Guid.NewGuid().ToString()"></script>
-    <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.material.min.js?@Guid.NewGuid().ToString()"></script>
-    <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.buttons.min.js?@Guid.NewGuid().ToString()"></script>
-    <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.select.min.js?@Guid.NewGuid().ToString()"></script>
-    <script type="text/javascript" src="~/js/DataTablesGrids/dataTables.responsive.js?@Guid.NewGuid().ToString()"></script>
+
+
 
 
 
 </body>
+
 </html>

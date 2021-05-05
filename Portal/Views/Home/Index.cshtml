@@ -1,33 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
-<div class="text-center">
-    <div class="box">
-        <div class="hour">
-            <div id="hour"></div>
-            <span class="numberspan" id="hourVal">00</span>
-        </div>
-        <div class="minute">
-            <div id="minute"></div>
-            <span class="numberspan"  id="minuteVal">00</span>
-        </div>
-        <div class="second">
-            <div id="second"></div>
-            <span class="numberspan" id="secondVal">00</span>
-        </div>
-        <div class="half">
-            <div id="half"></div>
-            <span class="numberspan" id="halfVal">||</span>
-        </div>
-    </div>
-</div>
-<div class="row">
+
     @if (User != null && User.Identity.Name != null)
-    {<div id="portalUserDeviceDashList"></div>
-
+    {
+        <div class="container-fluid" id="portalUserDeviceDashList"></div>
     }
-</div>
 
-<script type="text/javascript" src="~/js/Clock.js?@Guid.NewGuid().ToString()"></script>
+
+
 @if (User != null && User.Identity.Name != null)
 {
 

@@ -14,9 +14,10 @@ namespace LogicLayer.Logic
         }
         public List<Entities.Models.PortalNotification> GetItemList(int PortalUserId,int PortalDeviceId)
         {
-            var result = base.PortalNotificationRepo.GetItemFiltered(new { PortalDeviceId= PortalDeviceId, PortalUserId = PortalUserId }).ToList();
+            var result = base.PortalNotificationRepo.GetItemFiltered(new { PortalDeviceId= PortalDeviceId, PortalUserId = PortalUserId, SoftDelete =false}).ToList();
             return result;
-        } 
+        }   
+
         public List<Entities.Models.PortalNotification> GetItemListActiveEmail()
         {
             var result = base.PortalNotificationRepo.GetItemFiltered(new {SoftDelete = false, NotificationTypeId=2 }).ToList();

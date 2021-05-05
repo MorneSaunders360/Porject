@@ -2,35 +2,40 @@
 @{
     ViewBag.Title = "Login";
 }
-<div class="row">
-    <section style="position: fixed;top: 0;bottom: 0;z-index:1;">
-        <div><div class="container">
-    <div class="col-md-4 col-xs-8"></div>
-    <div class="col-md-4 col-xs-12">
-        <a class="btn-command" href="/Home/Index" style="position: fixed;right: 0;">Close</a>
-        <div class="login-form">
-            <h1>Sign In</h1>
+
+<div class="col-md-5">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">Login</h4>
+            <p class="card-category">Edit your Device</p>
+        </div>
+        <div class="card-body">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <form method="post" asp-controller="Account" asp-action="Login"
                   asp-route-returnurl="@Model.ReturnUrl">
-                <input type="text" asp-for="Username" name="username" placeholder="username">
-                <span asp-validation-for="Username" class="text-danger"></span>
-                <input type="password" asp-for="Password" name="password" placeholder="password">
-                <span asp-validation-for="Password" class="text-danger"></span>
-                <input type="submit" name="" value="Login">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Name</label>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Email</label>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-right">Login</button>
+                <div class="clearfix"></div>
             </form>
-
         </div>
-
     </div>
-
-
-</div></div>
-    </section>
-
- 
 </div>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

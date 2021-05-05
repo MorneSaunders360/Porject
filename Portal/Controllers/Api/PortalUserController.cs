@@ -19,6 +19,11 @@ namespace Portal.Controllers.Api
         public Entities.Models.PortalUser GetItemByName(string Email)
         {
             return LogicLayer.Logic.UOW.PortalUserLogic.GetItemByName(Email);
+        }   
+        [HttpGet("GetItemById/{PortalUserId}")]
+        public Entities.Models.PortalUser GetItemById(int PortalUserId)
+        {
+            return LogicLayer.Logic.UOW.PortalUserLogic.GetItemById(PortalUserId);
         } 
         [HttpPost]
         public Entities.Models.PortalUser SaveItem(Entities.Models.PortalUser model)

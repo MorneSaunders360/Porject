@@ -6,102 +6,81 @@
     var CurrentUser = portalUserController.GetItemByName(User.Identity.Name);
 
 }
-<breadcrumb></breadcrumb>
-<hr />
 
-<div class="tabset">
+<div class="col-md-8">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">@Model.PortalDevice.Name</h4>
+            <p class="card-category">Edit your Device</p>
+        </div>
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="Edit">
+                @Html.HiddenFor(x => x.PortalDeviceId)
+                @Html.HiddenFor(x => x.Id)
 
-    <input type="radio" name="tabset" id="Device" aria-controls="Device" checked>
-    <label for="Device">Device</label>
-    @if (Model.PortalDeviceId > 0)
-    {
-        @*<input type="radio" name="tabset" id="Schedule" aria-controls="Schedule">
-            <label for="Schedule">Schedule</label>*@
-    }
-
-
-    <div class="tab-panels">
-        <div id="Device" class="tab-panel">
-
-
-            <div class="col-md-4 panel panel-default-withline">
-                <div class="panel-body">
-                    <form asp-action="Edit">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        @if (CurrentUser != null)
-                        {
-                        <input type="hidden" name="PortalUserId" value="@CurrentUser.Id" />
-                        }
-
-                        @Html.HiddenFor(x => x.PortalDeviceId)
-                        @Html.HiddenFor(x => x.Id)
-
-                        @Html.HiddenFor(x => x.PortalDevice.Id)
-                        @Html.HiddenFor(x => x.PortalDevice.LastActiveTime)
-
-                        <div class="form-group">
-
-                            @Html.LabelFor(m => m.PortalDevice.Name, new { @class = "control-label" })
+                @Html.HiddenFor(x => x.PortalDevice.Id)
+                @Html.HiddenFor(x => x.PortalDevice.LastActiveTime)
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Name</label>
                             @Html.TextBoxFor(m => m.PortalDevice.Name, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.PortalDevice.Name, "", new { @class = "text-danger" })
                         </div>
-                        <div class="form-group">
-
-                            @Html.LabelFor(m => m.PortalDevice.Description, new { @class = "control-label" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Description</label>
                             @Html.TextBoxFor(m => m.PortalDevice.Description, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.PortalDevice.Description, "", new { @class = "text-danger" })
-
                         </div>
-                        <div class="form-group">
-
-                            @Html.LabelFor(m => m.PortalDevice.DeviceGIUD, new { @class = "control-label" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Description</label>
                             @Html.TextBoxFor(m => m.PortalDevice.DeviceGIUD, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.PortalDevice.DeviceGIUD, "", new { @class = "text-danger" })
-
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
                         <div class="form-group">
-                            @*@Html.LabelFor(m => m.PortalDevice.PortalDeviceStatusId, new { @class = "ccontrol-label" })
-            @Html.DropDownListFor(model => model.PortalDevice.PortalDeviceStatusId, PortalDeviceStatusList.Select(x => new SelectListItem
-                                                {
-                                                    Text = x.Name,
-                                                    Value = x.PortalDeviceStatusId.ToString(),
-                                                    Selected = (x.PortalDeviceStatusId == Model.PortalDevice.PortalDeviceStatusId)
-                                                }), htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PortalDevice.PortalDeviceStatusId, "", new { @class = "text-danger" })*@
-                        </div>
 
-                        @if (Model.PortalDeviceId > 0)
-                        {
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.PortalDevice.Shutdown, new { @class = "col-md-6 control-label" })
-                            <div class="col-md-6">
-                                @Html.CheckBoxFor(m => m.PortalDevice.Shutdown, new { @class = "option-input checkbox" })
-                            </div>
-                            @Html.ValidationMessageFor(m => m.PortalDevice.Shutdown, "", new { @class = "text-danger" })
-                        </div>
+           
 
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.PortalDevice.Restart, new { @class = "col-md-6 control-label" })
-                            <div class="col-md-6">
-                                @Html.CheckBoxFor(m => m.PortalDevice.Restart, new { @class = "option-input checkbox" })
+                            <div class="form-check">
+                              
+                                <label class="form-check-label">
+                                    @Html.LabelFor(m => m.PortalDevice.Restart, new { @class = "control-label" })
+                                    @Html.CheckBoxFor(m => m.PortalDevice.Restart, new { @class = "form-check-input" })
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+
                             </div>
                             @Html.ValidationMessageFor(m => m.PortalDevice.Restart, "", new { @class = "text-danger" })
                         </div>
-
-                        }
-                        <div class="form-group">
-                            <input type="submit" value="Save" class="btn btn-primary" />
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
+                <div class="clearfix"></div>
+            </form>
         </div>
-  
     </div>
-
-
 </div>
+
+
+
+
+
+  
+
+
+
 
 
 

@@ -1,0 +1,56 @@
+﻿@model Entities.Models.PortalUser
+
+
+<div class="col-md-8">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">@Model.Name</h4>
+            <p class="card-category">Edit your Device</p>
+        </div>
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="Edit">
+                @Html.HiddenFor(x => x.Id)
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Name</label>
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Email</label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+
+
+                            <div class="form-check">
+
+                                <label class="form-check-label">
+                                    @Html.LabelFor(m => m.AllowNotifications, new { @class = "control-label" })
+                                    @Html.CheckBoxFor(m => m.AllowNotifications, new { @class = "form-check-input" })
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+
+                            </div>
+                            @Html.ValidationMessageFor(m => m.AllowNotifications, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -101,7 +101,7 @@ namespace LogicLayer.Logic
             }
 
         }
-        public Entities.Models.PortalDevice SaveDeviceStatus(Entities.Models.PortalDevice model)
+        public Entities.Models.PortalDevice SaveDeviceStatusInActive(Entities.Models.PortalDevice model)
         {
             var result = GetItemBydeviceGIUD(model.DeviceGIUD);
             if (result != null)
@@ -109,8 +109,7 @@ namespace LogicLayer.Logic
 
                 result.Active = model.Active;
                 result.LastActiveTime = model.LastActiveTime;
-                result.Temp = model.Temp;
-                base.PortalDeviceRepo.SaveItem(result);
+             
 
                 if (model.PortalDeviceChildern.Count > 0)
                 {
@@ -125,7 +124,7 @@ namespace LogicLayer.Logic
 
                     }
                 }
-                if (result.Active == false)
+                if (result.Active == false && result.PortalNotificationSent==false)
                 {
                     var CurrentUser = Logic.UOW.PortalUserDeviceLogic.GetItemByPortalDeviceId(result.Id);
                     if (Logic.UOW.PortalNotificationLogic.GetItemList(CurrentUser.PortalUserId, CurrentUser.PortalDeviceId).Count == 0)
@@ -141,19 +140,53 @@ namespace LogicLayer.Logic
                             Logic.UOW.PortalNotificationLogic.SaveItem(new Entities.Models.PortalNotification { PortalUserId = CurrentUser.PortalUserId, Name = model.Name, Description = body, NotificationTypeId = 2, PortalDeviceId = CurrentUser.PortalDeviceId });
 
                         }
-
-                    }
-                
+                        result.PortalNotificationSent = true;
+                    }                
                 }
-                else
+                base.PortalDeviceRepo.SaveItem(result);
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+
+
+        } 
+        public Entities.Models.PortalDevice SaveDeviceStatus(Entities.Models.PortalDevice model)
+        {
+            var result = GetItemBydeviceGIUD(model.DeviceGIUD);
+            if (result != null)
+            {
+
+                result.Active = model.Active;
+                result.LastActiveTime = model.LastActiveTime;
+                result.PortalNotificationSent = model.PortalNotificationSent;
+                result.Temp = model.Temp;
+                base.PortalDeviceRepo.SaveItem(result);
+                if (result.Active)
                 {
                     var CurrentUser = Logic.UOW.PortalUserDeviceLogic.GetItemByPortalDeviceId(result.Id);
-                    foreach (var item in Logic.UOW.PortalNotificationLogic.GetItemList(CurrentUser.PortalUserId, CurrentUser.PortalDeviceId).Where(x=>x.NotificationTypeId==1))
+                    foreach (var item in Logic.UOW.PortalNotificationLogic.GetItemList(CurrentUser.PortalUserId, CurrentUser.PortalDeviceId))
                     {
-                        item.SoftDelete = false;
+                        item.SoftDelete = true;
                         Logic.UOW.PortalNotificationLogic.SaveItem(item);
                     }
                 }
+                if (model.PortalDeviceChildern.Count > 0)
+                {
+                    foreach (var item in model.PortalDeviceChildern)
+                    {
+                        var Device = base.PortalDeviceRepo.GetItemFiltered(new { DeviceGIUD = model.DeviceGIUD, Name = item.Name }).FirstOrDefault();
+                        if (Device != null)
+                        {
+                            Device.Temp = item.Temp;
+                            base.PortalDeviceRepo.SaveItem(Device);
+                        }
+
+                    }
+                }
+
                 return result;
             }
             else

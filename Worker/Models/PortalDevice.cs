@@ -15,8 +15,8 @@ namespace Worker.Models
 
         public string DeviceGIUD { get; set; }
         public bool Active { get; set; }
-        public bool ErrorMail { get; set; }
         public bool EmailNotification { get; set; }
+        public bool PortalNotificationSent { get; set; }
         public bool Restart { get; set; }
         public bool Shutdown { get; set; }
         public string Temp { get; set; }

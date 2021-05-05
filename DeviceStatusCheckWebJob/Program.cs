@@ -26,7 +26,8 @@ namespace DeviceStatusCheckWebJob
                 if (ts.TotalMilliseconds > 10)
                 {
                     item.PortalDevice.Active = false;
-                    LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(item.PortalDevice);
+                    LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatusInActive(item.PortalDevice);
+
                 }
 
             }

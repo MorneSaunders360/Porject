@@ -13,7 +13,3 @@ C:\Users\morne\source\repos\Porject\PortalDB\bin\Debug\PortalDB.pdb
 C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\PortalDB.dll
 C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\PortalDB.pdb
 C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\PortalDB.sqlprojAssemblyReference.cache
-C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\Model.xml
-C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\refactor.xml
-C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\postdeploy.sql
-C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\predeploy.sql

@@ -77,6 +77,7 @@ namespace Worker
             PortalDevice.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
             PortalDevice.LastActiveTime = DateTime.Now;
             PortalDevice.Active = true;
+            PortalDevice.PortalNotificationSent = false;
             PortalUserDevice.PortalDevice = PortalDevice;
             PortalUserDevice.PortalDevice.PortalDeviceChildern = new List<Models.PortalDevice>();
             foreach (var item in graphicsCardList())
