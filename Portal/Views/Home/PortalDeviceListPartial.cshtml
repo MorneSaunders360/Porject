@@ -7,6 +7,8 @@
     Portal.Controllers.Api.PortalNotificationController PortalNotificationController = new Portal.Controllers.Api.PortalNotificationController();
     portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id);
     string PanelColor = "White";
+    Portal.Controllers.Api.PortalUserOrganizationController portalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
+    var OrganizationList = portalUserOrganizationController.GetItemsByPortalUserId(CurrentUser.Id);
 
 }
 @foreach (var item in PortalNotificationController.GetItemListActivePortal())
@@ -28,6 +30,29 @@
     }
 
 }
+<div class="row">
+    @foreach (var item in OrganizationList)
+    {
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">store</i>
+                    </div>
+                    <p class="card-category">Organization</p>
+                    <h3 class="card-title">
+                        @item.Name
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <button type="button" onclick="copyToClipboard('@item.Name')" class="btn btn-primary pull-right">Copy</button>
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>
 <div class="row">
     @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
     {
@@ -61,37 +86,61 @@
                     @item.PortalDevice.Name
                 </h3>
             </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <button type="button" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')" class="btn btn-primary pull-right">Restart</button>
+                    <button type="button" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')" class="btn btn-primary pull-right">Shutdown</button>
+                </div>
+            </div>
             @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
             {
                 <div class="card-footer">
                     <div class="stats">
 
                         <div><label>@ChildDevice.Name&nbsp;</label><label></label></div>
-                        @if (int.Parse(ChildDevice.Temp) >80)
+                        @if (int.Parse(ChildDevice.Temp) > 80)
                         {
-                        <a style="font-size:medium" class="danger-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            <a style="font-size:medium" class="danger-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
                         }
-                        else if (int.Parse(ChildDevice.Temp)>60)
+                        else if (int.Parse(ChildDevice.Temp) > 60)
                         {
-                        <a style="font-size:medium" class="warning-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            <a style="font-size:medium" class="warning-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
                         }
                         else
                         {
-                        <a style="font-size:medium;" class="success-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            <a style="font-size:medium;" class="success-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
                         }
 
-                        
+
 
 
                     </div>
 
 
-                    <div style="position: absolute;top: 10px;right: 138px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-undo pointer"></label></div>
-                    <div style="position: absolute;top: 10px;right: 165px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-power-off pointer"></label></div>
+                    @*<div style="position: absolute;top: 10px;right: 138px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-undo pointer"></label></div>
+                <div style="position: absolute;top: 10px;right: 165px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-power-off pointer"></label></div>*@
                 </div>
+
             }
-            </div>
+
+        </div>
     </div>
     }
 
 </div>
+<script>
+    function copyToClipboard(text) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(text).select();
+        $.notify({
+            // options
+            message: $temp.value + ' - Copied to clipboard'
+        }, {
+            // settings
+            type: 'info'
+        });
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>

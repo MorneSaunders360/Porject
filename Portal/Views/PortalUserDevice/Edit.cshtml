@@ -1,9 +1,7 @@
 ﻿@model Entities.Models.PortalUserDevice
-@using Microsoft.AspNetCore.Identity
 @{
     ViewData["Title"] = "Edit";
-    Portal.Controllers.Api.PortalUserController portalUserController = new Portal.Controllers.Api.PortalUserController();
-    var CurrentUser = portalUserController.GetItemByName(User.Identity.Name);
+
 
 }
 

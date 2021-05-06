@@ -16,10 +16,6 @@ namespace LogicLayer.Logic
         public Entities.Models.PortalUser GetItemById(int PortalUserId)
         {
             var user = base.PortalUserRepo.GetItemById(PortalUserId);
-            if (user!=null)
-            {
-                user.PortalUserOrganization = Logic.UOW.PortalUserOrganizationLogic.GetItemByPortalUserId(PortalUserId);
-            }
             return user;
         } 
         public Entities.Models.PortalUser GetItemByName(string Email)

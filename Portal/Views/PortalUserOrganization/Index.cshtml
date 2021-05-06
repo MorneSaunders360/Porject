@@ -1,0 +1,52 @@
+﻿@{
+    Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+    List<Entities.Models.PortalUserOrganization> PortalUserOrganizationList = new List<Entities.Models.PortalUserOrganization>();
+    Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+    CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+    Portal.Controllers.Api.PortalUserOrganizationController PortalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
+    PortalUserOrganizationList = PortalUserOrganizationController.GetItemsByPortalUserId(CurrentUser.Id);
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">User Device</h4>
+                    <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" onclick="location.href='/PortalUserOrganization/Edit?PortalUserOrganizationId=0'" class="btn btn-primary fa-pull-left">Add</button>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>Commands</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in PortalUserOrganizationList)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <div style="width:35px;height:35px;display:inline-block;font-size: 20px;" class="pointer" onclick="location.href='/PortalUserOrganization/Edit?PortalUserOrganizationId=@item.Id'"><a class="fas fa-edit"></a></div>
+
+                                            </div>
+                                        </td>
+                                        <td>@item.Name</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

@@ -41,7 +41,6 @@ namespace Portal.Controllers
         }
 
 
-        [Breadcrumb("Edit", FromAction = "Index")]
         [HttpGet]
         public ActionResult Edit(int PortalUserDeviceId)
         {

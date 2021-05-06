@@ -31,15 +31,6 @@
                 </div>    
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Organization Name</label>
-                            @Html.TextBoxFor(m => m.PortalUserOrganization.Name, new { @class = "form-control" })
-                            <button type="button" onclick="copy()" class="btn btn-primary pull-right">Copy</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
                         <div class="form-group">
 
 
@@ -65,25 +56,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function copy() {
-        /* Get the text field */
-        var copyText = document.getElementById("PortalUserOrganization_Name");
-
-        /* Select the text field */
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-        /* Copy the text inside the text field */
-        document.execCommand("copy");
-
-           $.notify({
-                // options
-                  message: copyText.value +' - Copied to clipboard'
-            }, {
-                // settings
-                type: 'info'
-            });
-    }
-</script>

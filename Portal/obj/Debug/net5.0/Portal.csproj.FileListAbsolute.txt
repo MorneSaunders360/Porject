@@ -423,3 +423,5 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\ref\Portal.dll
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.pdb
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.genruntimeconfig.cache
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUser\Edit.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUserOrganization\Edit.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUserOrganization\Index.cshtml.g.cs

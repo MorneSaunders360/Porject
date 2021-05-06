@@ -12,9 +12,22 @@ namespace LogicLayer.Logic
         {
 
         }
+        public List<Entities.Models.PortalUserOrganization> GetItemsByPortalUserId(int PortalUserId)
+        {
+            return base.PortalUserOrganizationRepo.GetItemFiltered(new { PortalUserId= PortalUserId }).ToList();
+        }  
         public Entities.Models.PortalUserOrganization GetItemByPortalUserId(int PortalUserId)
         {
             return base.PortalUserOrganizationRepo.FindItem(new { PortalUserId= PortalUserId });
+        } 
+        public Entities.Models.PortalUserOrganization GetItemById(int Id)
+        {
+            var PortalUserOrganization = base.PortalUserOrganizationRepo.GetItemById(Id);
+            if (PortalUserOrganization==null)
+            {
+                PortalUserOrganization = new();
+            }
+            return PortalUserOrganization;
         }
         public Entities.Models.PortalUserOrganization GetItemByOrganizationName(string Name)
         {

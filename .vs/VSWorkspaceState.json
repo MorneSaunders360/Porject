@@ -1,16 +1,17 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Entities",
+    "\\Entities\\Models",
     "\\Portal",
+    "\\PortalDB",
+    "\\Portal\\Controllers\\Api",
     "\\Portal\\Views",
-    "\\Portal\\Views\\Home",
-    "\\Portal\\Views\\PortalUserDevice",
+    "\\Portal\\Views\\PortalUserOrganization",
     "\\Portal\\Views\\Shared",
-    "\\Portal\\wwwroot",
-    "\\Portal\\wwwroot\\css",
-    "\\Portal\\wwwroot\\js",
-    "\\Portal\\wwwroot\\js\\jquery-confirm"
+    "\\RepoLayer",
+    "\\RepoLayer\\Repo"
   ],
-  "SelectedNode": "\\Portal\\Views\\Home\\PortalDeviceListPartial.cshtml",
+  "SelectedNode": "\\Portal\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }
