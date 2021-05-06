@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Entities",
-    "\\Entities\\Models",
+    "\\LogicLayer",
+    "\\LogicLayer\\Logic",
     "\\Portal",
-    "\\PortalDB",
-    "\\Portal\\Controllers\\Api",
+    "\\Portal\\Properties\\PublishProfiles",
     "\\Portal\\Views",
-    "\\Portal\\Views\\PortalUserOrganization",
+    "\\Portal\\Views\\Home",
     "\\Portal\\Views\\Shared",
     "\\RepoLayer",
     "\\RepoLayer\\Repo"
   ],
-  "SelectedNode": "\\Portal\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\Portal\\Views\\Home\\PortalDeviceListPartial.cshtml",
   "PreviewInSolutionExplorer": false
 }
