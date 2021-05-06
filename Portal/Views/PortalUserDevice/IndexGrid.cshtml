@@ -33,8 +33,8 @@
                                     <tr>
                                         <td>
                                             <div>
-                                                <div style="width:35px;height:35px;display:inline-block" onclick="location.href='/PortalUserDevice/Edit?PortalUserDeviceId=@item.Id'"><a class="fas fa-edit"></a></div>
-                                                <div style="width:35px;height:35px;display:inline-block" onclick=" DisplayMessage('Are you sure you want to delete : @item.PortalDevice.Name','Delete',1,'DeletePortalUserDevice(@item.Id)')"><a class="fas fa-trash-alt"></a></div>
+                                                <div style="width:35px;height:35px;display:inline-block;font-size: 20px;" class="pointer" onclick="location.href='/PortalUserDevice/Edit?PortalUserDeviceId=@item.Id'"><a class="fas fa-edit"></a></div>
+                                                <div style="width: 35px; height: 35px; display: inline-block; font-size: 20px;" class="pointer" onclick=" DisplayMessage('Are you sure you want to delete : @item.PortalDevice.Name','Delete',1,'DeletePortalUserDevice(@item.Id)')"><a class="fas fa-trash-alt"></a></div>
                                             </div>
                                         </td>
                                         <td>@item.PortalDevice.Name</td>

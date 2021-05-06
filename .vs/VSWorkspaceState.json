@@ -11,6 +11,6 @@
     "\\Portal\\wwwroot\\js",
     "\\Portal\\wwwroot\\js\\jquery-confirm"
   ],
-  "SelectedNode": "\\Portal\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\Portal\\Views\\Home\\PortalDeviceListPartial.cshtml",
   "PreviewInSolutionExplorer": false
 }

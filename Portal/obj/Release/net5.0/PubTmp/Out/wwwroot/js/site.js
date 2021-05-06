@@ -22,15 +22,7 @@ function callGenAjax(ajaxType, ajaxUrl, Async, ajaxInputData) {
     return outputData;
 }
 
-function OpenLogin() {
-    $("#LogInDiv").show();;
-    var ajaxType = "Get";
-    var ajaxUrl = "/Account/Login";
-    var ajaxInputData = "";
-    var result = callGenAjax(ajaxType, ajaxUrl, ajaxInputData, false);
-    $("#LogInDiv").html(result);
 
-}
 
 
 // START CLOCK SCRIPT

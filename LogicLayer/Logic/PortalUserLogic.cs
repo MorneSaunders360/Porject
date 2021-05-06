@@ -15,7 +15,12 @@ namespace LogicLayer.Logic
         } 
         public Entities.Models.PortalUser GetItemById(int PortalUserId)
         {
-            return base.PortalUserRepo.GetItemById(PortalUserId);
+            var user = base.PortalUserRepo.GetItemById(PortalUserId);
+            if (user!=null)
+            {
+                user.PortalUserOrganization = Logic.UOW.PortalUserOrganizationLogic.GetItemByPortalUserId(PortalUserId);
+            }
+            return user;
         } 
         public Entities.Models.PortalUser GetItemByName(string Email)
         {
@@ -24,7 +29,16 @@ namespace LogicLayer.Logic
         public Entities.Models.PortalUser SaveItem(Entities.Models.PortalUser model)
         {
             var portalUser = base.PortalUserRepo.SaveItem(model);
-            Logic.UOW.PortalUserOrganizationLogic.SaveItem(new Entities.Models.PortalUserOrganization { PortalUserId = portalUser.Id });
+            if (model.PortalUserOrganization == null)
+            {
+                model.PortalUserOrganization = new Entities.Models.PortalUserOrganization {PortalUserId = portalUser.Id };
+            }
+            else
+            {
+                model.PortalUserOrganization.PortalUserId = portalUser.Id;
+            }
+
+            Logic.UOW.PortalUserOrganizationLogic.SaveItem(model.PortalUserOrganization);
             return portalUser;
         }  
     

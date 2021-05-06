@@ -10,7 +10,7 @@ namespace DeviceStatusCheckWebJob
         static void Main(string[] args)
         {
             timer = new System.Timers.Timer();
-            timer.Interval = 10000;
+            timer.Interval = 60000;
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
             timer.Enabled = true;
@@ -23,7 +23,7 @@ namespace DeviceStatusCheckWebJob
             foreach (var item in PortalDeviceList)
             {
                 TimeSpan ts = DateTime.Now - item.PortalDevice.LastActiveTime;
-                if (ts.TotalMilliseconds > 10)
+                if (ts.TotalMilliseconds > 30)
                 {
                     item.PortalDevice.Active = false;
                     LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatusInActive(item.PortalDevice);
