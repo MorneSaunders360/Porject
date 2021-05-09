@@ -16,13 +16,7 @@
            
             LoadPortalUserDevice();
         });
-        function DeletePortalUserDevice(PortalUserDeviceId) {
-            var ajaxType = "Get";
-            var ajaxUrl = "/PortalUserDevice/DeletePortalUserDevice?PortalUserDeviceId=" + PortalUserDeviceId;
-             callGenAjax(ajaxType, ajaxUrl, false);
-            LoadPortalUserDevice();
 
-        }
         function RestartPortalDevice(PortalDeviceId) {
             var ajaxType = "Get";
             var ajaxUrl = "/PortalDevice/RestartPortalDevice?PortalDeviceId=" + PortalDeviceId;

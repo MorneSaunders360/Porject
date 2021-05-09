@@ -60,3 +60,12 @@
 </div>
 
 
+<script>
+
+    function DeletePortalUserDevice(PortalUserDeviceId) {
+        var ajaxType = "Get";
+        var ajaxUrl = "/PortalUserDevice/DeletePortalUserDevice?PortalUserDeviceId=" + PortalUserDeviceId;
+        callGenAjax(ajaxType, ajaxUrl, false);
+
+    }
+</script>

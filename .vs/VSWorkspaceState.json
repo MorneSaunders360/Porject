@@ -4,7 +4,6 @@
     "\\LogicLayer",
     "\\LogicLayer\\Logic",
     "\\Portal",
-    "\\Portal\\Properties\\PublishProfiles",
     "\\Portal\\Views",
     "\\Portal\\Views\\Home",
     "\\Portal\\Views\\Shared",

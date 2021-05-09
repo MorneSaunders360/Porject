@@ -1,0 +1,9 @@
+C:\Users\morne\source\repos\Porject\PortalDB\bin\Release\PortalDB.dacpac
+C:\Users\morne\source\repos\Porject\PortalDB\bin\Release\PortalDB.dll
+C:\Users\morne\source\repos\Porject\PortalDB\bin\Release\PortalDB.pdb
+C:\Users\morne\source\repos\Porject\PortalDB\obj\Release\Model.xml
+C:\Users\morne\source\repos\Porject\PortalDB\obj\Release\refactor.xml
+C:\Users\morne\source\repos\Porject\PortalDB\obj\Release\postdeploy.sql
+C:\Users\morne\source\repos\Porject\PortalDB\obj\Release\predeploy.sql
+C:\Users\morne\source\repos\Porject\PortalDB\obj\Release\PortalDB.dll
+C:\Users\morne\source\repos\Porject\PortalDB\obj\Release\PortalDB.pdb

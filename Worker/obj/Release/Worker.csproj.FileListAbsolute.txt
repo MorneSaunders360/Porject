@@ -12,3 +12,12 @@ C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.csproj.CoreCompile
 C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.csproj.CopyComplete
 C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.exe
 C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.pdb
+C:\Users\morne\source\repos\Porject\Worker\bin\Release\HidSharp.dll
+C:\Users\morne\source\repos\Porject\Worker\bin\Release\OpenHardwareMonitorLib.dll
+C:\Users\morne\source\repos\Porject\Worker\bin\Release\HidSharp.pdb
+C:\Users\morne\source\repos\Porject\Worker\bin\Release\HidSharp.xml
+C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.TrustInfo.xml
+C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.exe.manifest
+C:\Users\morne\source\repos\Porject\Worker\bin\Release\Worker.exe.manifest
+C:\Users\morne\source\repos\Porject\Worker\bin\Release\Worker.application
+C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.application

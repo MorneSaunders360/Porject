@@ -1,6 +1,7 @@
-﻿using LibreHardwareMonitor.Hardware;
+﻿
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using OpenHardwareMonitor.Hardware;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace Worker
 {
     public partial class Worker : Form
     {
+        Computer computer;
         string BaseUrl = "https://portaldevice.azurewebsites.net";
         //string BaseUrl = "https://localhost:44363";
         static RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -133,7 +135,7 @@ namespace Worker
                                     {
                                         model.PortalDevice.Shutdown = false;
                                         await client.PostAsync($"{BaseUrl}/Api/PortalDevice/SaveItem/", new StringContent(JsonConvert.SerializeObject(model.PortalDevice), Encoding.UTF8, "application/json"));
-                                        Environment.Exit(0);
+                                        Process.Start("shutdown", "/s /t 0");
                                     }
                                     else if (model.PortalDevice.Restart)
                                     {
@@ -320,13 +322,13 @@ namespace Worker
                 UpdateVisitor updateVisitor = new UpdateVisitor();
                 Computer computer = new Computer();
                 computer.Open();
-                computer.IsGpuEnabled = true;
+                computer.CPUEnabled = true;
                 computer.Accept(updateVisitor);
                 foreach (IHardware hardware in computer.Hardware)
                 {
                     Models.PortalDevice portalDevice = new Models.PortalDevice();
 
-                    if (hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAmd)
+                    if (hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAti)
                     {
                         portalDevice.Name = hardware.Name;
 
@@ -336,12 +338,25 @@ namespace Worker
                         if (sensor.SensorType == SensorType.Temperature)
                         {
                             portalDevice.Temp = sensor.Value.ToString();
+
+                            //Invoke(new Action(async () =>
+                            //{
+
+                            //    bunifuTextbox1.text = sensor.Value.ToString();
+
+                            //}));
+                        }
+                        if (sensor.SensorType == SensorType.Power)
+                        {
+                            portalDevice.Power = sensor.Value.ToString();
+                           
+
                         }
 
                     }
                     graphicsCardList.Add(portalDevice);
                 }
-                computer.Close();
+ 
             }
             catch (Exception)
             {
