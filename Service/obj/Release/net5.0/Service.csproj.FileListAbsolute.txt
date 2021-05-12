@@ -9,3 +9,4 @@ C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\Service.csproj.Co
 C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\Service.dll
 C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\ref\Service.dll
 C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\Service.pdb
+C:\Users\Morne\source\repos\Porject\Service\obj\Release\net5.0\Service.csprojAssemblyReference.cache

@@ -36,7 +36,8 @@ namespace Worker
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            timer = new System.Timers.Timer();
+            graphicsCardList();
+               timer = new System.Timers.Timer();
             timer.Interval = 2500;
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
@@ -271,6 +272,7 @@ namespace Worker
             PortalUserDevice.PortalDevice = new Models.PortalDevice();
             PortalUserDevice.SoftDelete = false;
             PortalUserDevice.PortalDevice.DeviceGIUD = DeviceId();
+            PortalUserDevice.PortalDevice.Name = System.Environment.MachineName;
             PortalUserDevice.PortalDevice.LastActiveTime = DateTime.Now;
             PortalUserDevice.PortalUserId = Properties.Settings.Default.PortalUserId;
             PortalUserDevice.PortalDevice.PortalDeviceChildern = new List<Models.PortalDevice>();
@@ -323,16 +325,13 @@ namespace Worker
                 Computer computer = new Computer();
                 computer.Open();
                 computer.GPUEnabled = true;
+                computer.CPUEnabled = true;
                 computer.Accept(updateVisitor);
                 foreach (IHardware hardware in computer.Hardware)
                 {
                     Models.PortalDevice portalDevice = new Models.PortalDevice();
 
-                    if (hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAti)
-                    {
-                        portalDevice.Name = hardware.Name;
-
-                    }
+                    portalDevice.Name = hardware.Name;
                     foreach (ISensor sensor in hardware.Sensors)
                     {
                         if (sensor.SensorType == SensorType.Temperature)
@@ -343,11 +342,13 @@ namespace Worker
                         }
                         if (sensor.SensorType == SensorType.Power)
                         {
-                            portalDevice.Power = sensor.Value.ToString();
+                            portalDevice.Power=sensor.Value.ToString();
 
                         }
 
+
                     }
+ 
                     graphicsCardList.Add(portalDevice);
                 }
  

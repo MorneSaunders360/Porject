@@ -1,15 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\LogicLayer",
-    "\\LogicLayer\\Logic",
-    "\\Portal",
-    "\\Portal\\Views",
-    "\\Portal\\Views\\Home",
-    "\\Portal\\Views\\Shared",
-    "\\RepoLayer",
-    "\\RepoLayer\\Repo"
+    ""
   ],
-  "SelectedNode": "\\Portal\\Views\\Home\\PortalDeviceListPartial.cshtml",
+  "SelectedNode": "\\Portal.sln",
   "PreviewInSolutionExplorer": false
 }

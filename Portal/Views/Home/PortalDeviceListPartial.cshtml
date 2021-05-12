@@ -13,9 +13,9 @@
 }
 @foreach (var item in PortalNotificationController.GetItemListActivePortal())
 {
-@if (CurrentUser.AllowNotifications)
+    @if (CurrentUser.AllowNotifications)
     {
-<script>
+        <script>
             $.notify({
                 // options
                 message: '@item.Name - Offline'
@@ -24,7 +24,7 @@
                 type: 'warning'
             });
 
-</script>
+        </script>
         item.SoftDelete = true;
         PortalNotificationController.SaveItem(item);
     }
@@ -64,74 +64,80 @@
         {
             PanelColor = "card-header card-header-danger card-header-icon";
         }
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
 
-            <div class="@PanelColor pointer">
-                <div class="card-icon pointer" onclick="location.href='/PortalUserDevice/Edit?PortalUserDeviceId=@item.Id'">
-                    <i class="material-icons">cloud</i>
+                <div class="@PanelColor pointer">
+                    <div class="card-icon pointer" onclick="location.href='/PortalUserDevice/Edit?PortalUserDeviceId=@item.Id'">
+                        <i class="material-icons">cloud</i>
+                    </div>
+
+                    @if (item.PortalDevice.Active)
+                    {
+                        <p class="card-category">Online&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
+                    }
+                    else
+                    {
+                        <p class="card-category">Offline&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
+
+                    }
+
+                    <h3 class="card-title">
+                        @item.PortalDevice.Name
+                    </h3>
                 </div>
-
-                @if (item.PortalDevice.Active)
-                {
-                    <p class="card-category">Online&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
-                }
-                else
-                {
-                    <p class="card-category">Offline&nbsp;@item.PortalDevice.LastActiveTime.ToShortTimeString()</p>
-
-                }
-
-                <h3 class="card-title">
-                    @item.PortalDevice.Name
-                </h3>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <button type="button" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')" class="btn btn-primary pull-right">Restart</button>
-                    <button type="button" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')" class="btn btn-primary pull-right">Shutdown</button>
-                </div>
-            </div>
-            @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
-            {
                 <div class="card-footer">
                     <div class="stats">
+                        <button type="button" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')" class="btn btn-primary pull-right">Restart</button>
+                        <button type="button" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')" class="btn btn-primary pull-right">Shutdown</button>
+                    </div>
+                </div>
+                @{
+                    double Power = 0;
+                }
+                @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
+                {
+                    <div class="card-footer">
+                        <div class="stats">
 
-                        <div><label>@ChildDevice.Name&nbsp;</label><label></label></div>
-                        @if (int.Parse(ChildDevice.Temp) > 80)
-                        {
-                            <a style="font-size:medium" class="danger-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
-                        }
-                        else if (int.Parse(ChildDevice.Temp) > 60)
-                        {
-                            <a style="font-size:medium" class="warning-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
-                        }
-                        else
-                        {
-                            <a style="font-size:medium;" class="success-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
-                        }
+                            <div><label>@ChildDevice.Name&nbsp;</label><label></label></div>
+                            @if (int.Parse(ChildDevice.Temp) > 80)
+                            {
+                                <a style="font-size:medium" class="danger-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            }
+                            else if (int.Parse(ChildDevice.Temp) > 60)
+                            {
+                                <a style="font-size:medium" class="warning-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            }
+                            else
+                            {
+                                <a style="font-size:medium;" class="success-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
+                            }
+                            @{
+                                if (ChildDevice.Power != null)
+                                {
+                                    Power += double.Parse(ChildDevice.Power.Replace(',','.'));
+                                }
 
-                        @{
+                            }
 
+                        </div>
 
-                        }
 
 
                     </div>
 
 
-                    @*<div style="position: absolute;top: 10px;right: 138px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to restart : @item.PortalDevice.Name','Restart',1,'RestartPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-undo pointer"></label></div>
-                <div style="position: absolute;top: 10px;right: 165px;z-index:10" class="pointer" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')"><label class="fas fa-power-off pointer"></label></div>*@
-                </div>
-                if (ChildDevice.Power != null)
+                }
+                @if (Power != 0)
                 {
-                    <a style="font-size:medium;" class="success-link">&nbsp;<b>@ChildDevice.Power - W</b></a>
+                    <a style="font-size:medium;" class="success-link">&nbsp;<b>@Math.Round(Power) - W</b></a>
                 }
 
-            }
 
+
+            </div>
         </div>
-    </div>
     }
 
 </div>

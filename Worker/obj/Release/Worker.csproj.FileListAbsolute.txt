@@ -12,6 +12,6 @@ C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.csproj.CopyComplet
 C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.exe
 C:\Users\morne\source\repos\Porject\Worker\obj\Release\Worker.pdb
 C:\Users\morne\source\repos\Porject\Worker\bin\Release\HidSharp.dll
-C:\Users\morne\source\repos\Porject\Worker\bin\Release\OpenHardwareMonitorLib.dll
 C:\Users\morne\source\repos\Porject\Worker\bin\Release\HidSharp.pdb
 C:\Users\morne\source\repos\Porject\Worker\bin\Release\HidSharp.xml
+C:\Users\Morne\source\repos\Porject\Worker\obj\Release\Worker.csprojAssemblyReference.cache

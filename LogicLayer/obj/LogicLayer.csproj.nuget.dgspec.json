@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj": {}
+    "C:\\Users\\Morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
+    "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\obj\\",
+        "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\Morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -60,26 +58,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj": {
+    "C:\\Users\\Morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj",
         "projectName": "LogicLayer",
-        "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj",
-        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\morne\\source\\repos\\Porject\\LogicLayer\\obj\\",
+        "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\LogicLayer\\LogicLayer.csproj",
+        "packagesPath": "C:\\Users\\Morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Morne\\source\\repos\\Porject\\LogicLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -94,14 +90,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
+              "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj": {
-                "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj"
+              "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj": {
+                "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj"
               },
-              "C:\\Users\\morne\\source\\repos\\Porject\\Service\\Service.csproj": {
-                "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Service\\Service.csproj"
+              "C:\\Users\\Morne\\source\\repos\\Porject\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Service\\Service.csproj"
               }
             }
           }
@@ -140,26 +136,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj": {
+    "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
         "projectName": "RepoLayer",
-        "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
-        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\obj\\",
+        "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
+        "packagesPath": "C:\\Users\\Morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -174,8 +168,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
+              "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
               }
             }
           }
@@ -234,26 +228,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\morne\\source\\repos\\Porject\\Service\\Service.csproj": {
+    "C:\\Users\\Morne\\source\\repos\\Porject\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\morne\\source\\repos\\Porject\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\Morne\\source\\repos\\Porject\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\morne\\source\\repos\\Porject\\Service\\obj\\",
+        "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\Morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -294,7 +286,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
