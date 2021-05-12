@@ -16,8 +16,3 @@ C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.exe
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.pdb
 C:\Users\morne\source\repos\Porject\Worker\bin\Debug\OpenHardwareMonitorLib.dll
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csprojAssemblyReference.cache
-C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.TrustInfo.xml
-C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.exe.manifest
-C:\Users\morne\source\repos\Porject\Worker\bin\Debug\Worker.exe.manifest
-C:\Users\morne\source\repos\Porject\Worker\bin\Debug\Worker.application
-C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.application

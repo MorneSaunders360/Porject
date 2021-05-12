@@ -163,6 +163,7 @@ namespace LogicLayer.Logic
                 result.LastActiveTime = model.LastActiveTime;
                 result.PortalNotificationSent = model.PortalNotificationSent;
                 result.Temp = model.Temp;
+                result.Power = model.Power;
                 base.PortalDeviceRepo.SaveItem(result);
                 if (result.Active)
                 {
@@ -181,6 +182,7 @@ namespace LogicLayer.Logic
                         if (Device != null)
                         {
                             Device.Temp = item.Temp;
+                            Device.Power = item.Power;
                             base.PortalDeviceRepo.SaveItem(Device);
                         }
 

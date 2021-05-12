@@ -40,7 +40,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTFSWebJob", "NTFSWebJob\NT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Worker\Worker.csproj", "{2D1E2BA1-91FB-4141-B208-095F6CE1A29F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceStatusCheckWebJob", "DeviceStatusCheckWebJob\DeviceStatusCheckWebJob.csproj", "{A6B1696E-9833-4101-9ED1-19C9AFA84BA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceStatusCheckWebJob", "DeviceStatusCheckWebJob\DeviceStatusCheckWebJob.csproj", "{A6B1696E-9833-4101-9ED1-19C9AFA84BA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,6 @@ C:\Users\morne\source\repos\Porject\Service\bin\Release\net5.0\Service.deps.json
 C:\Users\morne\source\repos\Porject\Service\bin\Release\net5.0\Service.dll
 C:\Users\morne\source\repos\Porject\Service\bin\Release\net5.0\ref\Service.dll
 C:\Users\morne\source\repos\Porject\Service\bin\Release\net5.0\Service.pdb
-C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\Service.csprojAssemblyReference.cache
 C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\Service.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\Service.AssemblyInfoInputs.cache
 C:\Users\morne\source\repos\Porject\Service\obj\Release\net5.0\Service.AssemblyInfo.cs

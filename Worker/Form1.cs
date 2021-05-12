@@ -23,7 +23,6 @@ namespace Worker
 {
     public partial class Worker : Form
     {
-        Computer computer;
         string BaseUrl = "https://portaldevice.azurewebsites.net";
         //string BaseUrl = "https://localhost:44363";
         static RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -88,6 +87,7 @@ namespace Worker
                 PortalDeviceGPU.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
                 PortalDeviceGPU.Name = item.Name;
                 PortalDeviceGPU.Temp = item.Temp;
+                PortalDeviceGPU.Power = item.Power;
                 PortalDeviceGPU.LastActiveTime = DateTime.Now;
                 PortalUserDevice.PortalDevice.PortalDeviceChildern.Add(PortalDeviceGPU);
             }
@@ -322,7 +322,7 @@ namespace Worker
                 UpdateVisitor updateVisitor = new UpdateVisitor();
                 Computer computer = new Computer();
                 computer.Open();
-                computer.CPUEnabled = true;
+                computer.GPUEnabled = true;
                 computer.Accept(updateVisitor);
                 foreach (IHardware hardware in computer.Hardware)
                 {
@@ -339,17 +339,11 @@ namespace Worker
                         {
                             portalDevice.Temp = sensor.Value.ToString();
 
-                            //Invoke(new Action(async () =>
-                            //{
-
-                            //    bunifuTextbox1.text = sensor.Value.ToString();
-
-                            //}));
+                          
                         }
                         if (sensor.SensorType == SensorType.Power)
                         {
                             portalDevice.Power = sensor.Value.ToString();
-                           
 
                         }
 

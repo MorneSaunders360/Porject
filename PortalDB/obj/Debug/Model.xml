@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="PortalDB.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\MORNE\SOURCE\REPOS\PORJECT\PORTALDB\OBJ\RELEASE\PORTALDB.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\MORNE\SOURCE\REPOS\PORJECT\PORTALDB\OBJ\DEBUG\PORTALDB.DLL" />
 			<Metadata Name="AssemblyName" Value="PortalDB" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\morne\source\repos\Porject\PortalDB\obj\Release\PortalDB.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\morne\source\repos\Porject\PortalDB\obj\Debug\PortalDB.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
