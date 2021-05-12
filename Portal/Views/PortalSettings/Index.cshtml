@@ -1,0 +1,49 @@
+﻿@{
+
+    Portal.Controllers.Api.PortalSettingsController PortalSettingsController = new Portal.Controllers.Api.PortalSettingsController();
+   var PortalSettingsList = PortalSettingsController.GetItemList().Where(x => x.SoftDelete == false).ToList();
+ }
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Setting</h4>
+                    <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" onclick="location.href='/PortalSettings/Edit?PortalSettingId=0'" class="btn btn-primary fa-pull-left">Add</button>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>Commands</th>
+                                    <th>Name</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in PortalSettingsList)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <div style="width:35px;height:35px;display:inline-block;font-size: 20px;" class="pointer" onclick="location.href='/PortalSettings/Edit?PortalSettingId=@item.Id'"><a class="fas fa-edit"></a></div>
+                                                <div style="width: 35px; height: 35px; display: inline-block; font-size: 20px;" class="pointer" onclick="DisplayMessage('Are you sure you want to delete : @item.Name','Delete',1,'DeletePortalUserDevice(@item.Id)')"><a class="fas fa-trash-alt"></a></div>
+                                            </div>
+                                        </td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Value</td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

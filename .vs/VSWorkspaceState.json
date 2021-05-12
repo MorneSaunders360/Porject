@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Portal",
+    "\\Portal\\Views",
+    "\\Portal\\Views\\Account",
+    "\\Portal\\Views\\PortalDevice",
+    "\\Portal\\Views\\PortalSettings",
+    "\\Portal\\Views\\PortalUserOrganization",
+    "\\Portal\\Views\\Shared",
+    "\\RepoLayer",
+    "\\RepoLayer\\Repo"
   ],
-  "SelectedNode": "\\Portal.sln",
+  "SelectedNode": "\\Portal\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }

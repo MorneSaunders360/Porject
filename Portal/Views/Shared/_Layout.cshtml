@@ -42,6 +42,7 @@
                             </a>
                         </li>
                         Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+
                         Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
                         CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
                         Portal.Controllers.Api.PortalUserOrganizationController portalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
@@ -56,6 +57,13 @@
                             <a class="nav-link" href="/PortalUserOrganization/Index">
                                 <i class="material-icons">store</i>
                                 <p>Organization</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item" id="PortalSettings">
+                            <a class="nav-link" href="/PortalSettings/Index">
+                                <i class="material-icons">settings</i>
+                                <p>Settings</p>
                             </a>
                         </li>
 
@@ -85,23 +93,23 @@
                         <ul class="navbar-nav">
                             @if (User.Identity.IsAuthenticated)
                             {
-                            <li>
-                                <a class="nav-link" href="javascript:void(0)">Hello @User.Identity.Name!</a>
-                            </li>
-                            <li>
-                                <form method="post" asp-controller="Account" asp-action="Logout" asp-route-returnurl="/Home/Index" style=" margin: 0px; padding: 0px; width: auto; height: auto;">
-                                    <button type="submit" class="nav-link btn btn-link">Logout</button>
-                                </form>
-                            </li>
+                                <li>
+                                    <a class="nav-link" href="javascript:void(0)">Hello @User.Identity.Name!</a>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Account" asp-action="Logout" asp-route-returnurl="/Home/Index" style=" margin: 0px; padding: 0px; width: auto; height: auto;">
+                                        <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                    </form>
+                                </li>
                             }
                             else
                             {
-                            <li>
-                                <a class="nav-link" href="/Account/Login">Login</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/Account/Register">Register</a>
-                            </li>
+                                <li>
+                                    <a class="nav-link" href="/Account/Login">Login</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/Account/Register">Register</a>
+                                </li>
                             }
 
 
@@ -110,6 +118,7 @@
                     </div>
                 </div>
             </nav>
+
             <div id="LogInDiv"></div>
             <!-- End Navbar -->
             <div class="content">
@@ -119,6 +128,18 @@
             </div>
 
         </div>
+        @{
+            Portal.Controllers.Api.PortalSettingsController PortalSettingsController = new Portal.Controllers.Api.PortalSettingsController();
+            var PortalSettings = PortalSettingsController.GetItemByName("Site Maintenance");
+            if (PortalSettings.Value == "1")
+            {
+                <div class="warning-link" style="display: block;position: fixed;bottom: 0;width: 100%;text-align: center;z-index: 1000;">
+                    <a class="nav-link">Site Under Maintenance</a>
+
+                </div>
+            }
+
+        }
     </div>
     <!--   Core JS Files   -->
 
@@ -140,7 +161,7 @@
     <script>
         $(document).ready(function () {
 
-            if (location.href.indexOf("PortalUserDevice") > 0){
+            if (location.href.indexOf("PortalUserDevice") > 0) {
                 $('#PortalUserDevice').addClass('active');
             }
             else if (location.href.indexOf("PortalUserOrganization") > 0) {
@@ -149,11 +170,13 @@
             else if (location.href.indexOf("PortalUser") > 0) {
                 $('#PortalUser').addClass('active');
             }
-            
+            else if (location.href.indexOf("PortalSettings") > 0) {
+                $('#PortalSettings').addClass('active');
+            }
             else if (location.href.indexOf("/") > 0) {
                 $('#Home').addClass('active');
             }
-            });
+        });
     </script>
 
 

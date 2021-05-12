@@ -425,3 +425,5 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.genruntimecon
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUser\Edit.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUserOrganization\Edit.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUserOrganization\Index.cshtml.g.cs
+C:\Users\Morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalSettings\Edit.cshtml.g.cs
+C:\Users\Morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalSettings\Index.cshtml.g.cs

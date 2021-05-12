@@ -25,16 +25,13 @@ namespace LogicLayer.Logic
         public Entities.Models.PortalUser SaveItem(Entities.Models.PortalUser model)
         {
             var portalUser = base.PortalUserRepo.SaveItem(model);
-            if (model.PortalUserOrganization == null)
+            if (model.Id == 0)
             {
                 model.PortalUserOrganization = new Entities.Models.PortalUserOrganization {PortalUserId = portalUser.Id };
-            }
-            else
-            {
-                model.PortalUserOrganization.PortalUserId = portalUser.Id;
+                Logic.UOW.PortalUserOrganizationLogic.SaveItem(model.PortalUserOrganization);
             }
 
-            Logic.UOW.PortalUserOrganizationLogic.SaveItem(model.PortalUserOrganization);
+         
             return portalUser;
         }  
     
