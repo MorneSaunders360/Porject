@@ -1,0 +1,84 @@
+﻿@{
+    Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+    List<Entities.Models.PortalUserDevice> portalUserDeviceDashList = new List<Entities.Models.PortalUserDevice>();
+    Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+    CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+    Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
+    Portal.Controllers.Api.PortalNotificationController PortalNotificationController = new Portal.Controllers.Api.PortalNotificationController();
+    portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id);
+    Portal.Controllers.Api.PortalDeviceUsageController PortalDeviceUsageController = new Portal.Controllers.Api.PortalDeviceUsageController();
+
+
+}
+<div class="row">
+    @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
+    {
+        List<string> TempsList = new List<string>();
+        string res = "dailySalesChart" + @item.Id;
+        <div class="col-xl-4 col-lg-12">
+            <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    <div class="ct-chart" id="@res"></div>
+                </div>
+                <div class="card-body">
+                    @foreach (var items in item.PortalDevice.PortalDeviceChildern)
+                    {
+                        <h4 class="card-title">@items.Name</h4>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        @foreach (var itesm in item.PortalDevice.PortalDeviceChildern)
+        {
+            TempsList.Add(string.Join(",", PortalDeviceUsageController.GetItemByPortalDeviceId(itesm.Id).Select(x => x.Temps).ToArray().Reverse()));
+            TempsList = TempsList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+        }
+
+<script>
+            @{
+                string temp = "";
+            }
+
+
+
+    @foreach (var items in TempsList)
+    {
+        temp += "["+ @items + "],";
+
+    }
+                 if ($('#@res').length != 0) {
+                    dataDailySalesChart = {
+                        labels: [1,2,3,4,5,6,7,8,9,10],
+                        series: [
+                            @temp
+                        ]
+                    };
+
+                    optionsDailySalesChart = {
+                        lineSmooth: Chartist.Interpolation.cardinal({
+                            tension: 2
+                        }),
+                        fullWidth: true,
+                        low: 0,
+                        high: 125,
+                        chartPadding: {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0
+                        },
+                    }
+
+                   new Chartist.Line('#@res', dataDailySalesChart, optionsDailySalesChart);
+
+
+                }
+
+</script>
+    }
+
+
+
+</div>

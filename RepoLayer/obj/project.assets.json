@@ -8028,23 +8028,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Morne\\.nuget\\packages\\": {},
+    "C:\\Users\\morne\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
+      "projectUniqueName": "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
       "projectName": "RepoLayer",
-      "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
-      "packagesPath": "C:\\Users\\Morne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Morne\\source\\repos\\Porject\\RepoLayer\\obj\\",
+      "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\RepoLayer.csproj",
+      "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\morne\\source\\repos\\Porject\\RepoLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -8059,8 +8062,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\Morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
+            "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Entities\\Entities.csproj"
             }
           }
         }

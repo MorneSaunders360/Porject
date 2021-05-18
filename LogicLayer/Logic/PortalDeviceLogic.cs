@@ -164,6 +164,7 @@ namespace LogicLayer.Logic
                 result.PortalNotificationSent = model.PortalNotificationSent;
                 result.Temp = model.Temp;
                 result.Power = model.Power;
+          
                 base.PortalDeviceRepo.SaveItem(result);
                 if (result.Active)
                 {
@@ -183,6 +184,7 @@ namespace LogicLayer.Logic
                         {
                             Device.Temp = item.Temp;
                             Device.Power = item.Power;
+                            UOW.PortalDeviceUsageLogic.SaveItem(new Entities.Models.PortalDeviceUsage { PortalDeviceId = Device.Id, Power = item.Power, Temps = item.Temp, WhenCreated = DateTime.Now });
                             base.PortalDeviceRepo.SaveItem(Device);
                         }
 

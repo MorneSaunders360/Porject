@@ -55,13 +55,6 @@ namespace RepoLayer.Repo
             Worker.Close();
             return result.FirstOrDefault();
         }
-        public IEnumerable<T> GetItemFilteredSql(string Filtered)
-        {
-            var Worker = CRUD();
-            var result = Worker.GetList<T>(Filtered);
-            Worker.Close();
-            return result;
-        }
         public IEnumerable<T> GetSql(string Filtered)
         {
             var Worker = CRUD();

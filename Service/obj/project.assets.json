@@ -8,23 +8,26 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Morne\\.nuget\\packages\\": {},
+    "C:\\Users\\morne\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Morne\\Source\\Repos\\Porject\\Service\\Service.csproj",
+      "projectUniqueName": "C:\\Users\\morne\\source\\repos\\Porject\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "C:\\Users\\Morne\\Source\\Repos\\Porject\\Service\\Service.csproj",
-      "packagesPath": "C:\\Users\\Morne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Morne\\Source\\Repos\\Porject\\Service\\obj\\",
+      "projectPath": "C:\\Users\\morne\\source\\repos\\Porject\\Service\\Service.csproj",
+      "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\morne\\source\\repos\\Porject\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

@@ -14,5 +14,6 @@ namespace LogicLayer.Logic
         public static PortalUserOrganizationLogic PortalUserOrganizationLogic = new PortalUserOrganizationLogic();
         public static PortalNotificationLogic PortalNotificationLogic = new PortalNotificationLogic();
         public static PortalSettingsLogic PortalSettingsLogic = new PortalSettingsLogic();
+        public static PortalDeviceUsageLogic PortalDeviceUsageLogic = new PortalDeviceUsageLogic();
     }
 }

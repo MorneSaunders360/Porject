@@ -2,106 +2,164 @@
 @{
     ViewData["Title"] = "Edit";
 
-
+    Portal.Controllers.Api.PortalDeviceController portalDeviceController = new Portal.Controllers.Api.PortalDeviceController();
+    Portal.Controllers.Api.PortalDeviceUsageController PortalDeviceUsageController = new Portal.Controllers.Api.PortalDeviceUsageController();
+    var portalDevice = portalDeviceController.GetItemById(Model.PortalDeviceId);
+    List<string> TempsList = new List<string>();
 }
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">@Model.PortalDevice.Name</h4>
+                <p class="card-category">Edit your Device</p>
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form asp-action="Edit">
+                    @Html.HiddenFor(x => x.PortalDeviceId)
+                    @Html.HiddenFor(x => x.Id)
 
-<div class="col-md-8">
-    <div class="card">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title">@Model.PortalDevice.Name</h4>
-            <p class="card-category">Edit your Device</p>
+                    @Html.HiddenFor(x => x.PortalDevice.Id)
+                    @Html.HiddenFor(x => x.PortalDevice.LastActiveTime)
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Name</label>
+                                @Html.TextBoxFor(m => m.PortalDevice.Name, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Description</label>
+                                @Html.TextBoxFor(m => m.PortalDevice.Description, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Description</label>
+                                @Html.TextBoxFor(m => m.PortalDevice.DeviceGIUD, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+
+
+                                <div class="form-check">
+
+                                    <label class="form-check-label">
+                                        @Html.LabelFor(m => m.PortalDevice.Restart, new { @class = "control-label" })
+                                        @Html.CheckBoxFor(m => m.PortalDevice.Restart, new { @class = "form-check-input" })
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+
+                                </div>
+                                @Html.ValidationMessageFor(m => m.PortalDevice.Restart, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+
+
+                                <div class="form-check">
+
+                                    <label class="form-check-label">
+                                        @Html.LabelFor(m => m.PortalDevice.Shutdown, new { @class = "control-label" })
+                                        @Html.CheckBoxFor(m => m.PortalDevice.Shutdown, new { @class = "form-check-input" })
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+
+                                </div>
+                                @Html.ValidationMessageFor(m => m.PortalDevice.Shutdown, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Save</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
         </div>
-        <div class="card-body">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <form asp-action="Edit">
-                @Html.HiddenFor(x => x.PortalDeviceId)
-                @Html.HiddenFor(x => x.Id)
 
-                @Html.HiddenFor(x => x.PortalDevice.Id)
-                @Html.HiddenFor(x => x.PortalDevice.LastActiveTime)
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Name</label>
-                            @Html.TextBoxFor(m => m.PortalDevice.Name, new { @class = "form-control" })
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Description</label>
-                            @Html.TextBoxFor(m => m.PortalDevice.Description, new { @class = "form-control" })
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Description</label>
-                            @Html.TextBoxFor(m => m.PortalDevice.DeviceGIUD, new { @class = "form-control" })
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
+    </div>
+
+    <div class="col-xl-4 col-lg-12">
+        <div class="card card-chart">
+            <div class="card-header card-header-success">
+                <div class="ct-chart" id="dailySalesChart"></div>
+            </div>
+            <div class="card-body">
+                @foreach (var item in portalDevice.PortalDeviceChildern)
+                {
+                    <h4 class="card-title">@item.Name</h4>
+                }
 
 
-
-                            <div class="form-check">
-
-                                <label class="form-check-label">
-                                    @Html.LabelFor(m => m.PortalDevice.Restart, new { @class = "control-label" })
-                                    @Html.CheckBoxFor(m => m.PortalDevice.Restart, new { @class = "form-check-input" })
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                </label>
-
-                            </div>
-                            @Html.ValidationMessageFor(m => m.PortalDevice.Restart, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
-
-
-
-                            <div class="form-check">
-
-                                <label class="form-check-label">
-                                    @Html.LabelFor(m => m.PortalDevice.Shutdown, new { @class = "control-label" })
-                                    @Html.CheckBoxFor(m => m.PortalDevice.Shutdown, new { @class = "form-check-input" })
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                </label>
-
-                            </div>
-                            @Html.ValidationMessageFor(m => m.PortalDevice.Shutdown, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary pull-right">Save</button>
-                <div class="clearfix"></div>
-            </form>
+            </div>
         </div>
     </div>
+    @foreach (var item in portalDevice.PortalDeviceChildern)
+    {
+
+        TempsList.Add(string.Join(",", PortalDeviceUsageController.GetItemByPortalDeviceId(item.Id).Select(x => x.Temps).ToArray().Reverse()));
+    }
+
+    <script>
+    @{
+       string temp = "";
+
+   }
+    @foreach (var item in TempsList)
+    {
+        temp += "["+@item+"],";
+
+    }
+            setTimeout(() => {
+                if ($('#dailySalesChart').length != 0) {
+                    /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+
+                    dataDailySalesChart = {
+                        labels: [1,2,3,4,5,6,7,8,9,10],
+                        series: [
+                            @temp
+                        ]
+                    };
+
+                    optionsDailySalesChart = {
+                        lineSmooth: Chartist.Interpolation.cardinal({
+                            tension: 1
+                        }),
+                        low: 0,
+                        high: 100, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+                        chartPadding: {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0
+                        },
+                    }
+
+                   new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+
+
+                }
+            }, 1500);
+
+    </script>
 </div>
-
-
-
-
-
-  
-
-
-
-
-
 
 
 

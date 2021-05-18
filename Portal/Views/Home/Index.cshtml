@@ -1,10 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
 
-    @if (User != null && User.Identity.Name != null)
-    {
-        <div class="container-fluid" id="portalUserDeviceDashList"></div>
-    }
+@if (User != null && User.Identity.Name != null)
+{
+
+
+    <div class="container-fluid" id="portalUserDeviceDashList"></div>
+    <div id="PortalDeviceGraphsId"></div>
+}
 
 
 
@@ -13,8 +16,9 @@
 
     <script>
         $(document).ready(function () {
-           
+
             LoadPortalUserDevice();
+            LoadPortalDeviceGraphs();
         });
 
         function RestartPortalDevice(PortalDeviceId) {
@@ -27,7 +31,7 @@
         function ShutdownPortalDevice(PortalDeviceId) {
             var ajaxType = "Get";
             var ajaxUrl = "/PortalDevice/ShutdownPortalDevice?PortalDeviceId=" + PortalDeviceId;
-             callGenAjax(ajaxType, ajaxUrl, false);
+            callGenAjax(ajaxType, ajaxUrl, false);
             LoadPortalUserDevice();
 
         }
@@ -37,10 +41,21 @@
             var result = callGenAjax(ajaxType, ajaxUrl, false);
             $('#portalUserDeviceDashList').html(result);
         }
+        function LoadPortalDeviceGraphs() {
+            var ajaxType = "Get";
+            var ajaxUrl = "/PortalUserDevice/PortalDeviceGraphsPartial/";
+            var result = callGenAjax(ajaxType, ajaxUrl, false);
+            $('#PortalDeviceGraphsId').html(result);
+        }
         setInterval(() => {
             LoadPortalUserDevice();
+         
         }, 7500);
 
-    </script>
+        setInterval(() => {
+            LoadPortalDeviceGraphs();
+        }, 5000);
 
+    </script>
+    
 }

@@ -24,6 +24,12 @@ namespace Portal.Controllers
         {
             return PartialView("~/Views/Home/PortalDeviceListPartial.cshtml");
 
+        }  
+        [HttpGet]
+        public PartialViewResult PortalDeviceGraphsPartial()
+        {
+            return PartialView("~/Views/Home/PortalDeviceGraphs.cshtml");
+
         } 
         [HttpGet]
         public PartialViewResult IndexGrid()

@@ -9,6 +9,5 @@ namespace Entities.Models
         //FK
         public string AspNetId { get; set; }
         public bool AllowNotifications { get; set; }
-        public PortalUserOrganization PortalUserOrganization { get; set; }
     }
 }

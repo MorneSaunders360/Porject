@@ -1,14 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\LogicLayer",
+    "\\LogicLayer\\Logic",
     "\\Portal",
     "\\Portal\\Views",
     "\\Portal\\Views\\Home",
-    "\\Portal\\Views\\PortalDevice",
-    "\\Portal\\Views\\PortalSettings",
-    "\\Portal\\Views\\PortalUserOrganization",
     "\\Portal\\Views\\Shared",
-    "\\RepoLayer",
     "\\RepoLayer\\Repo"
   ],
   "SelectedNode": "\\Portal\\Views\\Shared\\_Layout.cshtml",

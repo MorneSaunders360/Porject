@@ -45,6 +45,7 @@ namespace LogicLayer.Logic
         {
 
             var device = LogicLayer.Logic.UOW.PortalDeviceLogic.SaveDeviceStatus(model.PortalDevice);
+       
             if (device != null)
             {
                 var result = base.PortalUserDeviceRepo.FindItem(new { PortalDeviceId = device.Id });

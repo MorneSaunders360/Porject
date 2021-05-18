@@ -427,3 +427,4 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUserOrganization\Index.cshtml.g.cs
 C:\Users\Morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalSettings\Edit.cshtml.g.cs
 C:\Users\Morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalSettings\Index.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\PortalDeviceGraphs.cshtml.g.cs

@@ -14,6 +14,7 @@ namespace LogicLayer.Logic
         public RepoLayer.Repo.PortalUserOrganizationRepo<T> PortalUserOrganizationRepo = new RepoLayer.Repo.PortalUserOrganizationRepo<T>();
         public RepoLayer.Repo.PortalNotificationRepo<T> PortalNotificationRepo = new RepoLayer.Repo.PortalNotificationRepo<T>();
         public RepoLayer.Repo.PortalSettingsRepo<T> PortalSettingsRepo = new RepoLayer.Repo.PortalSettingsRepo<T>();
+        public RepoLayer.Repo.PortalDeviceUsageRepo<T> PortalDeviceUsageRepo = new RepoLayer.Repo.PortalDeviceUsageRepo<T>();
         public Baselogic()
         {
                 

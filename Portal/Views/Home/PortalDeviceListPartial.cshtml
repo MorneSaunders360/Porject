@@ -8,9 +8,12 @@
     portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id);
     string PanelColor = "White";
     Portal.Controllers.Api.PortalUserOrganizationController portalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
+    Portal.Controllers.Api.PortalDeviceUsageController PortalDeviceUsageController = new Portal.Controllers.Api.PortalDeviceUsageController();
     var OrganizationList = portalUserOrganizationController.GetItemsByPortalUserId(CurrentUser.Id);
 
+
 }
+
 @foreach (var item in PortalNotificationController.GetItemListActivePortal())
 {
     @if (CurrentUser.AllowNotifications)
@@ -28,7 +31,6 @@
         item.SoftDelete = true;
         PortalNotificationController.SaveItem(item);
     }
-
 }
 <div class="row">
     @foreach (var item in OrganizationList)
@@ -56,6 +58,7 @@
 <div class="row">
     @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
     {
+
         if (item.PortalDevice.Active)
         {
             PanelColor = "card-header card-header-success card-header-icon";
@@ -116,7 +119,7 @@
                             @{
                                 if (ChildDevice.Power != null)
                                 {
-                                    Power += double.Parse(ChildDevice.Power.Replace(',','.'));
+                                    Power += double.Parse(ChildDevice.Power.Replace(',', '.'));
                                 }
 
                             }
@@ -141,6 +144,10 @@
     }
 
 </div>
+
+
+
+
 <script>
     function copyToClipboard(text) {
         var $temp = $("<input>");

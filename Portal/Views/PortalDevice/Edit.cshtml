@@ -1,12 +1,15 @@
 ﻿@model Entities.Models.PortalDevice
 
 @{
+    Portal.Controllers.Api.PortalDeviceUsageController portalDeviceUsageController = new Portal.Controllers.Api.PortalDeviceUsageController();
+    var portalDeviceUsageList = portalDeviceUsageController.GetItemByPortalDeviceId(Model.Id);
     ViewData["Title"] = "Edit";
 }
 
 <h4>PortalDevice</h4>
 <breadcrumb></breadcrumb>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">

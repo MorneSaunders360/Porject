@@ -495,5 +495,23 @@ namespace Worker
             panelLogIn.Visible = false;
             panelOrganization.Visible = true;
         }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void hideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState==FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Minimized;
+            }
+          
+        }
     }
 }
