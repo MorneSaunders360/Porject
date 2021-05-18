@@ -425,3 +425,5 @@ C:\Users\morne\source\repos\Porject\Portal\bin\Release\net5.0\libman.json
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUser\Edit.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUserOrganization\Edit.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUserOrganization\Index.cshtml.g.cs
+C:\Users\Morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalSettings\Edit.cshtml.g.cs
+C:\Users\Morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalSettings\Index.cshtml.g.cs

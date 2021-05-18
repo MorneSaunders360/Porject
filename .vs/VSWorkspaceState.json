@@ -3,7 +3,7 @@
     "",
     "\\Portal",
     "\\Portal\\Views",
-    "\\Portal\\Views\\Account",
+    "\\Portal\\Views\\Home",
     "\\Portal\\Views\\PortalDevice",
     "\\Portal\\Views\\PortalSettings",
     "\\Portal\\Views\\PortalUserOrganization",
