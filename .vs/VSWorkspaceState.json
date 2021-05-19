@@ -6,9 +6,8 @@
     "\\Portal",
     "\\Portal\\Views",
     "\\Portal\\Views\\Home",
-    "\\Portal\\Views\\Shared",
-    "\\RepoLayer\\Repo"
+    "\\Portal\\Views\\Shared"
   ],
-  "SelectedNode": "\\Portal\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\Portal\\Views\\Home\\PortalDeviceListPartial.cshtml",
   "PreviewInSolutionExplorer": false
 }

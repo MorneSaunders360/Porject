@@ -25,7 +25,4 @@ function callGenAjax(ajaxType, ajaxUrl, Async, ajaxInputData) {
 
 
 
-// START CLOCK SCRIPT
-
-
 

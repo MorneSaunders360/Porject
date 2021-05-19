@@ -401,7 +401,6 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Account\
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Account\Manage.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\PortalDeviceListPartial.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalDevice\Edit.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalDevice\Index.cshtml.g.cs
@@ -428,3 +427,6 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalUs
 C:\Users\Morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalSettings\Edit.cshtml.g.cs
 C:\Users\Morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalSettings\Index.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\PortalDeviceGraphs.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\PortalDeviceGraphsDiv.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\PortalDeviceListPartial.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalDeviceUsage\Index.cshtml.g.cs

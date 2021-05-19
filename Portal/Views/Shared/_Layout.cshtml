@@ -41,6 +41,13 @@
                                 <p>Device</p>
                             </a>
                         </li>
+
+                        <li class="nav-item" id="PortalDeviceUsage">
+                            <a class="nav-link" href="/PortalDeviceUsage/Index">
+                                <i class="material-icons">data_usage</i>
+                                <p>Device Usage</p>
+                            </a>
+                        </li>
                         Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
 
                         Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
@@ -151,6 +158,9 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Chartist JS -->
     <script src="~/lib/Bootstrap/chartist.min.js"></script>
+    <script src="~/js/chartist-plugin-legend/chartist-plugin-legend.min.js"></script>
+    <script src="~/chartist-plugin-pointlabels.js"></script>
+
     <!--  Notifications Plugin    -->
     <script src="~/lib/Bootstrap/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
@@ -166,6 +176,9 @@
             }
             else if (location.href.indexOf("PortalUserOrganization") > 0) {
                 $('#PortalUserOrganization').addClass('active');
+            }
+            else if (location.href.indexOf("PortalDeviceUsage") > 0) {
+                $('#PortalDeviceUsage').addClass('active');
             }
             else if (location.href.indexOf("PortalUser") > 0) {
                 $('#PortalUser').addClass('active');

@@ -1,4 +1,5 @@
 ﻿@{
+    string PanelColor = "White";
     Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
     List<Entities.Models.PortalUserDevice> portalUserDeviceDashList = new List<Entities.Models.PortalUserDevice>();
     Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
@@ -6,13 +7,16 @@
     Portal.Controllers.Api.PortalUserDeviceController portalUserDeviceController = new Portal.Controllers.Api.PortalUserDeviceController();
     Portal.Controllers.Api.PortalNotificationController PortalNotificationController = new Portal.Controllers.Api.PortalNotificationController();
     portalUserDeviceDashList = portalUserDeviceController.GetItemList(CurrentUser.Id);
-    string PanelColor = "White";
-    Portal.Controllers.Api.PortalUserOrganizationController portalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
     Portal.Controllers.Api.PortalDeviceUsageController PortalDeviceUsageController = new Portal.Controllers.Api.PortalDeviceUsageController();
+    Portal.Controllers.Api.PortalUserOrganizationController portalUserOrganizationController = new Portal.Controllers.Api.PortalUserOrganizationController();
     var OrganizationList = portalUserOrganizationController.GetItemsByPortalUserId(CurrentUser.Id);
 
-
 }
+
+
+
+
+
 
 @foreach (var item in PortalNotificationController.GetItemListActivePortal())
 {
@@ -125,9 +129,6 @@
                             }
 
                         </div>
-
-
-
                     </div>
 
 
@@ -144,23 +145,3 @@
     }
 
 </div>
-
-
-
-
-<script>
-    function copyToClipboard(text) {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val(text).select();
-        $.notify({
-            // options
-            message: text + ' - Copied to clipboard'
-        }, {
-            // settings
-            type: 'info'
-        });
-        document.execCommand("copy");
-        $temp.remove();
-    }
-</script>
