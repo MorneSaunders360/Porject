@@ -459,7 +459,7 @@ namespace Worker
                 if (connectionTimeout == 5)
                 {
 
-                    Process.Start("shutdown", "/r /t 0");
+                    //Process.Start("shutdown", "/r /t 0");
                 }
             }
         }

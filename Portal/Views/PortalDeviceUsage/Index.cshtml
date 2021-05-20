@@ -16,6 +16,7 @@
 <div id="PortalDeviceGraphsId"></div>
 <script>
     $(document).ready(function () {
+  
         LoadPortalDeviceGraphs();
     });
 
@@ -27,8 +28,8 @@
         $('#PortalDeviceGraphsId').html(result);
     }
 
-    //setInterval(() => {
-    //    LoadPortalDeviceGraphs();
-    //}, 5000);
+    setInterval(() => {
+        LoadPortalDeviceGraphs();
+    }, 60000);
 
 </script>

@@ -14,14 +14,16 @@ namespace LogicLayer.Logic
         }
         public List<Entities.Models.PortalDeviceUsage> GetItemByPortalDeviceId(int PortalDeviceId)
         {
-            string qurrey = @$"SELECT TOP (10)
-                              [PortalDeviceId]
-                              ,[Temps]
-                              ,[Power]
-                              ,[WhenCreated]
-                          FROM[dbo].[PortalDeviceUsage]
-                          Where[PortalDeviceId] = {PortalDeviceId}
-                          Order By Id desc
+            string qurrey = @$"SELECT TOP 10
+							    MAX([Id]) as 'Id',
+								MAX([PortalDeviceId]) as 'PortalDeviceId' ,
+								MAX([Power]) as 'Power',
+								MAX([Temps]) as 'Temps',
+								MAX([WhenCreated]) as 'WhenCreated'
+					FROM [PortalDeviceUsage]
+							Where[PortalDeviceId] = {PortalDeviceId}
+				GROUP BY CAST([WhenCreated] as DATE), DATEPART(Hour, [WhenCreated])
+				ORDER BY MAX([Id]) DESC
                           ";
             var PortalDeviceUsage = base.PortalDeviceUsageRepo.GetSql(qurrey).ToList();
             return PortalDeviceUsage;

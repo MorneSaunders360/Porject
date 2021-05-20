@@ -13,6 +13,14 @@
     {
       "library": "alertify.js@0.3.11",
       "destination": "wwwroot/alertify.js/"
+    },
+    {
+      "library": "chartist-plugin-legend@0.6.2",
+      "destination": "wwwroot/js/chartist-plugin-legend/"
+    },
+    {
+      "library": "chartist-plugin-tooltip@0.0.11",
+      "destination": "wwwroot/chartist-plugin-tooltip/"
     }
   ]
 }

@@ -13,38 +13,79 @@
 <div class="row">
     @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
     {
-        List<string> DeviceNamesList = new List<string>();
         List<string> TempsList = new List<string>();
+        List<string> Tempsname = new List<string>();
+        List<string> TempsDate = new List<string>();
         string res = "dailySalesChart" + @item.Id;
         string DeviceLastActiveDiv = "DeviceLastActiveDiv" + @item.Id;
         foreach (var itesm in item.PortalDevice.PortalDeviceChildern)
         {
-            TempsList.Add(string.Join(",", PortalDeviceUsageController.GetItemByPortalDeviceId(itesm.Id).Select(x => x.Temps).ToArray().Reverse()));
+            var r = PortalDeviceUsageController.GetItemByPortalDeviceId(itesm.Id);
+            TempsList.Add(string.Join(",", r.Select(x => x.Temps).ToArray().Reverse()));
             TempsList = TempsList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
-            DeviceNamesList.Add(itesm.Name);
+
+            Tempsname.Add(itesm.Name);
+            Tempsname = Tempsname.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+
+            TempsDate.Add(string.Join(",", r.Select(x => x.WhenCreated.AddHours(2).ToString("HH:mm")).ToArray().Reverse()));
+            TempsDate = TempsDate.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+
         }
+
     <script>
+       
             @{
+                string tempname = "";
                 string temp = "";
-                string DeviceNames = " { 'name': 'Money A', 'data': [12, 9, 7, 8, 5] }";
+                string tempDate = "";
+
             }
         $('#@DeviceLastActiveDiv').html('Updated @item.PortalDevice.LastActiveTime.AddHours(2).ToShortTimeString() on @item.PortalDevice.LastActiveTime.ToLongDateString()');
 
 
-    @foreach (var items in TempsList)
+    @foreach (var items in TempsDate)
     {
-        temp += "["+ @items + "],";
+        tempDate += items+ ",";
 
     }
-        //  { "name": "Money A", "data": @temp }
+    @foreach (var items in Tempsname)
+    {
+        tempname += items+ ",";
+
+    }
+            var str = '@tempname';
+            str = str.substring(0, str.length - 1);
+
+            var entryArray = str.split(",");
+            var entryArrayNew = [];
+            entryArray.forEach(function (entry) {
+                var arr = [entry];
+                entryArrayNew.push(arr);
+            });
+        entryArrayNew.reverse();
+
+         var str1 = '@tempDate';
+            str1 = str1.substring(0, str1.length - 1);
+
+            var entryArray1 = str1.split(",");
+            var entryArrayNew1 = [];
+            entryArray1.forEach(function (entry) {
+                var arr = [entry];
+                entryArrayNew1.push(arr);
+            });
+       
+    @foreach (var items in TempsList)
+    {
+        temp +="["+ items+ "],";
+
+    }
+
         var chart;
         if ($('#@res').length != 0) {
 
             chart = new Chartist.Line('#@res', {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                series: [
-                            @temp
-                        ]
+                labels: entryArrayNew1,
+                series: [@temp]
             },
            {
                 fullWidth: true,
@@ -52,7 +93,9 @@
                     right: 40
                 },
                 plugins: [
-                    Chartist.plugins.legend(),
+                    Chartist.plugins.legend({
+                        legendNames: entryArrayNew,
+                    }),
                     Chartist.plugins.ctPointLabels({
                         textAnchor: 'middle'
                     }),

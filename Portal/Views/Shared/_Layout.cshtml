@@ -9,19 +9,25 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
-    <link href="~/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-    <script src="~/lib/Bootstrap/jquery.min.js"></script>
+    <link href="~/css/material-dashboard.css?v=2.1.0?t=123456" rel="stylesheet" />
+    <script src="~/lib/Bootstrap/jquery.min.js?t=123456"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="~/js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css?t=123456" rel="stylesheet" />
+    <link href="~/js/jquery-confirm/jquery-confirm.min.css?t=123456" rel="stylesheet" />
 
-    <script src="~/js/jquery-confirm/jquery-confirm.min.js"></script>
-    <script src="~/js/DisplayMessage.js"></script>
-    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/js/jquery-confirm/jquery-confirm.min.js?t=123456"></script>
+    <script src="~/js/DisplayMessage.js?t=123456"></script>
+    <link href="~/css/site.css?t=123456" rel="stylesheet" />
 </head>
 <body class="dark-edition">
+
     <div id="LogInDiv"></div>
     <div class="wrapper ">
+        <div class="overlay">
+            <div class="overlay__inner">
+                <div class="overlay__content"><span class="spinner"></span></div>
+            </div>
+        </div>
         <div class="sidebar" data-color="purple" data-background-color="black" data-image="/sidebar-2.jpg">
 
             <div class="sidebar-wrapper">
@@ -150,27 +156,31 @@
     </div>
     <!--   Core JS Files   -->
 
-    <script src="~/lib/Bootstrap/popper.min.js"></script>
-    <script src="~/lib/Bootstrap/bootstrap-material-design.min.js"></script>
+    <script src="~/lib/Bootstrap/popper.min.js?t=123456"></script>
+    <script src="~/lib/Bootstrap/bootstrap-material-design.min.js?t=123456"></script>
     <script src="https://unpkg.com/default-passive-events"></script>
-    <script src="~/lib/Bootstrap/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/lib/Bootstrap/perfect-scrollbar.jquery.min.js?t=123456"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Chartist JS -->
-    <script src="~/lib/Bootstrap/chartist.min.js"></script>
-    <script src="~/js/chartist-plugin-legend/chartist-plugin-legend.min.js"></script>
-    <script src="~/chartist-plugin-pointlabels.js"></script>
+    <script src="~/lib/Bootstrap/chartist.min.js?t=123456"></script>
+    <script src="~/js/chartist-plugin-legend/chartist-plugin-legend.min.js?t=123456"></script>
+    <script src="~/chartist-plugin-pointlabels.js?t=123456"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="~/lib/Bootstrap/bootstrap-notify.js"></script>
+    <script src="~/lib/Bootstrap/bootstrap-notify.js?t=123456"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="~/lib/Bootstrap/material-dashboard.js?v=2.1.0"></script>
+    <script src="~/lib/Bootstrap/material-dashboard.js?v=2.1.0?t=123456"></script>
     @RenderSection("Scripts", required: false)
 
 
     <script>
+        function preloadFunc() {
+            $('.overlay').css("display", "block")
+        }
+        window.onpaint = preloadFunc();
         $(document).ready(function () {
-
+            $('.overlay').css("display", "none")
             if (location.href.indexOf("PortalUserDevice") > 0) {
                 $('#PortalUserDevice').addClass('active');
             }
