@@ -1,35 +1,27 @@
 ﻿
 
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title">Temps</h4>
-            <p class="card-category">Device Temps</p>
-        </div>
-        <div class="card-body">
-            @Html.Partial("~/Views/Home/PortalDeviceGraphsDiv.cshtml")
 
-        </div>
-    </div>
-</div>
-
+@Html.Partial("~/Views/Home/PortalDeviceGraphsDiv.cshtml")
 <div id="PortalDeviceGraphsId"></div>
 <script>
     $(document).ready(function () {
-  
+
         LoadPortalDeviceGraphs();
     });
 
 
     function LoadPortalDeviceGraphs() {
+
         var ajaxType = "Get";
         var ajaxUrl = "/PortalUserDevice/PortalDeviceGraphsPartial";
         var result = callGenAjax(ajaxType, ajaxUrl, false);
         $('#PortalDeviceGraphsId').html(result);
+
     }
 
-    setInterval(() => {
-        LoadPortalDeviceGraphs();
-    }, 60000);
+    //setInterval(() => {
+
+    //    LoadPortalDeviceGraphs();
+    //}, 60000);
 
 </script>

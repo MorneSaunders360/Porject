@@ -145,3 +145,19 @@
     }
 
 </div>
+<script>
+    function copyToClipboard(text) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(text).select();
+        $.notify({
+            // options
+            message: text + ' - Copied to clipboard'
+        }, {
+            // settings
+            type: 'info'
+        });
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>

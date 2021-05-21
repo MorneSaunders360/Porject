@@ -13,46 +13,52 @@
 <div class="row">
     @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
     {
-        List<string> TempsList = new List<string>();
-        List<string> Tempsname = new List<string>();
-        List<string> TempsDate = new List<string>();
+        List<Entities.Models.PortalDeviceUsage> PortalDeviceUsageList = new List<Entities.Models.PortalDeviceUsage>();
         string res = "dailySalesChart" + @item.Id;
+        string ress = "dailySalesChartPower" + @item.Id;
         string DeviceLastActiveDiv = "DeviceLastActiveDiv" + @item.Id;
+        string DeviceChartPower = "DeviceChartPower" + @item.Id;
         foreach (var itesm in item.PortalDevice.PortalDeviceChildern)
         {
             var r = PortalDeviceUsageController.GetItemByPortalDeviceId(itesm.Id);
-            TempsList.Add(string.Join(",", r.Select(x => x.Temps).ToArray().Reverse()));
-            TempsList = TempsList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
-
-            Tempsname.Add(itesm.Name);
-            Tempsname = Tempsname.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
-
-            TempsDate.Add(string.Join(",", r.Select(x => x.WhenCreated.AddHours(2).ToString("HH:mm")).ToArray().Reverse()));
-            TempsDate = TempsDate.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+            var rs = string.Join(",", r.Select(x => x.Power == null | x.Power == "" ? "0" : x.Power).ToArray().Reverse());
+            if (rs.Contains("0,0,0,0,0,0,0,0,0,0"))
+            {
+                rs = "";
+            }
+            PortalDeviceUsageList.Add(new Entities.Models.PortalDeviceUsage { Power = rs.ToString(), Temps = string.Join(",", r.Select(x => x.Temps).ToArray().Reverse()), PortalDevice = new Entities.Models.PortalDevice { Name = itesm.Name }, WhenCreatedList = r.Select(x => x.WhenCreated).ToList() });
 
         }
 
     <script>
-       
+
             @{
                 string tempname = "";
                 string temp = "";
-                string tempDate = "";
+                string power = "";
+                string Date = "";
 
             }
         $('#@DeviceLastActiveDiv').html('Updated @item.PortalDevice.LastActiveTime.AddHours(2).ToShortTimeString() on @item.PortalDevice.LastActiveTime.ToLongDateString()');
 
 
-    @foreach (var items in TempsDate)
-    {
-        tempDate += items+ ",";
 
-    }
-    @foreach (var items in Tempsname)
+    @foreach (var items in PortalDeviceUsageList)
     {
-        tempname += items+ ",";
+        if (string.IsNullOrEmpty(Date))
+        {
+            Date += string.Join(",", items.WhenCreatedList.Select(x => x.AddHours(2).ToString("HH:mm")).ToArray().Reverse()) + ",";
+        }
 
+        tempname += items.PortalDevice.Name + ",";
+        temp += "[" + items.Temps + "],";
+        power += "[" + items.Power+ "],";
+    
     }
+        if ('@power'.length<10) {
+            $('#@DeviceChartPower').css('display','none');
+        }
+
             var str = '@tempname';
             str = str.substring(0, str.length - 1);
 
@@ -62,23 +68,19 @@
                 var arr = [entry];
                 entryArrayNew.push(arr);
             });
-        entryArrayNew.reverse();
+            entryArrayNew.reverse();
 
-         var str1 = '@tempDate';
-            str1 = str1.substring(0, str1.length - 1);
+             var str1 = '@Date';
+                str1 = str1.substring(0, str1.length - 1);
 
-            var entryArray1 = str1.split(",");
-            var entryArrayNew1 = [];
-            entryArray1.forEach(function (entry) {
-                var arr = [entry];
-                entryArrayNew1.push(arr);
-            });
-       
-    @foreach (var items in TempsList)
-    {
-        temp +="["+ items+ "],";
+                var entryArray1 = str1.split(",");
+                var entryArrayNew1 = [];
+                entryArray1.forEach(function (entry) {
+                    var arr = [entry];
+                    entryArrayNew1.push(arr);
+                });
 
-    }
+
 
         var chart;
         if ($('#@res').length != 0) {
@@ -101,8 +103,37 @@
                     }),
                 ]
             });
-
         }
+
+        if ('@power.Split(",").All(x=>x=="[]")'=='False') {
+              var chart1;
+                if ($('#@ress').length != 0) {
+
+                    chart1 = new Chartist.Line('#@ress', {
+                        labels: entryArrayNew1,
+                        series: [@power]
+                    },
+                   {
+                       fullWidth: true,
+                        chartPadding: {
+                            right: 40
+                        },
+                        plugins: [
+                            Chartist.plugins.legend({
+                                legendNames: entryArrayNew,
+                            }),
+                            Chartist.plugins.ctPointLabels({
+                                textAnchor: 'middle'
+                            }),
+                        ]
+                    });
+
+                }
+        }
+        else {
+            console.log('#@ress')
+        }
+
 
 
     </script>

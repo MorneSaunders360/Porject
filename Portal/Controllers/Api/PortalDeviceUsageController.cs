@@ -12,6 +12,7 @@ namespace Portal.Controllers.Api
         public List<Entities.Models.PortalDeviceUsage> GetItemByPortalDeviceId(int PortalDeviceId)
         {
             return LogicLayer.Logic.UOW.PortalDeviceUsageLogic.GetItemByPortalDeviceId(PortalDeviceId);
-        }
+        } 
+  
     }
 }
