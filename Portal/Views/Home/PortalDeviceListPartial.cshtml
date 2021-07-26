@@ -99,9 +99,6 @@
                         <button type="button" onclick="DisplayMessage('Are you sure you want to shutdown : @item.PortalDevice.Name','Shutdown',1,'ShutdownPortalDevice(@item.PortalDeviceId)')" class="btn btn-primary pull-right">Shutdown</button>
                     </div>
                 </div>
-                @{
-                    double Power = 0;
-                }
                 @foreach (var ChildDevice in item.PortalDevice.PortalDeviceChildern)
                 {
                     <div class="card-footer">
@@ -120,22 +117,12 @@
                             {
                                 <a style="font-size:medium;" class="success-link">&nbsp;<b>@ChildDevice.Temp</b><span>&#8451;</span></a>
                             }
-                            @{
-                                if (ChildDevice.Power != null)
-                                {
-                                    Power += double.Parse(ChildDevice.Power.Replace(',', '.'));
-                                }
-
-                            }
+       
 
                         </div>
                     </div>
 
 
-                }
-                @if (Power != 0)
-                {
-                    <a style="font-size:medium;" class="success-link">&nbsp;<b>@Math.Round(Power) - W</b></a>
                 }
 
 

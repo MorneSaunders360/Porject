@@ -73,45 +73,5 @@
         </div>
     </div>
 </div>
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title">Power Consumption</h4>
-            <p class="card-category">Device Power Consumption</p>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
-                {
-                    List<string> TempsList = new List<string>();
-                    string res = "dailySalesChartPower" + @item.Id;
-                    string DeviceLastActiveDiv = "DeviceLastActiveDiv" + @item.Id;
-                    string DeviceChartPower = "DeviceChartPower" + @item.Id;
-                    <div class="col-xl-6 col-lg-12" id="@DeviceChartPower">
-                        <div class="card card-chart" style="background-color:#1a2035">
-                            <div class="card-header card-header-info">
-                                <div class="ct-chart ct-chart-line" id="@res"></div>
-                            </div>
-                            <div class="card-body">
-                                @*@foreach (var items in item.PortalDevice.PortalDeviceChildern)
-                                    {
-                                        <h4 class="card-title">@items.Name</h4>
-                                    }*@
 
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">access_time</i><div id="@DeviceLastActiveDiv">Updated @item.PortalDevice.LastActiveTime.AddHours(2).ToShortTimeString() on @item.PortalDevice.LastActiveTime.ToLongDateString()</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                }
-            </div>
-
-        </div>
-    </div>
-</div>
 

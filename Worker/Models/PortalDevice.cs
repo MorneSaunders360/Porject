@@ -20,7 +20,6 @@ namespace Worker.Models
         public bool Restart { get; set; }
         public bool Shutdown { get; set; }
         public string Temp { get; set; }
-        public string Power { get; set; }
         public List<PortalDevice> PortalDeviceChildern { get; set; }
 
 

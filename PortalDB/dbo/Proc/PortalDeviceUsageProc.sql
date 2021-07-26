@@ -5,7 +5,7 @@ CREATE PROCEDURE [dbo].[PortalDeviceUsageProc]
 AS
 	IF (@Time=1)
 	BEGIN
-		Select Id,PortalDeviceId,Temps,ROUND(REPLACE([Power], ',', '.'), 0)'Power',dateadd(MINUTE, datediff(MINUTE, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
+		Select Id,PortalDeviceId,Temps,dateadd(MINUTE, datediff(MINUTE, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
                                         Where Id in
                                         (
                                         SELECT Top 10
@@ -19,7 +19,7 @@ AS
 	END
 	ELSE IF (@Time=2)
 	BEGIN
-		Select Id,PortalDeviceId,Temps,ROUND(REPLACE([Power], ',', '.'), 0)'Power',dateadd(hour, datediff(hour, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
+		Select Id,PortalDeviceId,Temps,dateadd(hour, datediff(hour, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
                                         Where Id in
                                         (
                                         SELECT Top 10
@@ -33,7 +33,7 @@ AS
 	END
 	ELSE IF (@Time=3)
 	BEGIN
-		Select Id,PortalDeviceId,Temps,ROUND(REPLACE([Power], ',', '.'), 0)'Power',dateadd(DAY, datediff(DAY, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
+		Select Id,PortalDeviceId,Temps,dateadd(DAY, datediff(DAY, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
                                         Where Id in
                                         (
                                         SELECT Top 10

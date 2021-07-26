@@ -15,4 +15,3 @@ C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csproj.CopyComplete
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.exe
 C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.pdb
 C:\Users\morne\source\repos\Porject\Worker\bin\Debug\OpenHardwareMonitorLib.dll
-C:\Users\morne\source\repos\Porject\Worker\obj\Debug\Worker.csproj.AssemblyReference.cache

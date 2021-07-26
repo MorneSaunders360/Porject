@@ -79,6 +79,7 @@
     <StartupObject>Worker.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>

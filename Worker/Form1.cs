@@ -88,7 +88,6 @@ namespace Worker
                 PortalDeviceGPU.DeviceGIUD = Properties.Settings.Default.DeviceGIUD;
                 PortalDeviceGPU.Name = item.Name;
                 PortalDeviceGPU.Temp = item.Temp;
-                PortalDeviceGPU.Power = item.Power;
                 PortalDeviceGPU.LastActiveTime = DateTime.Now;
                 PortalUserDevice.PortalDevice.PortalDeviceChildern.Add(PortalDeviceGPU);
             }
@@ -332,7 +331,6 @@ namespace Worker
                     Models.PortalDevice portalDevice = new Models.PortalDevice();
 
                     portalDevice.Name = hardware.Name;
-                    float power = 0;
                     foreach (ISensor sensor in hardware.Sensors)
                     {
                         if (sensor.SensorType == SensorType.Temperature)
@@ -342,18 +340,8 @@ namespace Worker
                           
                         }
 
-                        if (sensor.SensorType == SensorType.Power)
-                        {
-                            portalDevice.Power=sensor.Value.ToString();
-                            power += (float)sensor.Value;
-                        }
-
-
                     }
-                    if (hardware.HardwareType == HardwareType.CPU)
-                    {
-                        portalDevice.Power = power.ToString();
-                    }
+
                 
                     graphicsCardList.Add(portalDevice);
                 }

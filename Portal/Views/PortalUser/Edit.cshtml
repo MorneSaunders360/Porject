@@ -28,7 +28,7 @@
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         </div>
                     </div>
-                </div>    
+                </div>
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">
@@ -39,10 +39,11 @@
 
                                 <label class="form-check-label">
                                     @Html.LabelFor(m => m.AllowNotifications, new { @class = "control-label" })
-                                    @Html.HiddenFor(m => m.AllowNotifications, new { @class = "form-check-input" })
-                                    <input type="checkbox" checked="@Model.AllowNotifications" class = "form-check-input"/>
-                                    <span class="form-check-sign" >
-                                        <span class="check" onclick="$('#AllowNotifications').attr('checked', !$('#AllowNotifications').attr('checked'))"></span>
+                                    @Html.CheckBoxFor(m => m.AllowNotifications, new { @class = "form-check-input" })
+                                    @*<input type="checkbox" checked="@Model.AllowNotifications" class="form-check-input" />*@
+
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
                                     </span>
                                 </label>
 

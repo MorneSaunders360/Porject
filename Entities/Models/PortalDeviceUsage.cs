@@ -11,7 +11,6 @@ namespace Entities.Models
         public int Id { get; set; }
         public int PortalDeviceId { get; set; }
         public string Temps { get; set; }
-        public string Power { get; set; }
         public DateTime WhenCreated { get; set; }
         public List<DateTime> WhenCreatedList { get; set; }
 

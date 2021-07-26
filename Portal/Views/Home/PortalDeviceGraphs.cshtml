@@ -22,12 +22,8 @@
         foreach (var itesm in item.PortalDevice.PortalDeviceChildern)
         {
             var r = PortalDeviceUsageController.GetItemByPortalDeviceId(itesm.Id, Model);
-            var rs = string.Join(",", r.Select(x => x.Power == null | x.Power == "" ? "0" : x.Power).ToArray().Reverse());
-            if (rs.Contains("0,0,0,0,0,0,0,0,0,0"))
-            {
-                rs = "";
-            }
-            PortalDeviceUsageList.Add(new Entities.Models.PortalDeviceUsage { Power = rs.ToString(), Temps = string.Join(",", r.Select(x => x.Temps).ToArray().Reverse()), PortalDevice = new Entities.Models.PortalDevice { Name = itesm.Name }, WhenCreatedList = r.Select(x => x.WhenCreated).ToList() });
+
+            PortalDeviceUsageList.Add(new Entities.Models.PortalDeviceUsage { Temps = string.Join(",", r.Select(x => x.Temps).ToArray().Reverse()), PortalDevice = new Entities.Models.PortalDevice { Name = itesm.Name }, WhenCreatedList = r.Select(x => x.WhenCreated).ToList() });
 
         }
 
@@ -36,7 +32,6 @@
             @{
                 string tempname = "";
                 string temp = "";
-                string power = "";
                 string Date = "";
 
             }
@@ -61,12 +56,10 @@
 
         tempname += items.PortalDevice.Name + ",";
         temp += "[" + items.Temps + "],";
-        power += "[" + items.Power+ "],";
+
 
     }
-        if ('@power'.length<10) {
-            $('#@DeviceChartPower').css('display','none');
-        }
+
 
             var str = '@tempname';
             str = str.substring(0, str.length - 1);
@@ -89,7 +82,7 @@
                     entryArrayNew1.push(arr);
                 });
 
-
+           
 
         var chart;
         if ($('#@res').length != 0) {
@@ -114,34 +107,7 @@
             });
         }
 
-        if ('@power.Split(",").All(x=>x=="[]")'=='False') {
-              var chart1;
-                if ($('#@ress').length != 0) {
-
-                    chart1 = new Chartist.Line('#@ress', {
-                        labels: entryArrayNew1,
-                        series: [@power]
-                    },
-                   {
-                       fullWidth: true,
-                        chartPadding: {
-                            right: 40
-                        },
-                        plugins: [
-                            Chartist.plugins.legend({
-                                legendNames: entryArrayNew,
-                            }),
-                            Chartist.plugins.ctPointLabels({
-                                textAnchor: 'middle'
-                            }),
-                        ]
-                    });
-
-                }
-        }
-        else {
-            console.log('#@ress')
-        }
+    
 
 
 

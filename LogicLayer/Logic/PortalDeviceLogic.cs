@@ -184,7 +184,7 @@ namespace LogicLayer.Logic
                         {
                             Device.Temp = item.Temp;
                             Device.Power = item.Power;
-                            UOW.PortalDeviceUsageLogic.SaveItem(new Entities.Models.PortalDeviceUsage { PortalDeviceId = Device.Id, Power = item.Power, Temps = item.Temp, WhenCreated = DateTime.Now });
+                            UOW.PortalDeviceUsageLogic.SaveItem(new Entities.Models.PortalDeviceUsage { PortalDeviceId = Device.Id, Temps = item.Temp, WhenCreated = DateTime.Now });
                             base.PortalDeviceRepo.SaveItem(Device);
                         }
 

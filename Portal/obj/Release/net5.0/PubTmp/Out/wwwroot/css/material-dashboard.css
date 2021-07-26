@@ -18166,6 +18166,15 @@ Copyright (c) 2015 Daniel Eden
 .ct-chart .ct-series-c .ct-area {
   stroke: #ff9800;
 }
+.ct-chart .ct-series-d .ct-point,
+.ct-chart .ct-series-d .ct-line,
+.ct-chart .ct-series-d .ct-bar,
+.ct-chart .ct-series-d .ct-slice-donut,
+.ct-chart .ct-series-d .ct-slice-pie,
+.ct-chart .ct-series-d .ct-slice-donut-solid,
+.ct-chart .ct-series-d .ct-area {
+  stroke:darkblue;
+}
 
 .ct-chart .ct-bar {
   fill: none;
