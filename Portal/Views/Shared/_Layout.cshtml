@@ -144,13 +144,17 @@
         @{
             Portal.Controllers.Api.PortalSettingsController PortalSettingsController = new Portal.Controllers.Api.PortalSettingsController();
             var PortalSettings = PortalSettingsController.GetItemByName("Site Maintenance");
-            if (PortalSettings.Value == "1")
+            if (PortalSettings != null)
             {
-                <div class="warning-link" style="display: block;position: fixed;bottom: 0;width: 100%;text-align: center;z-index: 1000;">
-                    <a class="nav-link">Site Under Maintenance</a>
+                if (PortalSettings.Value == "1")
+                {
+                    <div class="warning-link" style="display: block;position: fixed;bottom: 0;width: 100%;text-align: center;z-index: 1000;">
+                        <a class="nav-link">Site Under Maintenance</a>
 
-                </div>
+                    </div>
+                }
             }
+
 
         }
     </div>

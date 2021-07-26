@@ -114,7 +114,7 @@
     @foreach (var item in portalDevice.PortalDeviceChildern)
     {
 
-        TempsList.Add(string.Join(",", PortalDeviceUsageController.GetItemByPortalDeviceId(item.Id).Select(x => x.Temps).ToArray().Reverse()));
+        TempsList.Add(string.Join(",", PortalDeviceUsageController.GetItemByPortalDeviceId(item.Id,1).Select(x => x.Temps).ToArray().Reverse()));
     }
 
     <script>

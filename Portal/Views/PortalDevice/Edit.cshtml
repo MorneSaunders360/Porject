@@ -2,7 +2,7 @@
 
 @{
     Portal.Controllers.Api.PortalDeviceUsageController portalDeviceUsageController = new Portal.Controllers.Api.PortalDeviceUsageController();
-    var portalDeviceUsageList = portalDeviceUsageController.GetItemByPortalDeviceId(Model.Id);
+    var portalDeviceUsageList = portalDeviceUsageController.GetItemByPortalDeviceId(Model.Id,1);
     ViewData["Title"] = "Edit";
 }
 

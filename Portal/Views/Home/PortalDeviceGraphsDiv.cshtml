@@ -10,6 +10,30 @@
 
 }
 <div class="col-md-12">
+
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">Filters</h4>
+            <p class="card-category">Device Filters</p>
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-xl-4 col-lg-12">
+                    <button type="button" onclick="ReloadPortalDeviceGraphs(1)" class="btn btn-primary pull-right">Minutes</button>
+                    <button type="button" onclick="ReloadPortalDeviceGraphs(2)" class="btn btn-primary pull-right">Hours</button>
+                    <button type="button" onclick="ReloadPortalDeviceGraphs(3)" class="btn btn-primary pull-right">Days</button>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">Temps</h4>
@@ -29,9 +53,9 @@
                             </div>
                             <div class="card-body">
                                 @*@foreach (var items in item.PortalDevice.PortalDeviceChildern)
-                            {
-                                <h4 class="card-title">@items.Name</h4>
-                            }*@
+                                    {
+                                        <h4 class="card-title">@items.Name</h4>
+                                    }*@
 
                                 <div class="card-footer">
                                     <div class="stats">
@@ -70,9 +94,9 @@
                             </div>
                             <div class="card-body">
                                 @*@foreach (var items in item.PortalDevice.PortalDeviceChildern)
-                            {
-                                <h4 class="card-title">@items.Name</h4>
-                            }*@
+                                    {
+                                        <h4 class="card-title">@items.Name</h4>
+                                    }*@
 
                                 <div class="card-footer">
                                     <div class="stats">

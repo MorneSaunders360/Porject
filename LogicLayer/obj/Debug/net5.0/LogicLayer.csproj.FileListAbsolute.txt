@@ -8,7 +8,6 @@ C:\Users\morne\source\repos\Porject\LogicLayer\bin\Debug\net5.0\Service.dll
 C:\Users\morne\source\repos\Porject\LogicLayer\bin\Debug\net5.0\Entities.pdb
 C:\Users\morne\source\repos\Porject\LogicLayer\bin\Debug\net5.0\RepoLayer.pdb
 C:\Users\morne\source\repos\Porject\LogicLayer\bin\Debug\net5.0\Service.pdb
-C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.csprojAssemblyReference.cache
 C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.AssemblyInfoInputs.cache
 C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.AssemblyInfo.cs
@@ -17,3 +16,4 @@ C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.cspro
 C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.dll
 C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\ref\LogicLayer.dll
 C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.pdb
+C:\Users\morne\source\repos\Porject\LogicLayer\obj\Debug\net5.0\LogicLayer.csproj.AssemblyReference.cache

@@ -382,7 +382,6 @@ C:\Users\morne\source\repos\Porject\Portal\bin\Debug\net5.0\Entities.pdb
 C:\Users\morne\source\repos\Porject\Portal\bin\Debug\net5.0\LogicLayer.pdb
 C:\Users\morne\source\repos\Porject\Portal\bin\Debug\net5.0\RepoLayer.pdb
 C:\Users\morne\source\repos\Porject\Portal\bin\Debug\net5.0\Service.pdb
-C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.csprojAssemblyReference.cache
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.AssemblyInfoInputs.cache
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.AssemblyInfo.cs
@@ -430,3 +429,4 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\Por
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\PortalDeviceGraphsDiv.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\Home\PortalDeviceListPartial.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Razor\Views\PortalDeviceUsage\Index.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Debug\net5.0\Portal.csproj.AssemblyReference.cache

@@ -6,22 +6,32 @@
 <script>
     $(document).ready(function () {
 
-        LoadPortalDeviceGraphs();
+        LoadPortalDeviceGraphs(2);
     });
 
 
-    function LoadPortalDeviceGraphs() {
-
+    function LoadPortalDeviceGraphs(Time) {
         var ajaxType = "Get";
-        var ajaxUrl = "/PortalUserDevice/PortalDeviceGraphsPartial";
+        var ajaxUrl = "/PortalUserDevice/PortalDeviceGraphsPartial?Time=" + Time;
         var result = callGenAjax(ajaxType, ajaxUrl, false);
         $('#PortalDeviceGraphsId').html(result);
 
     }
+    function ReloadPortalDeviceGraphs(Time) {
+        preloadFunc();
+
+        setTimeout(() => {
+            var ajaxType = "Get";
+            var ajaxUrl = "/PortalUserDevice/PortalDeviceGraphsPartial?Time=" + Time;
+            var result = callGenAjax(ajaxType, ajaxUrl, false);
+            $('#PortalDeviceGraphsId').html(result);
+        }, 1000);
+    
+
+    }
 
     //setInterval(() => {
-
-    //    LoadPortalDeviceGraphs();
-    //}, 60000);
+    //    ReloadPortalDeviceGraphs(1);
+    //}, 3000);
 
 </script>

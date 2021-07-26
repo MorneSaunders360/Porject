@@ -4,7 +4,6 @@ C:\Users\morne\source\repos\Porject\RepoLayer\bin\Debug\net5.0\ref\RepoLayer.dll
 C:\Users\morne\source\repos\Porject\RepoLayer\bin\Debug\net5.0\RepoLayer.pdb
 C:\Users\morne\source\repos\Porject\RepoLayer\bin\Debug\net5.0\Entities.dll
 C:\Users\morne\source\repos\Porject\RepoLayer\bin\Debug\net5.0\Entities.pdb
-C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.csprojAssemblyReference.cache
 C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.AssemblyInfoInputs.cache
 C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.AssemblyInfo.cs
@@ -13,3 +12,4 @@ C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.csproj.
 C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.dll
 C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\ref\RepoLayer.dll
 C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.pdb
+C:\Users\morne\source\repos\Porject\RepoLayer\obj\Debug\net5.0\RepoLayer.csproj.AssemblyReference.cache

@@ -9,9 +9,9 @@ namespace Portal.Controllers.Api
     public class PortalDeviceUsageController : BaseController
     {
         [HttpGet]
-        public List<Entities.Models.PortalDeviceUsage> GetItemByPortalDeviceId(int PortalDeviceId)
+        public List<Entities.Models.PortalDeviceUsage> GetItemByPortalDeviceId(int PortalDeviceId, int Time)
         {
-            return LogicLayer.Logic.UOW.PortalDeviceUsageLogic.GetItemByPortalDeviceId(PortalDeviceId);
+            return LogicLayer.Logic.UOW.PortalDeviceUsageLogic.GetItemByPortalDeviceId(PortalDeviceId, Time);
         } 
   
     }

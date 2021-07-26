@@ -26,9 +26,9 @@ namespace Portal.Controllers
 
         }  
         [HttpGet]
-        public PartialViewResult PortalDeviceGraphsPartial()
+        public PartialViewResult PortalDeviceGraphsPartial(int Time)
         {
-            return PartialView("~/Views/Home/PortalDeviceGraphs.cshtml");
+            return PartialView("~/Views/Home/PortalDeviceGraphs.cshtml",Time);
 
         } 
         [HttpGet]
