@@ -135,7 +135,10 @@ namespace Worker
                                     {
                                         model.PortalDevice.Shutdown = false;
                                         await client.PostAsync($"{BaseUrl}/Api/PortalDevice/SaveItem/", new StringContent(JsonConvert.SerializeObject(model.PortalDevice), Encoding.UTF8, "application/json"));
-                                        Process.Start("shutdown", "/s /t 0");
+                                        var psi = new ProcessStartInfo("shutdown", "/s /t 0");
+                                        psi.CreateNoWindow = true;
+                                        psi.UseShellExecute = false;
+                                        Process.Start(psi);
                                     }
                                     else if (model.PortalDevice.Restart)
                                     {
@@ -144,7 +147,10 @@ namespace Worker
                                         //Application.Restart();
                                         //Environment.Exit(0);
 
-                                        Process.Start("shutdown", "/r /t 0");
+                                        var psi = new ProcessStartInfo("shutdown", "/r /t 0");
+                                        psi.CreateNoWindow = true;
+                                        psi.UseShellExecute = false;
+                                        Process.Start(psi);
                                     }
                                     ButtonStatus.Visible = true;
                                     ButtonStatus.Text = "Online";

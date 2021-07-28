@@ -430,3 +430,7 @@ C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Home\P
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Home\PortalDeviceGraphsDiv.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalDeviceUsage\Index.cshtml.g.cs
 C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Portal.csproj.AssemblyReference.cache
+C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\Home\PortalUserWalletDash.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUserWallet\Edit.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUserWallet\Index.cshtml.g.cs
+C:\Users\morne\source\repos\Porject\Portal\obj\Release\net5.0\Razor\Views\PortalUserWallet\IndexGrid.cshtml.g.cs

@@ -49,7 +49,6 @@ C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\bin\Release\net5.0\L
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\bin\Release\net5.0\Entities.pdb
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\bin\Release\net5.0\RepoLayer.pdb
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\bin\Release\net5.0\Service.pdb
-C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\DeviceStatusCheckWebJob.csprojAssemblyReference.cache
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\DeviceStatusCheckWebJob.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\DeviceStatusCheckWebJob.AssemblyInfoInputs.cache
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\DeviceStatusCheckWebJob.AssemblyInfo.cs
@@ -59,3 +58,4 @@ C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\D
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\ref\DeviceStatusCheckWebJob.dll
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\DeviceStatusCheckWebJob.pdb
 C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\DeviceStatusCheckWebJob.genruntimeconfig.cache
+C:\Users\morne\source\repos\Porject\DeviceStatusCheckWebJob\obj\Release\net5.0\DeviceStatusCheckWebJob.csproj.AssemblyReference.cache

@@ -1,0 +1,42 @@
+﻿@{
+
+    Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+    Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+    CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+    Portal.Controllers.Api.PortalUserWalletController PortalUserWalletController = new Portal.Controllers.Api.PortalUserWalletController();
+    var PortalUserWalletList = PortalUserWalletController.GetPortalUserUserWallet(CurrentUser.Id);
+}
+
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">store</i>
+                </div>
+                <p class="card-category">Wallet</p>
+                <h3 class="card-title">
+                    R @PortalUserWalletList.Result.Sum(x => x.CurrencyValue).ToString().Remove(@PortalUserWalletList.Result.Sum(x => x.CurrencyValue).ToString().Length - 10, 10)
+                </h3>
+            </div>
+            @foreach (var item in PortalUserWalletList.Result)
+            {
+                <div class="card-footer">
+                    <div class="stats">
+
+                        <div><label>@item.Currency&nbsp;</label><label></label></div>
+                        <a style="font-size:medium;" class="success-link">&nbsp;<b>R @item.CurrencyValue.ToString().Remove(item.CurrencyValue.ToString().Length - 10, 10)</b></a>
+
+
+                    </div>
+                </div>
+
+            }
+
+
+
+        </div>
+    </div>
+
+</div>
+

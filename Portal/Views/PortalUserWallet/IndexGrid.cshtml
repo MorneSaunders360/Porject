@@ -1,0 +1,61 @@
+﻿@{
+    Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+
+    List<Entities.Models.PortalUserWallet> PortalUserWalletList = new List<Entities.Models.PortalUserWallet>();
+    Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+    CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
+    Portal.Controllers.Api.PortalUserWalletController PortalUserWalletController = new Portal.Controllers.Api.PortalUserWalletController();
+    PortalUserWalletList = PortalUserWalletController.GetItemListByPortalUserId(CurrentUser.Id).ToList();
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Wallets</h4>
+                    <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" onclick="location.href='/PortalUserWallet/Edit?PortalUserWalletId=0'" class="btn btn-primary fa-pull-left">Add</button>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>Commands</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in PortalUserWalletList)
+                                {
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <div style="width:35px;height:35px;display:inline-block;font-size: 20px;" class="pointer" onclick="location.href='/PortalUserWallet/Edit?PortalUserWalletId=@item.Id'"><a class="fas fa-edit"></a></div>
+                                        </div>
+                                    </td>
+                                    <td>@item.PortalWallet.Name</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+    function DeletePortalUserDevice(PortalUserDeviceId) {
+        var ajaxType = "Get";
+        var ajaxUrl = "/PortalUserDevice/DeletePortalUserDevice?PortalUserDeviceId=" + PortalUserDeviceId;
+        callGenAjax(ajaxType, ajaxUrl, false);
+        location.reload();
+    }
+</script>

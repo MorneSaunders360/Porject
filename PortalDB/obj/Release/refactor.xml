@@ -105,4 +105,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Description " />
   </Operation>
+  <Operation Name="Rename Refactor" Key="85c6a5f3-f03f-46ca-ad27-e0b759446d49" ChangeDateTime="07/28/2021 14:05:07" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalUserWallet].[PortalWallet]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalUserWallet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PortalWalletId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f798aea4-9001-40f9-8a0d-1ac9f7c1f865" ChangeDateTime="07/28/2021 14:06:00" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalWallet].[Secrect]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalWallet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Secret" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="93bf3335-c724-4e45-8727-37174dee5fc5" ChangeDateTime="07/28/2021 14:36:57" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[PortalWallet].[Nae,]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PortalWallet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Name" />
+  </Operation>
 </Operations>

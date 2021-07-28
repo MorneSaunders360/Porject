@@ -65,6 +65,12 @@
                                 <p>Profile</p>
                             </a>
                         </li>
+                        <li class="nav-item" id="PortalUserWallet">
+                            <a class="nav-link" href="/PortalUserWallet/Index">
+                                <i class="material-icons">account_balance_wallet</i>
+                                <p>Wallet</p>
+                            </a>
+                        </li>
 
                         <li class="nav-item" id="PortalUserOrganization">
                             <a class="nav-link" href="/PortalUserOrganization/Index">
@@ -194,12 +200,16 @@
             else if (location.href.indexOf("PortalDeviceUsage") > 0) {
                 $('#PortalDeviceUsage').addClass('active');
             }
+            else if (location.href.indexOf("PortalUserWallet") > 0) {
+                $('#PortalUserWallet').addClass('active');
+            }
             else if (location.href.indexOf("PortalUser") > 0) {
                 $('#PortalUser').addClass('active');
             }
             else if (location.href.indexOf("PortalSettings") > 0) {
                 $('#PortalSettings').addClass('active');
             }
+
             else if (location.href.indexOf("/") > 0) {
                 $('#Home').addClass('active');
             }

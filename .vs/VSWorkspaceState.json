@@ -1,13 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\DeviceStatusCheckWebJob",
     "\\LogicLayer",
     "\\LogicLayer\\Logic",
+    "\\NTFSWebJob",
     "\\Portal",
     "\\Portal\\Views",
     "\\Portal\\Views\\Home",
-    "\\Portal\\Views\\Shared"
+    "\\Portal\\Views\\Shared",
+    "\\Worker"
   ],
-  "SelectedNode": "\\Portal\\Views\\Home\\PortalDeviceListPartial.cshtml",
+  "SelectedNode": "\\DeviceStatusCheckWebJob\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

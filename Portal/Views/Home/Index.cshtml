@@ -2,7 +2,7 @@
 
 @if (User != null && User.Identity.Name != null)
 {
-
+    @Html.Partial("~/Views/Home/PortalUserWalletDash.cshtml")
     <div class="container-fluid" id="portalUserDeviceDashList"></div>
 
 }
@@ -41,7 +41,7 @@
         }
         function LoadPortalDeviceGraphs() {
             var ajaxType = "Get";
-            var ajaxUrl = "/PortalUserDevice/PortalDeviceGraphsPartial" ;
+            var ajaxUrl = "/PortalUserDevice/PortalDeviceGraphsPartial";
             var result = callGenAjax(ajaxType, ajaxUrl, false);
             $('#PortalDeviceGraphsId').html(result);
         }
