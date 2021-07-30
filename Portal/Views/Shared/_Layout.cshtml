@@ -112,8 +112,12 @@
                         <ul class="navbar-nav">
                             @if (User.Identity.IsAuthenticated)
                             {
+                                Portal.Controllers.Api.PortalUserController PortalUserController = new Portal.Controllers.Api.PortalUserController();
+
+                                Entities.Models.PortalUser CurrentUser = new Entities.Models.PortalUser();
+                                CurrentUser = PortalUserController.GetItemByName(User.Identity.Name);
                                 <li>
-                                    <a class="nav-link" href="javascript:void(0)">Hello @User.Identity.Name!</a>
+                                    <a class="nav-link" href="/PortalUser/Edit?PortalUserId=@CurrentUser.Id">Hello @User.Identity.Name!</a>
                                 </li>
                                 <li>
                                     <form method="post" asp-controller="Account" asp-action="Logout" asp-route-returnurl="/Home/Index" style=" margin: 0px; padding: 0px; width: auto; height: auto;">

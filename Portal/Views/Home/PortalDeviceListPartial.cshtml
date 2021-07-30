@@ -45,7 +45,7 @@
                     <div class="card-icon">
                         <i class="material-icons">store</i>
                     </div>
-                    <p class="card-category">Wallet</p>
+                    <p class="card-category">Organization</p>
                     <h3 class="card-title">
                         @item.Name
                     </h3>
@@ -59,7 +59,7 @@
     }
 
 </div>
-
+ @Html.Partial("~/Views/Home/PortalUserWalletDash.cshtml")
 <div class="row">
     @foreach (var item in portalUserDeviceDashList.OrderBy(x => x.PortalDevice.Name))
     {

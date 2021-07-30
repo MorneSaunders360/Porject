@@ -13,11 +13,7 @@ namespace Portal.Controllers.Api
         {
             return LogicLayer.Logic.UOW.PortalUserWalletLogic.GetItemListByPortalUserId(PortalUserId);
         }      
-        [HttpGet("GetItemListByPortalUserId/{PortalUserId}")]
-        public Task<List<Entities.Models.Temp.PortalWalletDisplay>> GetPortalUserUserWallet(int PortalUserId)
-        {
-            return LogicLayer.Logic.UOW.PortalUserWalletLogic.GetPortalUserUserWallet(PortalUserId);
-        }
+
         [HttpGet("GetItemById/{PortalUserWalletId}")]
         public Entities.Models.PortalUserWallet GetItemById(int PortalUserWalletId)
         {

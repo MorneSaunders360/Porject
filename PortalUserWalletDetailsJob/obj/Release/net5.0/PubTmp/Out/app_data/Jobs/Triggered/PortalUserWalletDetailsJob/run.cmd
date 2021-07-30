@@ -1,0 +1,1 @@
+dotnet PortalUserWalletDetailsJob.dll %*
