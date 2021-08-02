@@ -11,5 +11,6 @@
     "\\Portal\\Views\\Shared",
     "\\Worker"
   ],
+  "SelectedNode": "\\Portal\\Views\\Home\\PortalDeviceListPartial.cshtml",
   "PreviewInSolutionExplorer": false
 }

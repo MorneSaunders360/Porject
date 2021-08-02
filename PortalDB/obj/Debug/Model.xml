@@ -1735,45 +1735,52 @@
 				<Value><![CDATA[
 	IF (@Time=1)
 	BEGIN
-		Select Id,PortalDeviceId,Temps,dateadd(MINUTE, datediff(MINUTE, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
-                                        Where Id in
-                                        (
-                                        SELECT Top 10
-                                        MAX(Id) as Id
-                                        FROM [PortalDeviceUsage]
-                                        Where[PortalDeviceId] =@PortalDeviceId
-                                        GROUP BY dateadd(MINUTE, datediff(MINUTE, 0, [WhenCreated]), 0)
-                                        ORDER BY MAX(Id) DESC
-                                        )
-                                        ORDER BY Id DESC
+ Select * from  [PortalDeviceUsage]
+				   Where Id in 
+				   (
+				   			    SELECT Top 10
+												MAX(PDU1.Id)
+												FROM [PortalDeviceUsage] PDU
+												LEFT JOIN [PortalDeviceUsage] PDU1 on PDU1.Id =  PDU.Id
+											    Where PDU.[PortalDeviceId] =@PortalDeviceId
+												GROUP BY dateadd(MINUTE, datediff(MINUTE, 0, PDU.[WhenCreated]), 0)
+												ORDER BY dateadd(MINUTE, datediff(MINUTE, 0, PDU.[WhenCreated]), 0) DESC
+
+				   )
 	END
 	ELSE IF (@Time=2)
 	BEGIN
-		Select Id,PortalDeviceId,Temps,dateadd(hour, datediff(hour, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
-                                        Where Id in
-                                        (
-                                        SELECT Top 10
-                                        MAX(Id) as Id
-                                        FROM [PortalDeviceUsage]
-                                        Where[PortalDeviceId] =@PortalDeviceId
-                                        GROUP BY dateadd(hour, datediff(hour, 0, [WhenCreated]), 0)
-                                        ORDER BY MAX(Id) DESC
-                                        )
-                                        ORDER BY Id DESC
+	 Select * from  [PortalDeviceUsage]
+				   Where Id in 
+				   (
+				   			    SELECT Top 10
+												MAX(PDU1.Id)
+												FROM [PortalDeviceUsage] PDU
+												LEFT JOIN [PortalDeviceUsage] PDU1 on PDU1.Id =  PDU.Id
+											    Where PDU.[PortalDeviceId] =@PortalDeviceId
+												GROUP BY dateadd(hour, datediff(hour, 0, PDU.[WhenCreated]), 0)
+												ORDER BY dateadd(hour, datediff(hour, 0, PDU.[WhenCreated]), 0) DESC
+
+				   )
+
+
+	
 	END
 	ELSE IF (@Time=3)
 	BEGIN
-		Select Id,PortalDeviceId,Temps,dateadd(DAY, datediff(DAY, 0, [WhenCreated]), 0) 'WhenCreated' from [PortalDeviceUsage]
-                                        Where Id in
-                                        (
-                                        SELECT Top 10
-                                        MAX(Id) as Id
-                                        FROM [PortalDeviceUsage]
-                                        Where[PortalDeviceId] =@PortalDeviceId
-                                        GROUP BY dateadd(DAY, datediff(DAY, 0, [WhenCreated]), 0)
-                                        ORDER BY MAX(Id) DESC
-                                        )
-                                        ORDER BY Id DESC
+	 Select * from  [PortalDeviceUsage]
+				   Where Id in 
+				   (
+				   			    SELECT Top 10
+												MAX(PDU1.Id)
+												FROM [PortalDeviceUsage] PDU
+												LEFT JOIN [PortalDeviceUsage] PDU1 on PDU1.Id =  PDU.Id
+											    Where PDU.[PortalDeviceId] =@PortalDeviceId
+												GROUP BY dateadd(DAY, datediff(DAY, 0, PDU.[WhenCreated]), 0)
+												ORDER BY dateadd(DAY, datediff(DAY, 0, PDU.[WhenCreated]), 0) DESC
+
+				   )
+
 	END]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1788,16 +1795,10 @@
 					<References Name="[dbo].[PortalDeviceUsage].[Id]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[PortalDeviceUsage].[PortalDeviceId]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[PortalDeviceUsage].[Temps]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[PortalDeviceUsage].[WhenCreated]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[PortalDeviceUsage]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PortalDeviceUsage].[Id]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[PortalDeviceUsage].[Id]" />
@@ -1854,7 +1855,7 @@
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
 				<Property Name="CreateOffset" Value="2" />
-				<Property Name="Length" Value="2415" />
+				<Property Name="Length" Value="1598" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="&#xD;&#xA;CREATE PROCEDURE [dbo].[PortalDeviceUsageProc]&#xD;&#xA;&#x9;@Time int = 0,&#xD;&#xA;&#x9;@PortalDeviceId int&#xD;&#xA;AS" />

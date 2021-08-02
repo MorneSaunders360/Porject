@@ -18,7 +18,7 @@
 
     }
     function ReloadPortalDeviceGraphs(Time) {
-        preloadFunc();
+        //preloadFunc();
 
         setTimeout(() => {
             var ajaxType = "Get";
@@ -30,8 +30,8 @@
 
     }
 
-    //setInterval(() => {
-    //    ReloadPortalDeviceGraphs(1);
-    //}, 3000);
+    setInterval(() => {
+        ReloadPortalDeviceGraphs(1);
+    }, 7500);
 
 </script>
